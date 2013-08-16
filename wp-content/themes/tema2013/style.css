@@ -1,0 +1,46 @@
+/*
+Theme Name: Souza-Aranha 2013
+Theme URI: http://souza-aranha.com.br
+Description: Tema desenvolvido especialmente para Souza Aranha.
+Author: Rafael D´Alessandro Pires
+Author URI: 
+Version: 0.0.0
+Tags: responsive, white, bootstrap
+
+License: Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
+License URI: http://creativecommons.org/licenses/by-sa/3.0/
+
+*/
+
+@import url('css/bootstrap.css'); 
+@import url('css/bootstrap-responsive.css'); 
+body { 
+     padding-top: 10px; 
+     padding-bottom: 40px; 
+} 
+
+/* header */
+
+.acima-menu {
+	height: 60px;
+}
+
+/* footer */
+#sa-footer {
+background: rgb(143, 180, 185);
+padding-top: 16px;
+}
+
+#sa-footer h1 {
+font-size: 100%;
+margin: 0px;
+}
+
+#sa-footer img {
+width: 42px;
+float: right;
+}
+
+#sa-footer .sa-social {
+margin-bottom: 12px;
+}
