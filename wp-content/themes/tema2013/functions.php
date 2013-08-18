@@ -89,6 +89,31 @@ function sa_create_custom_posts()
 			'has_archive'	=>	true
 			)
 		);
+
+	register_post_type ( 'produtos' ,
+		array (
+			'labels' => array(
+				'name'			=>	'Produtos',
+				'singular_name'	=>	'Produto',
+				'add_new'		=>	'Adiciona',
+				'add_new_item'	=>	'Adiciona novo produto',
+				'edit'			=>	'Editar',
+				'edit_item'		=>	'Editar produto',
+				'new_item'		=>	'Novo produto',
+				'view'			=>	'Visualizar',
+				'view_item'		=>	'Ver produto',
+				'search_items'	=>	'Pesquisar produtos',
+				'not_found'		=>	'Nenhum produto encontrado',
+				'not_found_in_trash'	=>	'Nenhum produto encontrado na lixeira',
+				'parent'		=>	'Produto Pai'
+				),
+			'public'		=>	true,
+			'menu_position' =>	15,
+			'supports'		=>	array('title','thumbnail','author','editor','excerpt','revisions'),
+			'taxonomies'	=>	array(''),
+			'has_archive'	=>	true
+			)
+		);
 }
 
 add_action( 'add_meta_boxes', 'sa_webinar_add_meta_box' );
@@ -102,29 +127,30 @@ function sa_webinar_add_meta_box() {
     );
 }
 
-function webinar_inner_meta_box( $webinar ) {
+add_action( 'add_meta_boxes', 'sa_produto_add_meta_box' );
+ 
+function sa_produto_add_meta_box() {
+    add_meta_box(
+        'sa_produto_meta_box',
+        'Atributos do Produto',
+        'produto_inner_meta_box',
+        'produtos'
+    );
+}
+
+function produto_inner_meta_box( $produto ) {
 ?>
-<p>
-<label for="data">Data:</label>
-<br />
-<input type="date" name="sa_data_webinar" value="<?php echo get_post_meta( $webinar->ID, 'sa_data_webinar', true ); ?>" />
-</p>
-<p>
-<label for="hora">Hora:</label>
-<br />
-<input type="time" name="sa_hora_webinar" value="<?php echo get_post_meta( $webinar->ID, 'sa_hora_webinar', true ); ?>" />
-</p>
-<p>
-<label for="url">URL:</label>
-<br />
-<input type="text" name="sa_url_webinar" value="<?php echo get_post_meta( $webinar->ID, 'sa_url_webinar', true ); ?>" />
-</p>
-<p>
-<label for="status">Status:</label>
-<br />
-<input type="radio" name="sa_status_webinar" value="agendado"  <?php if(get_post_meta( $webinar->ID, 'sa_status_webinar', true ) == 'agendado' ) echo 'checked="checked"'; ?> />Agendado
-<input type="radio" name="sa_status_webinar" value="realizado" <?php if(get_post_meta( $webinar->ID, 'sa_status_webinar', true ) == 'realizado' ) echo 'checked="checked"'; ?> />Realizado
-</p>
+	<p>
+		<label for="Diferencial">Diferencial:</label>
+		<br />
+		<textarea cols="100%" rows="4" name="sa_diferencial_produto"><?php echo get_post_meta( $produto->ID, 'sa_diferencial_produto', true ); ?></textarea>
+	</p>
+	<p>
+		<label for="status">Status:</label>
+		<br />
+		<input type="radio" name="sa_status_produto" value="ativo"  <?php if(get_post_meta( $produto->ID, 'sa_status_produto', true ) == 'ativo' ) echo 'checked="checked"'; ?> />Ativo
+		<input type="radio" name="sa_status_produto" value="suspenso" <?php if(get_post_meta( $produto->ID, 'sa_status_produto', true ) == 'suspenso' ) echo 'checked="checked"'; ?> />Suspenso
+	</p>
 <?php
 }
 
@@ -144,6 +170,22 @@ function sa_webinar_save_post( $webinar_id, $webinar ) {
    return true;
  
 }
+
+add_action( 'save_post', 'sa_produto_save_post', 10, 2 );
+ 
+function sa_produto_save_post( $produto_id, $produto ) {
+ 
+   // Verificar se os dados foram enviados, neste caso se a metabox existe, garantindo-nos que estamos a guardar valores da página de filmes.
+   if ( ! $_POST['sa_diferencial_produto'] ) return;
+ 
+   // Fazer a saneação dos inputs e guardá-los
+   update_post_meta( $produto_id, 'sa_diferencial_produto', strip_tags( $_POST['sa_diferencial_produto'] ) );
+   update_post_meta( $produto_id, 'sa_status_produto', strip_tags( $_POST['sa_status_produto'] ) );
+ 
+   return true;
+ 
+}
+
 
 class twitter_bootstrap_nav_walker extends Walker_Nav_Menu {
 
