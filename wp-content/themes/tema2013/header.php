@@ -37,12 +37,19 @@
               <span class="icon-bar"></span>
             </a>
             
-            <div class="nav-collapse collapse">
-              <ul class="nav">
-                
-                <?php wp_list_pages(array('title_li' => '', 'exclude' => 4)); ?>
+            <div class="nav-collapse collapse navbar-responsive-collapse">
 
-              </ul>
+              <nav class="menu">                  <!-- Main nav -->
+                <?php wp_nav_menu(array(
+                        'container'       => false,
+                        'items_wrap'      => '<ul id="%1$s" class="%2$s nav">%3$s</ul>',
+                        'walker'          => new twitter_bootstrap_nav_walker
+                        ));
+                ?>
+            </nav>  
+
+
+
             </div><!--/.nav-collapse -->
           </div>
         </div>
