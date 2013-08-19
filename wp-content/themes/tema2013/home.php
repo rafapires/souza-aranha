@@ -58,6 +58,7 @@
                 <a href="#" class="btn btn-small pull-right">leia mais</a>
                 <hr>
             </li>
+            <a href="#" class="btn btn-small btn-info btn-block">Lista completa</a>
         </ul>
     </div>
     <div id="sa_middle_action" class="span4">
@@ -87,12 +88,7 @@
                 <a href="#" class="btn btn-small pull-right">Assista</a>
                 <hr>
             </li>
-            <li>
-                <h1>A Gestão Eficaz do Funil de Vendas</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris molestie turpis in dui volutpat, ut iaculis est interdum</p>
-                <a href="#" class="btn btn-small pull-right">Assista</a>
-                <hr>
-            </li>
+            <a href="#" class="btn btn-small btn-info btn-block">Lista completa</a>
         </ul>
     </div>
     <div class="span4">
