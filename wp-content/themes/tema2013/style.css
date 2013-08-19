@@ -27,7 +27,7 @@ body {
 
 /* footer */
 #sa-footer {
-background: rgb(143, 180, 185);
+background: #4BBEC3;
 padding-top: 16px;
 }
 
@@ -47,7 +47,8 @@ margin-bottom: 12px;
 
 /* home */
 #sa_call_actions ul {
-margin: 0px 0px 0px 8px;
+margin: 0px;
+padding: 8px;
 }
 
 #sa_call_actions li {
@@ -104,4 +105,33 @@ box-shadow: 5px 3px 5px lightgray;
 margin: 10px 0px 15px 0px;
 }
 
+#sa_middle_action ul {
+background-color: #F7F7F7;
+border-radius: 0px 50px;
+}
+
+/* produtos */
+#sa_produtos h2 {
+font-size: 16px;
+line-height: 120%;
+background: #0BB2AA;
+margin: 0;
+padding: 8px;
+border-radius: 25px 0px;
+min-height: 38px;
+}
+
+#sa_produtos p {
+line-height: 120%;
+margin: 0px;
+text-align: center;
+background-color: #E5E5E5;
+border-radius: 0px 25px;
+padding: 10px;
+min-height: 240px;
+}
+
+#sa_produtos .caption {
+padding: 5px 0px;
+}
 
