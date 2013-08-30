@@ -2,6 +2,8 @@
 add_action ( 'init','sa_create_custom_posts' );
 add_theme_support( 'post-thumbnails' ); 
 register_nav_menu( 'main-menu', 'Menu Principal' );
+remove_filter( 'the_content', 'wpautop' );
+
 
 function wpbootstrap_scripts_with_jquery()
 {
@@ -278,7 +280,3 @@ class twitter_bootstrap_nav_walker extends Walker_Nav_Menu {
 	}
 }
 ?>
-
-
-
-

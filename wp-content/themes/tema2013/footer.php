@@ -9,7 +9,7 @@
                 <div class="span4">
                     <div class="well">
                     <p>Receba em seu email as novidades do setor de marketing de relacionamento</p>
-                    <a class="btn btn-info" href="#">Siga nosso site</a>
+                    <a class="btn btn-info btn-large btn-block" href="#">Siga nosso site</a>
                     </div>
                 </div>
                 <div class="span4">
