@@ -280,7 +280,3 @@ class twitter_bootstrap_nav_walker extends Walker_Nav_Menu {
 	}
 }
 ?>
-
-
-
-

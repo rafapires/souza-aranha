@@ -135,3 +135,44 @@ min-height: 240px;
 padding: 5px 0px;
 }
 
+.row-fluid [class*="span"]:nth-child(3n+1) {
+   margin-left: 0;
+}
+
+#sa_conteudo_produto h1 {
+color: #0BB2AA;
+}
+
+#sa_conteudo_produto .well {
+background-color: #CCD8CC;
+text-align: justify;
+padding: 9px 26px;
+border-radius: 30px 0px;
+box-shadow: 6px 6px 15px lightgray;
+border-color: green;
+}
+
+#sa_conteudo_produto .label {
+font-size: 16px;
+padding: 8px 20px;
+background-color: #0BB2AA;
+}
+
+#sa_sidebar ul {
+margin: 0px;
+}
+
+#sa_sidebar li {
+	list-style: none;
+}
+
+#sa_sidebar a:hover {
+	text-decoration: none;
+}
+
+#sa_sidebar h3 {
+background: lightgray;
+padding: 0px 19px;
+border-radius: 30px 0px;
+font-size: 20px;
+}
