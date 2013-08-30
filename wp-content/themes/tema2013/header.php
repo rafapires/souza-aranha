@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>ADFAP - Adm. de bens e condominios</title>
+    <title>Souza Aranha</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Le styles -->
@@ -20,13 +20,8 @@
   <body>
     <div class="container">
         <div class="acima-menu">
-      <a class="brand" href="<?php echo site_url(); ?>"><img src="<?php bloginfo('template_url'); ?>/img/logo-souza-aranha.jpg"></a>
-      <img src="<?php bloginfo('template_url'); ?>/img/slogan-souza-aranha.jpg">
-        <form class="navbar-form pull-right">
-            <input class="span2" type="text" placeholder="Email">
-            <input class="span2" type="password" placeholder="Password">
-            <button type="submit" class="btn">Sign in</button>
-        </form>
+          <a class="brand" href="<?php echo site_url(); ?>"><img src="<?php bloginfo('template_url'); ?>/img/logo-souza-aranha.jpg"></a>
+          <img src="<?php bloginfo('template_url'); ?>/img/slogan-souza-aranha.jpg">
         </div>
       <div class="navbar">
         <div class="navbar-inner">
