@@ -3,7 +3,7 @@ add_action ( 'init','sa_create_custom_posts' );
 add_theme_support( 'post-thumbnails' ); 
 register_nav_menu( 'main-menu', 'Menu Principal' );
 remove_filter( 'the_content', 'wpautop' );
-
+add_action( 'init', 'sa_taxonomies', 0 );
 
 function wpbootstrap_scripts_with_jquery()
 {
@@ -187,6 +187,31 @@ function sa_produto_save_post( $produto_id, $produto ) {
    return true;
  
 }
+
+/* taxonomias */
+
+function sa_taxonomies(){
+	register_taxonomy(
+		'sa_produtos_taxonomy',
+		'post',
+		array(
+			'label'		=>	'produtos',
+			'labels'	=>	array(
+				'name'			=>	'Produtos',
+				'singular_name'	=>	'Produto',
+				'add_new_item'	=>	'Adiciona novo produto',
+				'new_item_name'	=>	'Titulo',
+				),
+			'hierarchical'		=> true,
+			'show_ui'			=> true,
+			'show_admin_column'	=> true,
+			'query_var'			=> true
+			)
+		);
+}
+
+
+/* habilita submenus no nav do bootstrap */
 
 
 class twitter_bootstrap_nav_walker extends Walker_Nav_Menu {
