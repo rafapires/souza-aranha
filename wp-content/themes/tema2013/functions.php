@@ -140,11 +140,14 @@ function webinar_inner_meta_box( $webinar ) {
 ?>
 	<p>
 		<label for="Data">Data:</label>
-		<input type="date" name="sa_data_webinar" value="<php echo get_post_meta($webinar->ID, 'sa_data_webinar'); ?>">
+		<input type="date" name="sa_data_webinar" value="<?php echo get_post_meta($webinar->ID, 'sa_data_webinar'); ?>">
+
+		<label for="Hora">Hora:</label>
+		<input type="time" name="sa_hora_webinar" value="<?php echo get_post_meta($webinar->ID, 'sa_hora_webinar'); ?>">
 	</p>
 		<p>
-		<label for="URL" >Data:</label>
-		<input type="url" size="120"name="sa_url_webinar" value="<php echo get_post_meta($webinar->ID, 'sa_url_webinar'); ?>">
+		<label for="URL" >URL:</label>
+		<input type="url" size="120"name="sa_url_webinar" value="<?php echo get_post_meta($webinar->ID, 'sa_url_webinar'); ?>">
 	</p>
 	<p>
 		<label for="status">Status:</label>
