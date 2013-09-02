@@ -241,7 +241,27 @@ function sa_taxonomies(){
 			'query_var'			=> true
 			)
 		);
+
+	register_taxonomy(
+		'sa_clientes_taxonomy',
+		array ('post','webinars','produtos'),
+		array(
+			'label'		=>	'clientes',
+			'labels'	=>	array(
+				'name'			=>	'Clientes',
+				'singular_name'	=>	'Cliente',
+				'add_new_item'	=>	'Adiciona novo cliente',
+				'new_item_name'	=>	'Nome',
+				),
+			'hierarchical'		=> true,
+			'show_ui'			=> true,
+			'show_admin_column'	=> true,
+			'query_var'			=> true
+			)
+		);
+
 }
+
 
 
 /* habilita submenus no nav do bootstrap */
