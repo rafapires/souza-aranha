@@ -1,5 +1,6 @@
 <?php 
 add_action ( 'init','sa_create_custom_posts' );
+add_action('init', 'portfolio_register');
 add_theme_support( 'post-thumbnails' ); 
 register_nav_menu( 'main-menu', 'Menu Principal' );
 remove_filter( 'the_content', 'wpautop' );
@@ -111,7 +112,7 @@ function sa_create_custom_posts()
 				),
 			'public'		=>	true,
 			'menu_position' =>	15,
-			'supports'		=>	array('title','thumbnail','author','editor','excerpt','revisions'),
+			'supports'		=>	array('title','thumbnail','author','editor','excerpt','revisions','parent'),
 			'taxonomies'	=>	array(''),
 			'has_archive'	=>	true
 			)
@@ -279,4 +280,24 @@ class twitter_bootstrap_nav_walker extends Walker_Nav_Menu {
 	call_user_func_array(array(&$this, 'end_el'), $cb_args);
 	}
 }
+
+
+ 
+	/*add_filter( 'template_include', 'include_template_function', 1 );
+
+	function include_template_function( $template_path ) {
+	    if ( get_post_type() == 'produtos' ) {
+		if ( is_single() ) {
+		    // checks if the file exists in the theme first,
+		    // otherwise serve the file from the plugin
+		    if ( $theme_file = locate_template( array ( 'produtos.php' ) ) ) {
+		        $template_path = $theme_file;
+		    } else {
+		        $template_path = plugin_dir_path( __FILE__ ) . '/produtos.php';
+		    }
+		}
+	    }
+	    return $template_path;
+	}*/
+
 ?>
