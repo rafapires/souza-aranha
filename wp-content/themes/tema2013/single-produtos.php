@@ -22,31 +22,20 @@
 		<div id="sa_clientes_relacionados">
 			<h3>Clientes atendidos</h3>
 			<div class="row-fluid">
-                            
-                      <ul class="thumbnails">
-                            <?php // chama a categoria clientes
-                                
-                                $newsArgs = array( 'post_type' => 'clientes', 'posts_per_page' => 4);                   
-                            
-      				$newsLoop = new WP_Query( $newsArgs );                  
-                        
-      				while ( $newsLoop->have_posts() ) : $newsLoop->the_post();  ?>
-                                
-                            
-                            
-                            
-				
-					<li class="span4">
-						<span class="thumbnail">
-                                                    
-						<a href="<?php the_permalink(); ?>"><?php  the_post_thumbnail(); ?></a>
-						</span>
-					</li>
-                                        
-                                <?php  endwhile;   ?>
-					
+				<ul class="thumbnails">
+					<?php // chama a categoria clientes
+						$newsArgs = array( 'post_type' => 'clientes', 'posts_per_page' => 4);                   
+						$newsLoop = new WP_Query( $newsArgs );                  
+						while ( $newsLoop->have_posts() ) : $newsLoop->the_post();  ?>
+							<li class="span4">
+								<span class="thumbnail">
+		                                                    
+								<a href="<?php the_permalink(); ?>"><?php  the_post_thumbnail(); ?></a>
+								</span>
+							</li>
+					<?php  endwhile;   ?>
 				</ul>
-			</a>
+			</div>
 		</div>
 		<div id="sa_lista_whitepapers">
 			<h3>Whitepapers relacionados</h3>
