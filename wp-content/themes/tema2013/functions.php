@@ -1,6 +1,5 @@
 <?php 
 add_action ( 'init','sa_create_custom_posts' );
-add_action('init', 'portfolio_register');
 add_theme_support( 'post-thumbnails' ); 
 register_nav_menu( 'main-menu', 'Menu Principal' );
 remove_filter( 'the_content', 'wpautop' );
