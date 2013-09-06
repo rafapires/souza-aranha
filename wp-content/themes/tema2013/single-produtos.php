@@ -28,11 +28,6 @@
  
 							 // Mostra as categorias dos Clientes Setados
 							                                                              
-							                         
-							
-							/*$newsArgs = array( 'post_type' => 'clientes', 'posts_per_page' => 4);
-							
-							$newsLoop = new WP_Query( $newsArgs );*/
 							
 							
 							$terms = get_the_terms( $post->ID, 'sa_clientes_taxonomy' );
@@ -64,7 +59,8 @@
 										echo '<li class="span4">
 											  <span class="thumbnail">';
 										     the_category();
-										echo '<a href="'.$permalink.'">'.get_the_post_thumbnail($my_posts[0]->ID, 'thumbnail').'</a>
+										//echo '<a href="'.$permalink.'">'.get_the_post_thumbnail($my_posts[0]->ID, 'thumbnail').'</a>
+										  echo get_the_post_thumbnail($my_posts[0]->ID, 'thumbnail').'										
 												</span>
 											</li>';
 							
@@ -88,7 +84,6 @@
 							                         
 							$terms_wps = get_the_terms( $post->ID, 'sa_whitepaper_taxonomy' );
 							
-							//print_r($terms_wps);
 							
 							foreach($terms_wps as $term_wps){
 								$slug_wps[] = $term_wps->slug;
@@ -137,25 +132,33 @@
 			<h3>Posts relacionados</h3>
 			<ul>
 			
+					<?php
+ 
+							 // Mostra os Posts relacionados dos Produtos
+
+					
+					 $recent = new WP_Query("taxonomy=sa_produtos_taxonomy&tag_ID=9&post_type=post&showposts=5");
+
+					// print_r($recent);
+					while($recent->have_posts()) : $recent->the_post(); 
+					
+					?>
+					<li>
+						  <a href="<?php the_permalink(); ?>">
+							<h4><?php the_title(); ?></h4>
+					<?php the_excerpt(); ?>
+					</a>
+					</li>
+						
+
+					<?php 
+					 endwhile;			
+					
+ ?>				
+
 			
-				<li>
-					<a href="#">
-						<h4>A Gestão Eficaz do Funil de Vendas</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris molestie turpis in dui volutpat, ut iaculis est interdum</p>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<h4>A Gestão Eficaz do Funil de Vendas</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris molestie turpis in dui volutpat, ut iaculis est interdum</p>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<h4>A Gestão Eficaz do Funil de Vendas</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris molestie turpis in dui volutpat, ut iaculis est interdum</p>
-					</a>
-				</li>
+			
+			
 			</ul>
 		</div>
 	</div>
