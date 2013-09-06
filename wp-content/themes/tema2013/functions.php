@@ -442,16 +442,14 @@ function sa_whitepaper_add_meta_box() {
 add_action('add_meta_boxes', 'sa_whitepaper_add_meta_box');  
 
 
-function whitepaper_inner_meta_box() {  
+function whitepaper_inner_meta_box($whitepaper) {  
   
     wp_nonce_field(plugin_basename(__FILE__), 'wp_custom_attachment_nonce');  
-      
-    $html = '<p class="description">';  
-        $html .= 'Upload your PDF here.';  
-    $html .= '</p>';  
-    $html .= '<input type="file" id="wp_custom_attachment" name="wp_custom_attachment" value="" size="25">';  
-      
-    echo $html;  
+     ?>
+    <p class="description">Coloque o PDF aqui:</p>
+    <?php $wer = get_post_meta($whitepaper->ID, 'wp_name_attachment'); ?>
+    <input type="file" id="wp_custom_attachment" name="wp_custom_attachment" value="" size="25" > -->Arquivo atual: <i><?php echo $wer[0]; ?></i> 
+      <?php
   
 } // end wp_custom_attachment  
 
@@ -496,12 +494,13 @@ function save_whitepaper_meta_data($id) {
             if(isset($upload['error']) && $upload['error'] != 0) {  
                 wp_die('There was an error uploading your file. The error is: ' . $upload['error']);  
             } else {  
-                add_post_meta($id, 'wp_custom_attachment', $upload);  
-                update_post_meta($id, 'wp_custom_attachment', $upload);       
+             //   add_post_meta($id, 'wp_custom_attachment', $upload);  
+                update_post_meta($id, 'wp_custom_attachment', $upload);
+                update_post_meta($id, 'wp_name_attachment', $_FILES['wp_custom_attachment']['name']);      
             } // end if/else  
   
         } else {  
-            wp_die("O arquivo não é um PDF.<a href='javascript:history.back()'>Voltar</a>");  
+            wp_die("O arquivo não é um PDF.   <a href='javascript:history.go(-2)'>Voltar</a>");  
         } // end if/else  
           
     } // end if  
