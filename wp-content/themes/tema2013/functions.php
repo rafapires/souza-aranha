@@ -120,6 +120,31 @@ function sa_create_custom_posts()
 			'has_archive'	=>	true
 			)
 		);
+
+	register_post_type ( 'whitepaper' ,
+		array (
+			'labels' => array(
+				'name'			=>	'Whitepapers',
+				'singular_name'	=>	'Whitepaper',
+				'add_new'		=>	'Adiciona',
+				'add_new_item'	=>	'Adiciona novo whitepaper',
+				'edit'			=>	'Editar',
+				'edit_item'		=>	'Editar whitepaper',
+				'new_item'		=>	'Novo whitepaper',
+				'view'			=>	'Visualizar',
+				'view_item'		=>	'Ver whitepaper',
+				'search_items'	=>	'Pesquisar whitepapers',
+				'not_found'		=>	'Nenhum whitepaper encontrado',
+				'not_found_in_trash'	=>	'Nenhum whitepaper encontrado na lixeira',
+				'parent'		=>	'Produto Pai'
+				),
+			'public'		=>	true,
+			'menu_position' =>	15,
+			'supports'		=>	array('title','thumbnail','author','editor','excerpt','revisions','parent'),
+			'taxonomies'	=>	array(''),
+			'has_archive'	=>	true
+			)
+		);
 }
 
 
@@ -376,5 +401,95 @@ class twitter_bootstrap_nav_walker extends Walker_Nav_Menu {
 	    }
 	    return $template_path;
 	}*/
+
+
+/* adiciona parametro nos forms para permitir upload de arquivos */
+function update_edit_form() {  
+    echo ' enctype="multipart/form-data"';  
+} // end update_edit_form  
+add_action('post_edit_form_tag', 'update_edit_form'); 
+
+function sa_whitepaper_add_meta_box() {  
+  
+    // Define the custom attachment for pages  
+    add_meta_box(  
+        'sa_whitepaper_meta_box',  
+        'Atributos do Whitepaper',  
+        'whitepaper_inner_meta_box',  
+        'whitepaper'
+    );  
+  
+}
+
+// end add_custom_meta_boxes  
+add_action('add_meta_boxes', 'sa_whitepaper_add_meta_box');  
+
+
+function whitepaper_inner_meta_box() {  
+  
+    wp_nonce_field(plugin_basename(__FILE__), 'wp_custom_attachment_nonce');  
+      
+    $html = '<p class="description">';  
+        $html .= 'Upload your PDF here.';  
+    $html .= '</p>';  
+    $html .= '<input type="file" id="wp_custom_attachment" name="wp_custom_attachment" value="" size="25">';  
+      
+    echo $html;  
+  
+} // end wp_custom_attachment  
+
+function save_whitepaper_meta_data($id) {  
+  
+    /* --- security verification --- */  
+    if(!wp_verify_nonce($_POST['wp_custom_attachment_nonce'], plugin_basename(__FILE__))) {  
+      return $id;  
+    } // end if  
+        
+    if(defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {  
+      return $id;  
+    } // end if  
+        
+    if('page' == $_POST['post_type']) {  
+      if(!current_user_can('edit_page', $id)) {  
+        return $id;  
+      } // end if  
+    } else {  
+        if(!current_user_can('edit_page', $id)) {  
+            return $id;  
+        } // end if  
+    } // end if  
+    /* - end security verification - */  
+      
+    // Make sure the file array isn't empty  
+    if(!empty($_FILES['wp_custom_attachment']['name'])) { 
+         
+        // Setup the array of supported file types. In this case, it's just PDF.  
+        $supported_types = array('application/pdf');  
+          
+        // Get the file type of the upload  
+        $arr_file_type = wp_check_filetype(basename($_FILES['wp_custom_attachment']['name']));  
+        $uploaded_type = $arr_file_type['type'];  
+          
+        // Check if the type is supported. If not, throw an error.  
+        if(in_array($uploaded_type, $supported_types)) {  
+  
+            // Use the WordPress API to upload the file  
+            $upload = wp_upload_bits($_FILES['wp_custom_attachment']['name'], null, file_get_contents($_FILES['wp_custom_attachment']['tmp_name']));  
+      
+            if(isset($upload['error']) && $upload['error'] != 0) {  
+                wp_die('There was an error uploading your file. The error is: ' . $upload['error']);  
+            } else {  
+                add_post_meta($id, 'wp_custom_attachment', $upload);  
+                update_post_meta($id, 'wp_custom_attachment', $upload);       
+            } // end if/else  
+  
+        } else {  
+            wp_die("O arquivo não é um PDF.<a href='javascript:history.back()'>Voltar</a>");  
+        } // end if/else  
+          
+    } // end if  
+      
+} // end save_whitepaper_meta_data  
+add_action('save_post', 'save_whitepaper_meta_data');  
 
 ?>
