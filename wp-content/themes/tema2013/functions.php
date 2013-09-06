@@ -251,7 +251,7 @@ function produto_inner_meta_box( $produto ) {
 function sa_taxonomies(){
 	register_taxonomy(
 		'sa_produtos_taxonomy',
-		array ('post','webinars'),
+		array ('post','webinars', 'whitepapers'),
 		array(
 			'label'		=>	'produtos',
 			'labels'	=>	array(
@@ -269,7 +269,7 @@ function sa_taxonomies(){
 
 	register_taxonomy(
 		'sa_clientes_taxonomy',
-		array ('post','webinars','produtos'),
+		array ('post','webinars','produtos', 'whitepapers'),
 		array(
 			'label'		=>	'clientes',
 			'labels'	=>	array(
@@ -285,6 +285,23 @@ function sa_taxonomies(){
 			)
 		);
 
+	register_taxonomy(
+		'sa_whitepaper_taxonomy',
+		array ('post','webinars','produtos'),
+		array(
+			'label'		=>	'whitepapers',
+			'labels'	=>	array(
+				'name'			=>	'Whitepapers',
+				'singular_name'	=>	'Whitepaper',
+				'add_new_item'	=>	'Adiciona novo whitepaper',
+				'new_item_name'	=>	'Nome',
+				),
+			'hierarchical'		=> true,
+			'show_ui'			=> true,
+			'show_admin_column'	=> true,
+			'query_var'			=> true
+			)
+		);
 }
 
 
