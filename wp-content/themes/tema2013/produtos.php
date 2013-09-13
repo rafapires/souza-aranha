@@ -5,7 +5,7 @@
 get_header(); ?>
 
 <div id="sa_produtos">
-	<div class="row-fluid">
+	<div class="row">
 		<ul class="thumbnails">
  			<?php
  			$newsArgs = array( 'post_type' => 'produtos', 'posts_per_page' => 4);                   
