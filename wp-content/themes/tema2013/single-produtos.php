@@ -1,20 +1,26 @@
 <?php get_header();  ?>
 
+<?php global $slug; ?>
 <div class="row">
 	<div class="span8">
 		<div id="sa_conteudo_produto">
                     
- 			<?php if ( have_posts() ) :the_post();  ?>                        
+ 			<?php if ( have_posts() ) :the_post(); ?>                        
                      
                     
 			
 			<div class="well">
-                            <h1><?php the_title(); ?></h1>
+                            <h1><?php the_title();  ?></h1>
                             <?php the_content(); ?>
                         </div>
 
 			
-                        <?php endif;?>
+                        <?php
+                       
+
+                     
+                        
+                        endif;?>
                        
 		</div>
 	</div>
@@ -27,8 +33,6 @@
 					<?php
  
 							 // Mostra as categorias dos Clientes Setados
-							                                                              
-							
 							
 							$terms = get_the_terms( $post->ID, 'sa_clientes_taxonomy' );
 							
@@ -37,10 +41,9 @@
 							}
 							
 							$qtd = count($slug);
-							
+
+							if ($qtd > 0):
 							for($i=0;$i<$qtd; $i++){
-							
-							
 							
 									$the_slug = $slug[$i];
 									$args=array(
@@ -59,7 +62,6 @@
 										echo '<li class="span4">
 											  <span class="thumbnail">';
 										     the_category();
-										//echo '<a href="'.$permalink.'">'.get_the_post_thumbnail($my_posts[0]->ID, 'thumbnail').'</a>
 										  echo get_the_post_thumbnail($my_posts[0]->ID, 'thumbnail').'										
 												</span>
 											</li>';
@@ -69,6 +71,9 @@
 
                        
       				 ?>
+					<?php else: ?>
+					<ul><p>Não há Clientes Relacionados</p></ul>					
+					<?php endif;?>
 		
 					
 				</ul>
@@ -83,14 +88,16 @@
 							 // Mostra os Whitepapers relacionados dos Produtos							                                                              
 							                         
 							$terms_wps = get_the_terms( $post->ID, 'sa_whitepaper_taxonomy' );
+							//print_r($terms_wps);
 							
-							
-							foreach($terms_wps as $term_wps){
-								$slug_wps[] = $term_wps->slug;
+							foreach($terms_wps as $term_wp){
+								$slug_wps[] = $term_wp->slug;
 							}
 							
-							$qtd_wps = count($slug_wps);
+							 $qtd_wps = count($slug_wps);
 							
+							if ($qtd_wps > 0):
+							 
 							for($a=0;$a<$qtd_wps; $a++){
 							
 							
@@ -122,40 +129,43 @@
 							
 									}
 							}
-
                        
       				 ?>			
-			
+					<?php else: ?>
+					<p>Não há Whitepapers Relacionados</p>					
+					<?php endif;?>
 			</ul>
 		</div>
 		<div id="sa_lista_posts_relacionados">
 			<h3>Posts relacionados</h3>
 			<ul>
-			
-					<?php
+					<?php 
  
-							 // Mostra os Posts relacionados dos Produtos
-
+					// Mostra os Posts relacionados dos Produtos pelo slug do titulo
+				
+					 $slug_produto_principal = sanitize_title( get_the_title(), $fallback_title );
 					
-					 $recent = new WP_Query("taxonomy=sa_produtos_taxonomy&tag_ID=9&post_type=post&showposts=5");
-
-					// print_r($recent);
+					  
+					 $recent = new WP_Query("sa_produtos_taxonomy=".$slug_produto_principal."&post_type=post&showposts=5");
+					 
+					 
+					if ($recent->have_posts()): 
 					while($recent->have_posts()) : $recent->the_post(); 
+										
 					
 					?>
-					<li>
-						  <a href="<?php the_permalink(); ?>">
-							<h4><?php the_title(); ?></h4>
-					<?php the_excerpt(); ?>
-					</a>
-					</li>
+						<li>
+							  <a href="<?php the_permalink(); ?>">
+								<h4><?php the_title(); ?></h4>
+								<?php the_excerpt(); ?>
+							  </a>
+						</li>
 						
 
-					<?php 
-					 endwhile;			
-					
- ?>				
-
+					<?php endwhile; ?>				
+					<?php else: ?>
+					<p>Não há Posts Relacionados</p>
+					<?php endif; ?>	
 			
 			
 			
