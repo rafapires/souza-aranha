@@ -389,8 +389,19 @@ add_action( 'init', 'sa_taxonomies', 0 );
 add_action (save_post, save_taxonomy_as_same_title_of_post);
 add_action (edit_post, save_taxonomy_as_same_title_of_post);
 function save_taxonomy_as_same_title_of_post ($id){
+	$nome_custom_post=get_post_type(get_the_ID());
+	if ($nome_custom_post=='whitepaper') {
+		$taxonomy_name='sa_whitepaper_taxonomy';
+	}
+	if ($nome_custom_post=='produtos') {
+		$taxonomy_name='sa_produtos_taxonomy';
+	}
+	if ($nome_custom_post=='clientes') {
+		$taxonomy_name='sa_clientes_taxonomy';
+	}
+
 	$nome_termo=get_the_title($id);
-	wp_insert_term($nome_termo,'sa_whitepaper_taxonomy');
+	wp_insert_term($nome_termo,$taxonomy_name);
 }
 
 /* habilita submenus no nav do bootstrap */
