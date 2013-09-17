@@ -398,10 +398,11 @@ function yoursite_admin_menu() {
     remove_submenu_page( 'edit.php?post_type=webinars', 'edit-tags.php?taxonomy=sa_clientes_taxonomy&amp;post_type=webinars' ); // remove taxonomy 'clientes' from submenu of webinars
     remove_submenu_page( 'edit.php?post_type=produtos', 'edit-tags.php?taxonomy=sa_clientes_taxonomy&amp;post_type=produtos' ); // remove taxonomy 'clientes' from submenu of produtos
 }
+
 /* cria taxonomia com mesmo nome do custom post automáticamente */
 
-add_action (save_post, save_taxonomy_as_same_title_of_post);
-add_action (edit_post, save_taxonomy_as_same_title_of_post);
+add_action (save_post, save_taxonomy_as_same_title_of_post,5,1);
+add_action (edit_post, save_taxonomy_as_same_title_of_post,5,1);
 function save_taxonomy_as_same_title_of_post ($id){
 	$nome_custom_post=get_post_type(get_the_ID());
 	if ($nome_custom_post=='whitepaper') {
@@ -413,9 +414,26 @@ function save_taxonomy_as_same_title_of_post ($id){
 	if ($nome_custom_post=='clientes') {
 		$taxonomy_name='sa_clientes_taxonomy';
 	}
-
 	$nome_termo=get_the_title($id);
 	wp_insert_term($nome_termo,$taxonomy_name);
+}
+
+/* deleta taxonomia com o mesmo nome do custom post deletado */
+add_action (delete_post, delete_taxonomy_as_same_title_of_post);
+function delete_taxonomy_as_same_title_of_post ($id){
+	$name_term = get_the_title(get_the_ID($id));
+	$nome_custom_post=get_post_type(get_the_ID());
+	if ($nome_custom_post=='whitepaper') {
+		$taxonomy_name='sa_whitepaper_taxonomy';
+	}
+	if ($nome_custom_post=='produtos') {
+		$taxonomy_name='sa_produtos_taxonomy';
+	}
+	if ($nome_custom_post=='clientes') {
+		$taxonomy_name='sa_clientes_taxonomy';
+	}
+	$id_term = get_term_by('name',$name_term,$taxonomy_name)->term_id;
+	wp_delete_term($id_term,$taxonomy_name);
 }
 
 /* habilita submenus no nav do bootstrap */
