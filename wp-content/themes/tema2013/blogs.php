@@ -1,3 +1,9 @@
+<?php 
+
+/*Template Name: Blogs */
+ 
+get_header(); ?>
+
 <div id="myCarousel" class="carousel slide">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -89,3 +95,6 @@
 		</div>
 	</div>
 </div>
+
+<?php wp_reset_query(); ?>
+<?php get_footer(); ?>
