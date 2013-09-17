@@ -379,11 +379,25 @@ add_action( 'init', 'sa_taxonomies', 0 );
 				'hierarchical'		=> true,
 				'show_ui'			=> true,
 				'show_admin_column'	=> true,
-				'query_var'			=> true
+				'query_var'			=> true,
+				'show_in_nav_menus' => false
 				)
-			);
+		);
 	}
 
+/* retira do menu adm as taxonomias */
+
+add_action('admin_menu','yoursite_admin_menu');
+function yoursite_admin_menu() {
+    remove_submenu_page( 'edit.php', 'edit-tags.php?taxonomy=sa_whitepaper_taxonomy' ); //remove taxonomy 'whitepaper' from sub menu of post
+    remove_submenu_page( 'edit.php?post_type=webinars', 'edit-tags.php?taxonomy=sa_whitepaper_taxonomy&amp;post_type=webinars' ); // remove taxonomy 'whitepaper' from submenu of webinars
+    remove_submenu_page( 'edit.php?post_type=produtos', 'edit-tags.php?taxonomy=sa_whitepaper_taxonomy&amp;post_type=produtos' ); // remove taxonomy 'whitepaper' from submenu of produtos
+    remove_submenu_page( 'edit.php', 'edit-tags.php?taxonomy=sa_produtos_taxonomy' ); //remove taxonomy 'produtos' from sub menu of post
+    remove_submenu_page( 'edit.php?post_type=webinars', 'edit-tags.php?taxonomy=sa_produtos_taxonomy&amp;post_type=webinars' ); // remove taxonomy 'produtos' from submenu of webinars
+    remove_submenu_page( 'edit.php', 'edit-tags.php?taxonomy=sa_clientes_taxonomy' ); //remove taxonomy 'clientes' from sub menu of post
+    remove_submenu_page( 'edit.php?post_type=webinars', 'edit-tags.php?taxonomy=sa_clientes_taxonomy&amp;post_type=webinars' ); // remove taxonomy 'clientes' from submenu of webinars
+    remove_submenu_page( 'edit.php?post_type=produtos', 'edit-tags.php?taxonomy=sa_clientes_taxonomy&amp;post_type=produtos' ); // remove taxonomy 'clientes' from submenu of produtos
+}
 /* cria taxonomia com mesmo nome do custom post automáticamente */
 
 add_action (save_post, save_taxonomy_as_same_title_of_post);
