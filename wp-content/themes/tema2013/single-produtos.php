@@ -82,17 +82,21 @@
 			<h3>Posts relacionados</h3>
 			<ul>
 
-				<?php // Mostra os Posts relacionados dos Produtos
-				$recent = new WP_Query("taxonomy=sa_produtos_taxonomy&tag_ID=9&post_type=post&showposts=5");
-				// print_r($recent);
-				while($recent->have_posts()) : $recent->the_post();?>
-					<li>
-						<a href="<?php the_permalink(); ?>">
-							<h4><?php the_title(); ?></h4>
-							<?php the_excerpt(); ?>
-						</a>
-					</li>
-				<?php endwhile;?>
+			<?php // Mostra os Posts relacionados dos Produtos pelo slug do titulo
+			       $slug_produto_principal = sanitize_title( get_the_title(), $fallback_title );
+			       $recent = new WP_Query("sa_produtos_taxonomy=".$slug_produto_principal."&post_type=post&showposts=5");
+			        if($recent->have_posts()): 
+			          while($recent->have_posts()) : $recent->the_post();?>
+			            <li>
+			              <a href="<?php the_permalink(); ?>">
+			                <h4><?php the_title(); ?></h4>
+			                <?php the_excerpt(); ?>
+			              </a>
+			            </li>
+			          <?php endwhile;
+			        	else: ?>
+			          <ul><p>Não há Posts Relacionados</p></ul>
+			<?php endif; ?>  
 			</ul>
 		</div>
 	</div>

@@ -38,63 +38,110 @@ get_header(); ?>
 </div>
 
 <div id="sa_blogs">
+<!-- CATEGORIA LEAD-MANAGENT -->
 	<div class="row-fluid">
 		<div class="span4">
-			<h2>Lead Management</h2>
-			<ul>
-				<li>
-					<h3>Título 1</h3>
-					<p>In et elementum risus, sit amet elementum velit. Phasellus fermentum, elit sed dapibus euismod, purus eros gravida arcu, non nullam sodales.</p>
-				</li>
-				<li>
-					<h3>Título 1</h3>
-					<p>In et elementum risus, sit amet elementum velit. Phasellus fermentum, elit sed dapibus euismod, purus eros gravida arcu, non nullam sodales.</p>
-				</li>
-				<li>
-					<h3>Título 1</h3>
-					<p>In et elementum risus, sit amet elementum velit. Phasellus fermentum, elit sed dapibus euismod, purus eros gravida arcu, non nullam sodales.</p>
-				</li>
-			</ul>
-			<a href="#" class="btn btn-large btn-block btn-primary">Lista completa</a>
-		</div>
-		<div class="span4">
-			<h2>Fidelização</h2>
-			<ul>
-				<li>
-					<h3>Título 1</h3>
-					<p>In et elementum risus, sit amet elementum velit. Phasellus fermentum, elit sed dapibus euismod, purus eros gravida arcu, non nullam sodales.</p>
-				</li>
-				<li>
-					<h3>Título 1</h3>
-					<p>In et elementum risus, sit amet elementum velit. Phasellus fermentum, elit sed dapibus euismod, purus eros gravida arcu, non nullam sodales.</p>
-				</li>
-				<li>
-					<h3>Título 1</h3>
-					<p>In et elementum risus, sit amet elementum velit. Phasellus fermentum, elit sed dapibus euismod, purus eros gravida arcu, non nullam sodales.</p>
-				</li>
-			</ul>
-			<a href="#" class="btn btn-large btn-block btn-primary">Lista completa</a>
-		</div>
-		<div class="span4">
-			<h2>Cases</h2>
-			<ul>
-				<li>
-					<h3>Título 1</h3>
-					<p>In et elementum risus, sit amet elementum velit. Phasellus fermentum, elit sed dapibus euismod, purus eros gravida arcu, non nullam sodales.</p>
-				</li>
-				<li>
-					<h3>Título 1</h3>
-					<p>In et elementum risus, sit amet elementum velit. Phasellus fermentum, elit sed dapibus euismod, purus eros gravida arcu, non nullam sodales.</p>
-				</li>
-				<li>
-					<h3>Título 1</h3>
-					<p>In et elementum risus, sit amet elementum velit. Phasellus fermentum, elit sed dapibus euismod, purus eros gravida arcu, non nullam sodales.</p>
-				</li>
-			</ul>
-			<a href="#" class="btn btn-large btn-block btn-primary">Lista completa</a>
-		</div>
-	</div>
-</div>
+		<ul>
+		
+		<?php
+		$args = array(
+				'post_type'=> 'post',
+				'cat'    => 7,
+				'post_per_page'=>3,
+				'order'    => 'ASC'
+		);
 
+			// The Query
+			query_posts( $args );
+			
+			// The Loop
+			while ( have_posts() ) : the_post();
+	
+?>
+			
+		                      
+		
+			
+			
+				<li>
+					<h3><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h3>
+					<p><?php the_excerpt(); ?></p>
+				</li>
+				<?php endwhile; ?>
+			</ul>
+			<a href="?cat=7" class="btn btn-large btn-block btn-primary">Lista completa</a>
+			
+			
+			
+	
+<!-- CATEGORIA Fidelização -->	
+		<ul>
+		
+		<?php
+		$args = array(
+				'post_type'=> 'post',
+				'cat'    => 14,
+				'post_per_page'=>3,
+				'order'    => 'ASC'
+		);
+
+			// The Query
+			query_posts( $args );
+			
+			// The Loop
+			while ( have_posts() ) : the_post();
+	
+?>
+			
+		                      
+		
+			
+			
+				<li>
+					<h3><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h3>
+					<p><?php the_excerpt(); ?></p>
+				</li>
+				<?php endwhile; ?>
+			</ul>
+			<a href="?cat=14" class="btn btn-large btn-block btn-primary">Lista completa</a>
+			
+
+			<!-- CATEGORIA Cases -->	
+		<ul>
+		
+		<?php
+		$args = array(
+				'post_type'=> 'post',
+				'cat'    => 15,
+				'post_per_page'=>3,
+				'order'    => 'ASC'
+		);
+
+			// The Query
+			query_posts( $args );
+			
+			// The Loop
+			while ( have_posts() ) : the_post();
+	
+?>
+			
+		                      
+		
+			
+			
+				<li>
+					<h3><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h3>
+					<p><?php the_excerpt(); ?></p>
+				</li>
+				<?php endwhile; ?>
+			</ul>
+			<a href="?cat=15" class="btn btn-large btn-block btn-primary">Lista completa</a>
+			
+			
+		</div>
+
+	</div>
+	
+</div>
 <?php wp_reset_query(); ?>
 <?php get_footer(); ?>
