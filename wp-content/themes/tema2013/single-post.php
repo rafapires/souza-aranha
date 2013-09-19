@@ -13,12 +13,12 @@
 	</div>
 	<div class="span4">
 		<div id="sa_clientes_relacionados">
-			<h3>Clientes atendidos</h3>
+			<h3>Lista produtos relacionados</h3>
 			<div class="row-fluid">
 				<ul class="thumbnails">
 				
 					<?php // Mostra as categorias dos Clientes Setados
-					$terms = get_the_terms( $post->ID, 'sa_clientes_taxonomy' );
+					$terms = get_the_terms( $post->ID, 'sa_produtos_taxonomy' );
 					foreach($terms as $term){
 						$slug[] = $term->slug;
 					}
@@ -27,7 +27,7 @@
 						$the_slug = $slug[$i];
 						$args=array(
 							'name'				=>	$the_slug,
-							'post_type'			=>	'clientes',
+							'post_type'			=>	'produtos',
 							'post_status'		=>	'publish',
 							'posts_per_page'	=>	4
 						);
@@ -47,7 +47,7 @@
 			</div>
 		</div>
 		<div id="sa_lista_whitepapers">
-			<h3>Whitepapers relacionados</h3>
+			<h3>Outros post do mesmo tema</h3>
 			<ul>
 				<?php // Mostra os Whitepapers relacionados dos Produtos
 				$terms_wps = get_the_terms( $post->ID, 'sa_whitepaper_taxonomy' );
@@ -78,27 +78,7 @@
 				}?>
 			</ul>
 		</div>
-		<div id="sa_lista_posts_relacionados">
-			<h3>Posts relacionados</h3>
-			<ul>
 
-			<?php // Mostra os Posts relacionados dos Produtos pelo slug do titulo
-			       $slug_produto_principal = sanitize_title( get_the_title(), $fallback_title );
-			       $recent = new WP_Query("sa_produtos_taxonomy=".$slug_produto_principal."&post_type=post&showposts=5");
-			        if($recent->have_posts()): 
-			          while($recent->have_posts()) : $recent->the_post();?>
-			            <li>
-			              <a href="<?php the_permalink(); ?>">
-			                <h4><?php the_title(); ?></h4>
-			                <?php the_excerpt(); ?>
-			              </a>
-			            </li>
-			          <?php endwhile;
-			        	else: ?>
-			          <ul><p>Não há Posts Relacionados</p></ul>
-			<?php endif; ?>  
-			</ul>
-		</div>
 	</div>
 </div>
 
