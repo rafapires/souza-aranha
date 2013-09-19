@@ -70,9 +70,12 @@ get_header(); ?>
 				<?php endwhile; ?>
 			</ul>
 			<a href="?cat=7" class="btn btn-large btn-block btn-primary">Lista completa</a>
+
+			</ul>
+		</div>
 			
-			
-			
+		<div class="span4">
+	
 	
 <!-- CATEGORIA Fidelização -->	
 		<ul>
@@ -105,7 +108,11 @@ get_header(); ?>
 			</ul>
 			<a href="?cat=14" class="btn btn-large btn-block btn-primary">Lista completa</a>
 			
-
+			</ul>
+		</div>
+			
+		<div class="span4">
+			
 			<!-- CATEGORIA Cases -->	
 		<ul>
 		
@@ -142,6 +149,6 @@ get_header(); ?>
 
 	</div>
 	
-</div>
+
 <?php wp_reset_query(); ?>
 <?php get_footer(); ?>
