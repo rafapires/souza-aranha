@@ -11,14 +11,36 @@ get_header(); ?>
         <li data-target="#myCarousel" data-slide-to="2" class=""></li>
     </ol>
     <div class="carousel-inner">
-        <div class="item active">
-            <img src="http://dummyimage.com/1020x300/eee/fff.png" alt="">
+        <?php /* Get all Sticky Posts */
+			$sticky = get_option( 'sticky_posts' );
+			
+			/* Sort Sticky Posts, newest at the top */
+			rsort( $sticky );
+			
+			/* Get top 5 Sticky Posts */
+			$sticky = array_slice( $sticky, 0, 5 );
+			
+			/* Query Sticky Posts */
+			$active = true;
+			query_posts( array( 'post__in' => $sticky, 'ignore_sticky_posts' => 1 ) ); 
+			
+			// The Loop
+			while ( have_posts() ) : the_post(); ?>
+    
+        <div class="item <?php if ($active){echo 'active';}?>">
+        
+          <?php echo get_the_post_thumbnail() ?>
             <div class="carousel-caption">
-                <h4>First Thumbnail label</h4>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <h4><?php the_title();?></h4>
+                <?php the_excerpt(); ?>
             </div>
         </div>
-        <div class="item">
+        			
+			<?php $active =false;?>
+			<?php endwhile; ?>
+			<?php wp_reset_query(); ?>
+        
+        <?php /*<div class="item">
             <img src="http://dummyimage.com/1020x300/eee/fff.png" alt="">
             <div class="carousel-caption">
                 <h4>Second Thumbnail label</h4>
@@ -30,9 +52,10 @@ get_header(); ?>
             <div class="carousel-caption">
                 <h4>Third Thumbnail label</h4>
                 <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            </div>
+            </div> */ ?>
+            
         </div>
-    </div>
+
     <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
     <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
 </div>
