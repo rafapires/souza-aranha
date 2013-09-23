@@ -1,3 +1,9 @@
+<?php 
+
+/*Template Name: Home */
+ 
+get_header(); ?>
+
 <div id="myCarousel" class="carousel slide">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -58,7 +64,7 @@
                 <a href="#" class="btn btn-small pull-right">leia mais</a>
                 <hr>
             </li>
-            <a href="#" class="btn btn-small btn-info btn-block">Lista completa</a>
+            <a href="#" class="btn btn-small">Lista completa</a>
         </ul>
     </div>
     <div id="sa_middle_action" class="span4">
@@ -117,3 +123,4 @@
         </ul>
     </div>
 </div>
+<?php get_footer(); ?>
