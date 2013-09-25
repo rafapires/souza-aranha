@@ -40,30 +40,32 @@ get_header(); ?>
     <div class="span4">
         <h1 class="sa_title_call_action">Ultimos Blogs</h1>
         <ul>
+        
+        
+        <?php
+
+        $my_posts = new WP_Query("post_type=post&showposts=5");
+        
+        print_r($my_posts);
+        if ( $my_posts->have_posts() ) :$my_posts->the_post();  ?>
+        <?php //while($my_posts->have_posts()):?>
             <li>
-                <h1>O FATOR ZERO DOS PROGRAMAS DE FIDELIDADE</h1>
-                <p>Você considera defensável o desenvolvimento de uma campanha de propaganda sem estar baseada em uma estratégia de marketing?<br/>O fato de estar fundam...</p>
-                <a href="#" class="btn btn-small pull-right">leia mais</a>
+                <h1><?php the_title(); ?></h1>
+                <?php the_excerpt();?>
+                <a href="<?php the_permalink(); ?>" class="btn btn-small pull-right">leia mais</a>
                 <hr>
             </li>
-            <li>
-                <h1>O FATOR ZERO DOS PROGRAMAS DE FIDELIDADE</h1>
-                <p>Você considera defensável o desenvolvimento de uma campanha de propaganda sem estar baseada em uma estratégia de marketing?<br/>O fato de estar fundam...</p>
-                <a href="#" class="btn btn-small pull-right">leia mais</a>
-                <hr>
-            </li>
-            <li>
-                <h1>O FATOR ZERO DOS PROGRAMAS DE FIDELIDADE</h1>
-                <p>Você considera defensável o desenvolvimento de uma campanha de propaganda sem estar baseada em uma estratégia de marketing?<br/>O fato de estar fundam...</p>
-                <a href="#" class="btn btn-small pull-right">leia mais</a>
-                <hr>
-            </li>
-            <li>
-                <h1>O FATOR ZERO DOS PROGRAMAS DE FIDELIDADE</h1>
-                <p>Você considera defensável o desenvolvimento de uma campanha de propaganda sem estar baseada em uma estratégia de marketing?<br/>O fato de estar fundam...</p>
-                <a href="#" class="btn btn-small pull-right">leia mais</a>
-                <hr>
-            </li>
+     
+       <?php //endwhile;?>        
+         <?php endif;?>                      
+        
+        
+        
+        
+       
+        
+        
+
             <a href="#" class="btn btn-small">Lista completa</a>
         </ul>
     </div>
