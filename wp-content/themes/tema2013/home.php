@@ -42,32 +42,22 @@ get_header(); ?>
         <ul>
         
         
-        <?php
-
-        $my_posts = new WP_Query("post_type=post&showposts=5");
+		<?php
+		$aRecentPosts = new WP_Query("post_por_page=5"); // 5 é o número de posts recentes que você deseja mostrar
+		while($aRecentPosts->have_posts()) : $aRecentPosts->the_post();?>
+		
+		           <li>
+		                <h1><?php the_title(); ?></h1>
+		                	<?php the_excerpt();?>
+		                <a href="<?php the_permalink(); ?>" class="btn btn-small pull-right">leia mais</a>
+		                <hr>
+		            </li>
+		
+		<?php endwhile; ?>
         
-        print_r($my_posts);
-        if ( $my_posts->have_posts() ) :$my_posts->the_post();  ?>
-        <?php //while($my_posts->have_posts()):?>
-            <li>
-                <h1><?php the_title(); ?></h1>
-                <?php the_excerpt();?>
-                <a href="<?php the_permalink(); ?>" class="btn btn-small pull-right">leia mais</a>
-                <hr>
-            </li>
+		<a href="#" class="btn btn-small">Lista completa</a>
      
-       <?php //endwhile;?>        
-         <?php endif;?>                      
-        
-        
-        
-        
-       
-        
-        
-
-            <a href="#" class="btn btn-small">Lista completa</a>
-        </ul>
+         </ul>
     </div>
     <div id="sa_middle_action" class="span4">
         <h1 class="sa_title_call_action">Próximo Webinar</h1>
