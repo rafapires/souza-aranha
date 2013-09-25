@@ -43,7 +43,7 @@ get_header(); ?>
         
         
 		<?php
-		$aRecentPosts = new WP_Query("post_por_page=5"); // 5 é o número de posts recentes que você deseja mostrar
+		$aRecentPosts = new WP_Query("&post_por_page=4&showposts=4&order=desc&orderby=date");
 		while($aRecentPosts->have_posts()) : $aRecentPosts->the_post();?>
 		
 		           <li>
@@ -54,7 +54,7 @@ get_header(); ?>
 		            </li>
 		
 		<?php endwhile; ?>
-        
+        <?php wp_reset_query();?>
 		<a href="#" class="btn btn-small">Lista completa</a>
      
          </ul>
@@ -63,13 +63,30 @@ get_header(); ?>
         <h1 class="sa_title_call_action">Próximo Webinar</h1>
         <ul>
             <li>
-                <h1>A Gestão Eficaz do Funil de Vendas</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris molestie turpis in dui volutpat, ut iaculis est interdum</p>
+            <?php 
+            
+            $webinars = array(
+				'post_type'=> 'webinars',
+				'post_per_page'=>1,
+				'showposts'=>1,
+				'order'    => 'DESC'
+		);
+
+			// The Query
+			query_posts( $webinars );
+			
+			// The Loop
+			while ( have_posts() ) : the_post();
+            ?>
+                <h1><?php the_title(); ?></h1>
+                <?php the_excerpt(); ?>
                 <div class="well well-small well-warning">
                     <h2>Inscrições Gratuítas</h2>
                     <p>Faça sua pré-inscrição no Fale Conosco e aproveite e faça o download de <a href="#">As Melhores Práticas na Gestão do Funil de Vendas – Sales Pipeline Management.</a></p>
                     <a href="#" class="btn btn-primary btn-block">Reserve já sua vaga</a>
                 </div>
+                
+                <?php endwhile;?>
             </li>
         </ul>
         <h1 class="sa_title_call_action">Webinars anteriores</h1>
