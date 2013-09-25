@@ -77,33 +77,52 @@ get_header(); ?>
 			
 			// The Loop
 			while ( have_posts() ) : the_post();
+			$post_webinar =  $post->ID;
             ?>
                 <h1><?php the_title(); ?></h1>
                 <?php the_excerpt(); ?>
                 <div class="well well-small well-warning">
                     <h2>Inscrições Gratuítas</h2>
-                    <p>Faça sua pré-inscrição no Fale Conosco e aproveite e faça o download de <a href="#">As Melhores Práticas na Gestão do Funil de Vendas – Sales Pipeline Management.</a></p>
-                    <a href="#" class="btn btn-primary btn-block">Reserve já sua vaga</a>
+                    <p>Faça sua pré-inscrição no Fale Conosco e aproveite e faça o download de <a href="<?php the_permalink(); ?>">As Melhores Práticas na Gestão do Funil de Vendas – Sales Pipeline Management.</a></p>
+                    <a href="<?php the_permalink(); ?>" class="btn btn-primary btn-block">Reserve já sua vaga</a>
                 </div>
                 
                 <?php endwhile;?>
+        		<?php wp_reset_query();?>
+                
             </li>
         </ul>
         <h1 class="sa_title_call_action">Webinars anteriores</h1>
         <ul>
+        <?php         
+        		$webinars_anteriores = array(
+						'post_type'=> 'webinars',
+						'post_per_page'=>5,
+						'showposts'=>-1,
+        				'post__not_in' => array($post_webinar) ,
+						'order'    => 'DESC',
+				);
+
+			// The Query
+			query_posts( $webinars_anteriores );
+			
+			// The Loop
+			while ( have_posts() ) : the_post();
+			
+			?>
+        
             <li>
-                <h1>A Gestão Eficaz do Funil de Vendas</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris molestie turpis in dui volutpat, ut iaculis est interdum</p>
-                <a href="#" class="btn btn-small pull-right">Assista</a>
+                <h1><?php the_title(); ?></h1>
+                <?php the_excerpt(); ?>
+                <a href="<?php the_permalink(); ?>" class="btn btn-small pull-right">Assista</a>
                 <hr>
             </li>
-            <li>
-                <h1>A Gestão Eficaz do Funil de Vendas</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris molestie turpis in dui volutpat, ut iaculis est interdum</p>
-                <a href="#" class="btn btn-small pull-right">Assista</a>
-                <hr>
-            </li>
-            <a href="#" class="btn btn-small btn-info btn-block">Lista completa</a>
+                <?php endwhile;?>
+        		<?php wp_reset_query();?>
+  
+  
+  
+           <a href="#" class="btn btn-small btn-info btn-block">Lista completa</a>
         </ul>
     </div>
     <div class="span4">
