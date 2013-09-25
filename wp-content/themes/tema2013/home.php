@@ -11,27 +11,34 @@ get_header(); ?>
         <li data-target="#myCarousel" data-slide-to="2" class=""></li>
     </ol>
     <div class="carousel-inner">
-        <div class="item active">
-            <img src="http://dummyimage.com/1020x300/eee/fff.png" alt="">
+
+          <?php 
+			
+				
+			$active = true;
+
+			$newsArgs = array( 'post_type' => 'produtos');
+			$newsLoop = new WP_Query( $newsArgs );
+			
+			// The Loop
+			while ( $newsLoop->have_posts() ) : $newsLoop->the_post();?>
+    
+        <div class="item <?php if ($active){echo 'active';}?>">
+        
+          <?php echo get_the_post_thumbnail() ?>
             <div class="carousel-caption">
-                <h4>First Thumbnail label</h4>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <a href="<?php the_permalink(); ?>">
+	                <h4><?php the_title();?></h4>
+	                <?php the_excerpt(); ?>
+	            </a>
             </div>
         </div>
-        <div class="item">
-            <img src="http://dummyimage.com/1020x300/eee/fff.png" alt="">
-            <div class="carousel-caption">
-                <h4>Second Thumbnail label</h4>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            </div>
-        </div>
-        <div class="item">
-            <img src="http://dummyimage.com/1020x300/eee/fff.png" alt="">
-            <div class="carousel-caption">
-                <h4>Third Thumbnail label</h4>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            </div>
-        </div>
+        			
+			<?php $active =false;?>
+			<?php endwhile; ?>
+			<?php wp_reset_query(); ?>
+    
+
     </div>
     <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
     <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
