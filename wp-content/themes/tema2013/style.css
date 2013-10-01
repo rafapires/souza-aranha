@@ -43,23 +43,8 @@ box-shadow: 0px 1px 70px #777;
 }
 
 /* footer */
-#sa-footer {
-background: #4BBEC3;
-padding-top: 16px;
-}
-
-#sa-footer h1 {
-font-size: 100%;
-margin: 0px;
-}
-
-#sa-footer img {
-width: 42px;
-float: right;
-}
-
-#sa-footer .sa-social {
-margin-bottom: 12px;
+#sa-footer hr {
+border-top: 1px solid #bbb;
 }
 
 /* carroucel */
