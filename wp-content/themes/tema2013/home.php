@@ -51,7 +51,7 @@ get_header(); ?>
         
         
 		<?php
-		$aRecentPosts = new WP_Query("&post_por_page=4&showposts=4&order=desc&orderby=date");
+		$aRecentPosts = new WP_Query("&post_por_page=3&showposts=3&order=desc&orderby=date");
 		while($aRecentPosts->have_posts()) : $aRecentPosts->the_post();?>
 		
 		           <li>
