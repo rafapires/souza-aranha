@@ -16,6 +16,13 @@ add_action( 'init', 'sa_taxonomies', 0 );
 	}
 	add_action( 'wp_enqueue_scripts', 'wpbootstrap_scripts_with_jquery' );
 
+/* customiza tamanho dos excerpts */
+function custom_excerpt_length( $length ) {
+	return 20;
+}
+
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
 /* cria custom posts do tema */
 
 	function sa_create_custom_posts()
