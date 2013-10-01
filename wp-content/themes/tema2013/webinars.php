@@ -4,7 +4,7 @@
  
 get_header(); ?>
 
-<div>
+<div class="panel panel-primary">
 
 			<?php
 		$aRecentPosts = new WP_Query("post_type=webinars&post_por_page=1&showposts=1&order=desc&orderby=date");
@@ -23,7 +23,7 @@ get_header(); ?>
 
 
 	<div class="row">
-		<ul>
+		<ul class="thumbnails">
  			<?php
  			
  			$newsArgs = array(
@@ -36,12 +36,14 @@ get_header(); ?>
  			
 			$newsLoop = new WP_Query( $newsArgs );
 			while ( $newsLoop->have_posts() ) : $newsLoop->the_post();?>
-				<li class="span3">
+				<li class="span35">
+					<div class="thumbnail">				
 						<div class="caption">
 							<h2><?php the_title(); ?></h2>
 							<?php echo the_content(); ?>
 						</div>
-						<a href="<?php the_permalink(); ?>">Mais detalhes</a>				
+						<a href="<?php the_permalink(); ?>">Mais detalhes</a>	
+						</div>			
 				</li>
 			<?php endwhile; // end of the loop. ?>
 		</ul>

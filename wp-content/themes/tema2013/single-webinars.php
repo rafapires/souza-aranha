@@ -3,6 +3,7 @@
 <?php global $slug; ?>
 <div class="row">
 	<div class="span8">
+	
 		<div id="sa_conteudo_produto">
 			<?php if ( have_posts() ) :the_post();  ?>                        
 				<div class="well">
