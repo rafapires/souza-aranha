@@ -40,7 +40,7 @@ get_header(); ?>
 					<div class="thumbnail">				
 						<div class="caption">
 							<h2><?php the_title(); ?></h2>
-							<?php echo the_excerpt(); ?>
+							<?php echo the_excerpt();  ?>
 						</div>
 						<a href="<?php the_permalink(); ?>">Mais detalhes</a>	
 						</div>			
