@@ -100,7 +100,8 @@ bottom: 5px;
 position: relative;
 }
 
-#sa_call_actions .sa_title_call_action {
+#sa_call_actions .sa_title_call_action, #sa_call_actions .sa_title_links,
+#sa_produtos .sa_title_links, #sa_blogs .sa_title_links{
 color: #636CA7;
 font-size: 20px;
 font-weight: bolder;
@@ -152,6 +153,7 @@ padding: 8px;
 border-radius: 25px 0px;
 min-height: 38px;
 }
+
 
 #sa_produtos p {
 line-height: 120%;

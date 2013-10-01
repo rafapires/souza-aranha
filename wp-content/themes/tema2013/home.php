@@ -46,7 +46,7 @@ get_header(); ?>
 
 <div id="sa_call_actions" class="row">
     <div class="span4">
-        <h1 class="sa_title_call_action">Ultimos Blogs</h1>
+        <h1 class="sa_title_links">Ultimos Blogs</h1>
         <ul>
         
         
@@ -68,7 +68,7 @@ get_header(); ?>
          </ul>
     </div>
     <div id="sa_middle_action" class="span4">
-        <h1 class="sa_title_call_action">Próximo Webinar</h1>
+        <h1 class="sa_title_links">Próximo Webinar</h1>
         <ul>
             <li>
             <?php 
@@ -111,7 +111,7 @@ get_header(); ?>
 			// The Query
 			query_posts( $webinars_anteriores );
             if (have_posts()) { ?>
-                <h1 class="sa_title_call_action">Webinars anteriores</h1>
+                <h1 class="sa_title_links">Webinars anteriores</h1>
                 <ul>
         			<?php
         			// The Loop
@@ -135,7 +135,7 @@ get_header(); ?>
             <?php } ?>
     </div>
     <div class="span4">
-        <h1 class="sa_title_call_action">Nosso diferencial</h1>
+        <h1 class="sa_title_links">Nosso diferencial</h1>
         <ul>
             <li>
                 <h1>Mercado de Consumo</h1>

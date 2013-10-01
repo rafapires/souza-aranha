@@ -15,7 +15,7 @@ get_header(); ?>
 					<div class="thumbnail">
 						<?php the_post_thumbnail(); ?>
 						<div class="caption">
-							<h2><?php the_title(); ?></h2>
+							<h2 class="sa_title_links"><?php the_title(); ?></h2>
 							<?php echo the_excerpt(); ?>
 						</div>
 						<a href="<?php the_permalink(); ?>" class="btn btn-large btn-block btn-primary">Mais detalhes</a>				
