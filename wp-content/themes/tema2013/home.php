@@ -43,6 +43,7 @@ get_header(); ?>
     <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
     <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
 </div>
+
 <div id="sa_call_actions" class="row">
     <div class="span4">
         <h1 class="sa_title_call_action">Ultimos Blogs</h1>
@@ -62,7 +63,7 @@ get_header(); ?>
 		
 		<?php endwhile; ?>
         <?php wp_reset_query();?>
-		<a href="#" class="btn btn-small">Lista completa</a>
+		<a href="#" class="btn btn-block btn-small">Lista completa</a>
      
          </ul>
     </div>
