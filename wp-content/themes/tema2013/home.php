@@ -91,7 +91,6 @@ get_header(); ?>
                 <?php the_excerpt(); ?>
                 <div class="well well-small well-warning">
                     <h2>Inscrições Gratuítas</h2>
-                    <p>Faça sua pré-inscrição no Fale Conosco e aproveite e faça o download de <a href="<?php the_permalink(); ?>">As Melhores Práticas na Gestão do Funil de Vendas – Sales Pipeline Management.</a></p>
                     <a href="<?php the_permalink(); ?>" class="btn btn-primary btn-block">Reserve já sua vaga</a>
                 </div>
                 
@@ -100,8 +99,6 @@ get_header(); ?>
                 
             </li>
         </ul>
-        <h1 class="sa_title_call_action">Webinars anteriores</h1>
-        <ul>
         <?php         
         		$webinars_anteriores = array(
 						'post_type'=> 'webinars',
@@ -113,25 +110,29 @@ get_header(); ?>
 
 			// The Query
 			query_posts( $webinars_anteriores );
-			
-			// The Loop
-			while ( have_posts() ) : the_post();
-			
-			?>
-        
-            <li>
-                <h1><?php the_title(); ?></h1>
-                <?php the_excerpt(); ?>
-                <a href="<?php the_permalink(); ?>" class="btn btn-small pull-right">Assista</a>
-                <hr>
-            </li>
-                <?php endwhile;?>
-        		<?php wp_reset_query();?>
-  
-  
-  
-           <a href="#" class="btn btn-small btn-info btn-block">Lista completa</a>
-        </ul>
+            if (have_posts()) { ?>
+                <h1 class="sa_title_call_action">Webinars anteriores</h1>
+                <ul>
+        			<?php
+        			// The Loop
+        			while ( have_posts() ) : the_post();
+        			
+        			?>
+                
+                    <li>
+                        <h1><?php the_title(); ?></h1>
+                        <?php the_excerpt(); ?>
+                        <a href="<?php the_permalink(); ?>" class="btn btn-small pull-right">Assista</a>
+                        <hr>
+                    </li>
+                        <?php endwhile;?>
+                		<?php wp_reset_query();?>
+          
+          
+          
+                   <a href="#" class="btn btn-small btn-info btn-block">Lista completa</a>
+                </ul>
+            <?php } ?>
     </div>
     <div class="span4">
         <h1 class="sa_title_call_action">Nosso diferencial</h1>
