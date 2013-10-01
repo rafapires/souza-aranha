@@ -25,7 +25,7 @@ get_header(); ?>
     
         <div class="item <?php if ($active){echo 'active';}?>">
         
-          <?php echo get_the_post_thumbnail() ?>
+          <?php the_post_thumbnail( full, array('class' => 'sa_img_carrousel')) ?>
             <div class="carousel-caption">
                 <a href="<?php the_permalink(); ?>">
 	                <h4><?php the_title();?></h4>
