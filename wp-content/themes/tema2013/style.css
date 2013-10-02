@@ -35,6 +35,9 @@ border-right: 10px solid #fff;
 box-shadow: 0px 1px 70px #777;
 }
 
+.thumbnail {
+box-shadow: 0px 0px 14px #bbb;
+}
 
 /* header */
 
@@ -151,18 +154,16 @@ background: #0BB2AA;
 margin: 0;
 padding: 8px;
 border-radius: 25px 0px;
-min-height: 38px;
 }
 
 
 #sa_produtos p {
-line-height: 120%;
 margin: 0px;
-text-align: center;
+text-align: justify;
 background-color: #E5E5E5;
 border-radius: 0px 25px;
 padding: 10px;
-min-height: 240px;
+min-height: 120px;
 }
 
 #sa_produtos .caption {
