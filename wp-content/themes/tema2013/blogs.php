@@ -59,7 +59,7 @@ get_header(); ?>
 		<?php
 		$args = array(
 				'post_type'=> 'post',
-				'cat'    => 7,
+				'category_name'    => 'lead-managemment',
 				'post_per_page'=>3,
 				'order'    => 'ASC'
 		);
@@ -91,13 +91,13 @@ get_header(); ?>
 	
 	
 <!-- CATEGORIA Fidelização -->
-		<h2 class="sa_title_links">Fidelização</h2>
+		<h2 class="sa_title_links">Programa de Fidelidade</h2>
 		<ul>
 		
 		<?php
 		$args = array(
 				'post_type'=> 'post',
-				'cat'    => 14,
+				'category_name'    => 'programa-de-fidelidade',
 				'post_per_page'=>3,
 				'order'    => 'ASC'
 		);
@@ -134,7 +134,7 @@ get_header(); ?>
 		<?php
 		$args = array(
 				'post_type'=> 'post',
-				'cat'    => 15,
+				'category_name'    => 'cases',
 				'post_per_page'=>3,
 				'order'    => 'ASC'
 		);
