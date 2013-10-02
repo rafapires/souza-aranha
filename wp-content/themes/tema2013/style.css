@@ -39,6 +39,11 @@ box-shadow: 0px 1px 70px #777;
 box-shadow: 0px 0px 14px #bbb;
 }
 
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+max-height: 235px;
+max-width: 940px;
+}
+
 /* header */
 
 .acima-menu {
