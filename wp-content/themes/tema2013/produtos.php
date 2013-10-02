@@ -11,12 +11,12 @@ get_header(); ?>
  			$newsArgs = array( 'post_type' => 'produtos', 'posts_per_page' => 4);                   
 			$newsLoop = new WP_Query( $newsArgs );
 			while ( $newsLoop->have_posts() ) : $newsLoop->the_post();?>
-				<li class="span3">
+				<li class="span6">
 					<div class="thumbnail">
 						<?php the_post_thumbnail(); ?>
 						<div class="caption">
 							<h2 class="sa_title_links"><?php the_title(); ?></h2>
-							<?php echo the_excerpt(); ?>
+							<p><?php echo get_post_meta(get_the_ID(),'sa_diferencial_produto',true ); ?></p>
 						</div>
 						<a href="<?php the_permalink(); ?>" class="btn btn-large btn-block btn-primary">Mais detalhes</a>				
                     </div>
