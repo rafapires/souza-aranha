@@ -25,11 +25,27 @@ get_header(); ?>
 			query_posts( array( 'post__in' => $sticky, 'ignore_sticky_posts' => 1 ) ); 
 			
 			// The Loop
-			while ( have_posts() ) : the_post(); ?>
+			$sa_count_img_default = 0;
+			while ( have_posts() ) : the_post();
+			?>
     
         <div class="item <?php if ($active){echo 'active';}?>">
         
-          <?php echo get_the_post_thumbnail() ?>
+        <?php // verifica se há imagem destacada no post, caso contrário carrega imagem default
+        	if (has_post_thumbnail()){
+        		echo get_the_post_thumbnail();
+        	}else{
+				if ($sa_count_img_default==3) {
+					$sa_count_img_default=1;
+				}else{
+					$sa_count_img_default++;
+				}
+        		?>
+        		<img src="<?php bloginfo('template_url'); ?>/img/destaque-default-0<?php echo $sa_count_img_default; ?>.jpg">
+        		<?php
+        	}
+
+        ?>
             <div class="carousel-caption">
                 <h4><?php the_title();?></h4>
                 <?php the_excerpt(); ?>
