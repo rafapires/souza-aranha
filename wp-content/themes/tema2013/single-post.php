@@ -34,17 +34,22 @@
 	</div>
 	<div class="span4">
 		<div id="sa_clientes_relacionados">
+		<?php // Mostra os produtos relacionados Setados
+		$terms = get_the_terms( $post->ID, 'sa_produtos_taxonomy' );
+		foreach($terms as $term){
+			$slug[] = $term->slug;
+		}
+		
+		$qtd = count($slug);
+		if ($qtd > 0){
+		
+		?>
+		
 			<h3>Lista produtos relacionados</h3>
 			<div class="row-fluid">
 				<ul>
 				
-					<?php // Mostra os produtos relacionados Setados
-					$terms = get_the_terms( $post->ID, 'sa_produtos_taxonomy' );
-					foreach($terms as $term){
-						$slug[] = $term->slug;
-					}
-					$qtd = count($slug);
-					for($i=0;$i<$qtd; $i++){
+					<?php for($i=0;$i<$qtd; $i++){
 						$the_slug = $slug[$i];
 						$args=array(
 							'name'				=>	$the_slug,
@@ -66,6 +71,7 @@
 					}?>
 				</ul>
 			</div>
+			<?php } ?>
 		</div>
 		<div id="sa_lista_whitepapers">
 			<h3>Outros post do mesmo tema</h3>
