@@ -35,40 +35,53 @@
 	<div class="span4">
 		<div id="sa_clientes_relacionados">
 		<?php // Mostra os produtos relacionados Setados
-		$terms = get_the_terms( $post->ID, 'sa_produtos_taxonomy' );
-		foreach($terms as $term){
-			$slug[] = $term->slug;
+		
+		/** Função que busca o id da taxonomia (de nome tipo)**/
+		$termo = get_the_terms( $post->ID , 'sa_produtos_taxonomy');
+		if($termo) {
+			foreach( $termo as $term ) {
+				//$nome_tax[] = $term->name;
+				$slug[] = $term->slug;
+			}
 		}
+		
+		
+		//print_r($termo);
+		//print_r($slug);
+		
 		
 		$qtd = count($slug);
 		if ($qtd > 0){
-		
+
 		?>
 		
 			<h3>Lista produtos relacionados</h3>
 			<div class="row-fluid">
 				<ul>
 				
-					<?php for($i=0;$i<$qtd; $i++){
+					<?php for($i=0;$i<$qtd; $i++){ 
 						$the_slug = $slug[$i];
 						$args=array(
 							'name'				=>	$the_slug,
 							'post_type'			=>	'produtos',
 							'post_status'		=>	'publish',
-							'posts_per_page'	=>	4
+							'posts_per_page'	=>	4,
+							'show_posts'		=>	4
 						);
 						$my_posts = get_posts( $args );
-						if( $my_posts ) {
-							$permalink = get_permalink($my_posts[0]->ID);
+						//print_r($my_posts);
+						if( $my_posts) {
+							$permalink = $my_posts[$i]->guid;
 							echo   '<li class="span4">
 										<span>';
-											the_category();
-											//echo '<a href="'.$permalink.'">'.get_the_post_thumbnail($my_posts[0]->ID, 'thumbnail').'</a>';
-											//echo get_the_post_thumbnail($my_posts[0]->ID, 'thumbnail').'
+											echo '<a href="'.$permalink.'">'. $my_posts[$i]->post_title;
+											echo '</a>'; 
 										echo '</span>
 									</li>';
 						}
-					}?>
+						$my_posts="";
+					}
+					?>
 				</ul>
 			</div>
 			<?php } ?>
