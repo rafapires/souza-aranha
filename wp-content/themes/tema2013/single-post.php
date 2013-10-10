@@ -38,7 +38,8 @@
 		
 		/** Função que busca o id da taxonomia (de nome tipo)**/
 		$termo = get_the_terms( $post->ID , 'sa_produtos_taxonomy');
-		if($termo) {
+	
+		if(count($termo) >1) {
 			foreach( $termo as $term ) {
 				//$nome_tax[] = $term->name;
 				$slug[] = $term->slug;
