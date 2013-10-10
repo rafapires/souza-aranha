@@ -25,7 +25,7 @@ get_header(); ?>
     
         <div class="item <?php if ($active){echo 'active';}?>">
         
-          <?php echo get_the_post_thumbnail() ?>
+          <?php the_post_thumbnail( full, array('class' => 'sa_img_carrousel')) ?>
             <div class="carousel-caption">
                 <a href="<?php the_permalink(); ?>">
 	                <h4><?php the_title();?></h4>
@@ -43,14 +43,15 @@ get_header(); ?>
     <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
     <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
 </div>
+
 <div id="sa_call_actions" class="row">
     <div class="span4">
-        <h1 class="sa_title_call_action">Ultimos Blogs</h1>
+        <h1 class="sa_title_links">Ultimos Blogs</h1>
         <ul>
         
         
 		<?php
-		$aRecentPosts = new WP_Query("&post_por_page=4&showposts=4&order=desc&orderby=date");
+		$aRecentPosts = new WP_Query("&post_por_page=3&showposts=3&order=desc&orderby=date");
 		while($aRecentPosts->have_posts()) : $aRecentPosts->the_post();?>
 		
 		           <li>
@@ -62,12 +63,12 @@ get_header(); ?>
 		
 		<?php endwhile; ?>
         <?php wp_reset_query();?>
-		<a href="#" class="btn btn-small">Lista completa</a>
+		<a href="#" class="btn btn-block btn-small">Lista completa</a>
      
          </ul>
     </div>
     <div id="sa_middle_action" class="span4">
-        <h1 class="sa_title_call_action">Próximo Webinar</h1>
+        <h1 class="sa_title_links">Próximo Webinar</h1>
         <ul>
             <li>
             <?php 
@@ -90,7 +91,6 @@ get_header(); ?>
                 <?php the_excerpt(); ?>
                 <div class="well well-small well-warning">
                     <h2>Inscrições Gratuítas</h2>
-                    <p>Faça sua pré-inscrição no Fale Conosco e aproveite e faça o download de <a href="<?php the_permalink(); ?>">As Melhores Práticas na Gestão do Funil de Vendas – Sales Pipeline Management.</a></p>
                     <a href="<?php the_permalink(); ?>" class="btn btn-primary btn-block">Reserve já sua vaga</a>
                 </div>
                 
@@ -99,8 +99,6 @@ get_header(); ?>
                 
             </li>
         </ul>
-        <h1 class="sa_title_call_action">Webinars anteriores</h1>
-        <ul>
         <?php         
         		$webinars_anteriores = array(
 						'post_type'=> 'webinars',
@@ -112,28 +110,32 @@ get_header(); ?>
 
 			// The Query
 			query_posts( $webinars_anteriores );
-			
-			// The Loop
-			while ( have_posts() ) : the_post();
-			
-			?>
-        
-            <li>
-                <h1><?php the_title(); ?></h1>
-                <?php the_excerpt(); ?>
-                <a href="<?php the_permalink(); ?>" class="btn btn-small pull-right">Assista</a>
-                <hr>
-            </li>
-                <?php endwhile;?>
-        		<?php wp_reset_query();?>
-  
-  
-  
-           <a href="#" class="btn btn-small btn-info btn-block">Lista completa</a>
-        </ul>
+            if (have_posts()) { ?>
+                <h1 class="sa_title_links">Webinars anteriores</h1>
+                <ul>
+        			<?php
+        			// The Loop
+        			while ( have_posts() ) : the_post();
+        			
+        			?>
+                
+                    <li>
+                        <h1><?php the_title(); ?></h1>
+                        <?php the_excerpt(); ?>
+                        <a href="<?php the_permalink(); ?>" class="btn btn-small pull-right">Assista</a>
+                        <hr>
+                    </li>
+                        <?php endwhile;?>
+                		<?php wp_reset_query();?>
+          
+          
+          
+                   <a href="#" class="btn btn-small btn-info btn-block">Lista completa</a>
+                </ul>
+            <?php } ?>
     </div>
     <div class="span4">
-        <h1 class="sa_title_call_action">Nosso diferencial</h1>
+        <h1 class="sa_title_links">Nosso diferencial</h1>
         <ul>
             <li>
                 <h1>Mercado de Consumo</h1>

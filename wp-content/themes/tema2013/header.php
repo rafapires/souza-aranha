@@ -18,7 +18,7 @@
     <?php wp_head(); ?>
   </head>
   <body>
-    <div class="container">
+    <div id="sa_body" class="container">
         <div class="acima-menu">
           <a class="brand" href="<?php echo site_url(); ?>"><img src="<?php bloginfo('template_url'); ?>/img/logo-souza-aranha.jpg"></a>
           <img src="<?php bloginfo('template_url'); ?>/img/slogan-souza-aranha.jpg">
@@ -49,5 +49,3 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="container">
