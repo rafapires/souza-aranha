@@ -19,8 +19,11 @@
 				<ul class="thumbnails">
 					<?php // Mostra as categorias dos Clientes Setados
 					$terms = get_the_terms( $post->ID, 'sa_clientes_taxonomy' );
-					foreach($terms as $term){
-						$slug[] = $term->slug;
+					
+					if(count($terms) >1) {
+						foreach($terms as $term){
+							$slug[] = $term->slug;
+						}
 					}
 					$qtd = count($slug);
 					if ($qtd > 0):
@@ -54,8 +57,12 @@
 			<ul>
 				<?php // Mostra os Whitepapers relacionados dos Produtos
 				$terms_wps = get_the_terms( $post->ID, 'sa_whitepaper_taxonomy' );
-				foreach($terms_wps as $term_wps){
-					$slug_wps[] = $term_wps->slug;
+				
+				if(count($terms_wps) >1) {
+				
+					foreach($terms_wps as $term_wps){
+						$slug_wps[] = $term_wps->slug;
+					}
 				}
 				$qtd_wps = count($slug_wps);
 				if ($qtd_wps > 0):

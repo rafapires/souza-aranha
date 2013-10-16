@@ -41,14 +41,9 @@
 	
 		if(count($termo) >1) {
 			foreach( $termo as $term ) {
-				//$nome_tax[] = $term->name;
 				$slug[] = $term->slug;
 			}
 		}
-		
-		
-		//print_r($termo);
-		//print_r($slug);
 		
 		
 		$qtd = count($slug);
@@ -88,14 +83,29 @@
 			<?php } ?>
 		</div>
 		<div id="sa_lista_whitepapers">
+		
+				<?php // Mostra os Whitepapers relacionados dos Produtos
+				$termo_wps = get_the_terms( $post->ID, 'sa_whitepaper_taxonomy' );
+				
+				if(count($termo_wps) >1) {
+					foreach($termo_wps as $term_wps){
+						$slug_wps[] = $term_wps->slug;
+					}
+				}
+				
+				
+				$qtd_wps = count($slug_wps);
+				
+				if ($qtd_wps > 0){
+						
+		?>
+		
+		
+		
 			<h3>Outros post do mesmo tema</h3>
 			<ul>
 				<?php // Mostra os Whitepapers relacionados dos Produtos
-				$terms_wps = get_the_terms( $post->ID, 'sa_whitepaper_taxonomy' );
-				foreach($terms_wps as $term_wps){
-					$slug_wps[] = $term_wps->slug;
-				}
-				$qtd_wps = count($slug_wps);
+				
 				for($a=0;$a<$qtd_wps; $a++){
 					$the_slug_wps = $slug_wps[$a];
 					$args=array(
@@ -118,6 +128,8 @@
 					}
 				}?>
 			</ul>
+			
+			<?php } ?>
 		</div>
 
 		
