@@ -61,75 +61,78 @@
 							'name'				=>	$the_slug,
 							'post_type'			=>	'produtos',
 							'post_status'		=>	'publish',
-							'posts_per_page'	=>	4,
-							'show_posts'		=>	4
+							'posts_per_page'	=>	1,
+							'show_posts'		=>	1
 						);
 						$my_posts = get_posts( $args );
 						//print_r($my_posts);
 						if( $my_posts) {
-							$permalink = $my_posts[$i]->guid;
-							echo   '<li class="span4">
+							$permalink =  get_permalink($my_posts[0]->ID);
+							echo   '<li class="span4" style="width:100%">
 										<span>';
-											echo '<a href="'.$permalink.'">'. $my_posts[$i]->post_title;
+											echo '<a href="'.$permalink.'">'. $my_posts[0]->post_title;
 											echo '</a>'; 
 										echo '</span>
 									</li>';
 						}
-						$my_posts="";
+						
 					}
 					?>
 				</ul>
 			</div>
 			<?php } ?>
 		</div>
+		
+		
 		<div id="sa_lista_whitepapers">
 		
 				<?php // Mostra os Whitepapers relacionados dos Produtos
-				$termo_wps = get_the_terms( $post->ID, 'sa_whitepaper_taxonomy' );
+				$terms_wps = get_the_terms( $post->ID, 'sa_whitepaper_taxonomy' );
 				
-				if(count($termo_wps) >1) {
-					foreach($termo_wps as $term_wps){
+				if(count($terms_wps) >1) {
+				
+					foreach($terms_wps as $term_wps){
 						$slug_wps[] = $term_wps->slug;
 					}
 				}
-				
-				
 				$qtd_wps = count($slug_wps);
+				?>
+
+				<h3>Whitepapers relacionados</h3>
+				<ul>
 				
-				if ($qtd_wps > 0){
-						
-		?>
-		
-		
-		
-			<h3>Outros post do mesmo tema</h3>
-			<ul>
-				<?php // Mostra os Whitepapers relacionados dos Produtos
-				
-				for($a=0;$a<$qtd_wps; $a++){
-					$the_slug_wps = $slug_wps[$a];
-					$args=array(
-						'name'				=>	$the_slug_wps,
-						'post_type'			=>	'whitepaper',
-						'post_status'		=>	'publish',
-						'posts_per_page'	=>	4
-					);
-					$my_posts_wps = get_posts( $args );
-					if( $my_posts_wps ) {
-						$permalink_wps = get_permalink($my_posts_wps[0]->ID);
-						echo '<li>
-								<a href="'.$permalink_wps.'">
-								  	<h4>'
-								  		.$my_posts_wps[0]->post_title.
-								  	'</h4>'
-									.$my_posts_wps[0]->post_excerpt.
-								'</a>
-							</li>';
-					}
-				}?>
-			</ul>
-			
-			<?php } ?>
+				<?php
+				if ($qtd_wps > 0):
+					for($a=0;$a<$qtd_wps; $a++){
+						$the_slug_wps = $slug_wps[$a];
+						$args=array(
+							'name'				=>	$the_slug_wps,
+							'post_type'			=>	'whitepaper',
+							'post_status'		=>	'publish',
+							'posts_per_page'	=>	4
+						);
+						$my_posts_wps = get_posts( $args );
+						//print_r($my_posts_wps);
+						if( $my_posts_wps ) {
+							$permalink_wps = get_permalink($my_posts_wps[0]->ID);
+							echo '<li style="width:100%">
+									<a href="'.$permalink_wps.'">
+									  	<h4>'
+									  		.$my_posts_wps[0]->post_title.
+									  	'</h4>'
+										.$my_posts_wps[0]->post_excerpt.
+									'</a>
+								</li>';
+						}
+						?>
+						</ul>
+						<?php 
+					} else: ?>
+						<ul><p>Não há Whitepapers Relacionados</p></ul>
+					<?php endif;?>
+											
+
+
 		</div>
 
 		
