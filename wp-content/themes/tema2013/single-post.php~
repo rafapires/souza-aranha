@@ -173,7 +173,7 @@
 						// 1. Loop
 						$queryA = new WP_Query(array(
 								'posts_per_page' => 5,
-								'cat' => $cat_teste,
+								'cat' => $cat_teste[],
 								'post__not_in' => array($id_ultimo_post)
 						));
 						
