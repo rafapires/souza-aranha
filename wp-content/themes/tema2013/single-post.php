@@ -138,77 +138,38 @@
 
 		</div>
 
-		
-		
-				<div id="sa_lista_whitepapers">
-
-				
+			<div id="sa_lista_whitepapers">
 				<?php // Mostra os posts relacionados
-					
-					
-					
 					$categorias = get_the_category($post->ID);
-					//var_dump($categorias); die();
-
-					//$qtd = count($categorias);
-					//echo "<pre>";print_r($categorias->term_id);echo "</pre>";
-					//echo $categorias->term_id;
+$categorias = array(1,3);
 					
-					foreach($categorias as $categoria){
-
-						$cat_teste[] = $categoria->term_id; //echo"<br/>";
-					}
-
-					print_r($cat_teste);
+					echo "<pre>";print_r($categorias);echo "</pre>";
+					
 ?>
 
 				<h3>Posts relacionados</h3>
 				<ul>
-				<?php 					
-					
+<?php
 
-															
-						
-						
-						// 1. Loop
-						$queryA = new WP_Query(array(
-								'posts_per_page' => 5,
-								'cat' => $cat_teste,
-								'post__not_in' => array($id_ultimo_post)
-						));
-						
-						while ( $queryA->have_posts() ) : $queryA->the_post();
-																
-								the_title();echo "<br/>";
-							
-						endwhile;					
-						
-						
+// The Query
+$args = array (
+			categorias	=>	$categorias,
+			post_type	=>	'post',
+			post_not_in	=>	$id_ultimo_post);
+query_posts( $args );
 
-						
-							
-		
-										
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-							
-							
-								
-								/*else:?>
-									<ul><p>Não há Posts Relacionados</p></ul>
-								<?php endif;*/?>
-															
+// The Loop
+while ( have_posts() ) : the_post();
+    echo '<li>';
+    the_title();
+    echo '</li>';
+endwhile;
+
+// Reset Query
+wp_reset_query();
+
+
+?>														
 				</ul>
 		
 											
