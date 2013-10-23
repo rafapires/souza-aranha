@@ -140,107 +140,49 @@
 
 		</div>
 
-		
-		
-				<div id="sa_lista_whitepapers">
-
-				
+			<div id="sa_lista_whitepapers">
 				<?php // Mostra os posts relacionados
-					
-					
-					
-					$categorias = get_the_category($post->ID);
-					//var_dump($categorias); die();
-					//echo "<pre>";print_r($categorias);echo "<pre>";
-					foreach($categorias as $categoria){
 
-						$cat_teste[] = $categoria->category_nicename; //echo"<br/>";
+					$cats = get_the_category($post->ID);
+					$catlist = '';
+					foreach ($cats as $c) { //escreve categorias do post na forma 12,34,3554,34,... SIMPLES ASSIM
+						if ($catlist!='') {
+							$catlist.=',';
+						}
+						$catlist.=$c->cat_ID;
+
 					}
 
-					print_r($cat_teste);
 ?>
 
 				<h3>Posts relacionados</h3>
 				<ul>
-				<?php 					
-					
+<?php
 
-															
-						
-						
 						// 1. Loop
-						
-						$loopargs = array(
-								'showposts'=>1,
-								'category_name' => $cat_test,
-								//'cat' => $cat_test,
-								'post__not_in' => array($id_ultimoWebinar) ,
-								'order'    => 'DESC',
-						);
-						
-						$queryA = new WP_Query( $loopargs );
-				
-				
+						$queryA = new WP_Query(array(
+								'posts_per_page' => 5,
+								'cat' => $catlist,
+								'post__not_in' => array($id_ultimo_post)
+						));
 
-						//print_r($queryA);
 						
 						while ( $queryA->have_posts() ) : $queryA->the_post();
 																
-								the_title();echo "<br/>";
-							
-						endwhile;
-								
-						wp_reset_postdata();
- /*?>
-				<h2>Loop n°1</h2>
-				<?php
-				$ids = array();
-				$queryA = new WP_Query(array(
-						'posts_per_page' => 5,
-						'showposts' => 1,
-						'cat' => $cat_test[0],
-						'post__not_in' => array($id_ultimo_post)
-				));				
-				while ($queryA->have_posts()) : $queryA->the_post();
-				//the_title();
-				?>
-				<br />
-				
-				<?php $ids[]= $post->ID;
-				endwhile; ?>
+						echo '<li style="width:100%">
+									<a href="'.get_permalink().'">
+									  	<h4>';
 						
-						
-				<h2>Loop n°2</h2>
-				<?php
-				print_r($ids);
-				$queryB = new WP_Query(array(
-						'posts_per_page' => 5,
-						'showposts' => 1,
-						'cat' => $cat_test[1],
-						'post__not_in' => array($id_ultimo_post)
-				));				
-				
-				while ($queryB->have_posts()) : $queryB->the_post();
-				if (in_array($post->ID, $ids)) {
-				  the_title();?>
-				  <br />
-				<?php }
-				endwhile;  */?>
-					
-					
-					
-	<?php 				
-					
-					
-					
-					
-							
-							
+								the_title();
 								
-								/*else:?>
-									<ul><p>Não há Posts Relacionados</p></ul>
-								<?php endif;*/?>
-															
+						echo '</h4></a>
+								</li>';
+							
+
+						endwhile;	
+
+?>														
+
 				</ul>
 		
 											
