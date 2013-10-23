@@ -140,34 +140,33 @@
 
 			<div id="sa_lista_whitepapers">
 				<?php // Mostra os posts relacionados
-					$categorias = get_the_category($post->ID);
-$categorias = array(1,3);
-					
-					echo "<pre>";print_r($categorias);echo "</pre>";
-					
+					$cats = get_the_category($post->ID);
+					$catlist = '';
+					foreach ($cats as $c) { //escreve categorias do post na forma 12,34,3554,34,... SIMPLES ASSIM
+						if ($catlist!='') {
+							$catlist.=',';
+						}
+						$catlist.=$c->cat_ID;
+					}
+
 ?>
 
 				<h3>Posts relacionados</h3>
 				<ul>
 <?php
 
-// The Query
-$args = array (
-			categorias	=>	$categorias,
-			post_type	=>	'post',
-			post_not_in	=>	$id_ultimo_post);
-query_posts( $args );
-
-// The Loop
-while ( have_posts() ) : the_post();
-    echo '<li>';
-    the_title();
-    echo '</li>';
-endwhile;
-
-// Reset Query
-wp_reset_query();
-
+// 1. Loop
+						$queryA = new WP_Query(array(
+								'posts_per_page' => 5,
+								'cat' => $catlist,
+								'post__not_in' => array($id_ultimo_post)
+						));
+						
+						while ( $queryA->have_posts() ) : $queryA->the_post();
+																
+								the_title();echo "<br/>";
+							
+						endwhile;	
 
 ?>														
 				</ul>
