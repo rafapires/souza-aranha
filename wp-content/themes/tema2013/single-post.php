@@ -12,6 +12,7 @@
 					<?php the_content(); ?>
 				</div>
 			<?php endif;?>
+			<?php wp_reset_query(); ?>			
 		</div>
 		
 		<div>
@@ -84,6 +85,7 @@
 				</ul>
 			</div>
 			<?php } ?>
+			<?php wp_reset_postdata(); ?>
 		</div>
 		
 		
@@ -133,82 +135,54 @@
 					} else: ?>
 						<ul><p>Não há Whitepapers Relacionados</p></ul>
 					<?php endif;?>
-											
+					<?php wp_reset_postdata(); ?>						
 
 
 		</div>
 
-		
-		
-				<div id="sa_lista_whitepapers">
-
-				
+			<div id="sa_lista_whitepapers">
 				<?php // Mostra os posts relacionados
-					
-					
-					
-					$categorias = get_the_category($post->ID);
-					//var_dump($categorias); die();
 
-					//$qtd = count($categorias);
-					//echo "<pre>";print_r($categorias->term_id);echo "</pre>";
-					//echo $categorias->term_id;
-					
-					foreach($categorias as $categoria){
+					$cats = get_the_category($post->ID);
+					$catlist = '';
+					foreach ($cats as $c) { //escreve categorias do post na forma 12,34,3554,34,... SIMPLES ASSIM
+						if ($catlist!='') {
+							$catlist.=',';
+						}
+						$catlist.=$c->cat_ID;
 
-						$cat_teste[] = $categoria->term_id; //echo"<br/>";
 					}
 
-					print_r($cat_teste);
 ?>
 
 				<h3>Posts relacionados</h3>
 				<ul>
-				<?php 					
-					
+<?php
 
-															
-						
-						
 						// 1. Loop
 						$queryA = new WP_Query(array(
 								'posts_per_page' => 5,
-								'cat' => $cat_teste,
+								'cat' => $catlist,
 								'post__not_in' => array($id_ultimo_post)
 						));
+
 						
 						while ( $queryA->have_posts() ) : $queryA->the_post();
 																
-								the_title();echo "<br/>";
-							
-						endwhile;					
+						echo '<li style="width:100%">
+									<a href="'.get_permalink().'">
+									  	<h4>';
 						
-						
-
-						
-							
-		
-										
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-							
-							
+								the_title();
 								
-								/*else:?>
-									<ul><p>Não há Posts Relacionados</p></ul>
-								<?php endif;*/?>
-															
+						echo '</h4></a>
+								</li>';
+							
+
+						endwhile;	
+
+?>														
+
 				</ul>
 		
 											
