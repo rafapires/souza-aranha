@@ -12,6 +12,7 @@
 					<?php the_content(); ?>
 				</div>
 			<?php endif;?>
+			<?php wp_reset_query(); ?>			
 		</div>
 		
 		<div>
@@ -84,6 +85,7 @@
 				</ul>
 			</div>
 			<?php } ?>
+			<?php wp_reset_postdata(); ?>
 		</div>
 		
 		
@@ -133,7 +135,7 @@
 					} else: ?>
 						<ul><p>Não há Whitepapers Relacionados</p></ul>
 					<?php endif;?>
-											
+					<?php wp_reset_postdata(); ?>						
 
 
 		</div>
@@ -149,14 +151,10 @@
 					
 					$categorias = get_the_category($post->ID);
 					//var_dump($categorias); die();
-
-					//$qtd = count($categorias);
-					//echo "<pre>";print_r($categorias->term_id);echo "</pre>";
-					//echo $categorias->term_id;
-					
+					//echo "<pre>";print_r($categorias);echo "<pre>";
 					foreach($categorias as $categoria){
 
-						$cat_teste[] = $categoria->term_id; //echo"<br/>";
+						$cat_teste[] = $categoria->category_nicename; //echo"<br/>";
 					}
 
 					print_r($cat_teste);
@@ -171,33 +169,67 @@
 						
 						
 						// 1. Loop
-						$queryA = new WP_Query(array(
-								'posts_per_page' => 5,
-								'cat' => $cat_teste,
-								'post__not_in' => array($id_ultimo_post)
-						));
+						
+						$loopargs = array(
+								'showposts'=>1,
+								'category_name' => $cat_test,
+								//'cat' => $cat_test,
+								'post__not_in' => array($id_ultimoWebinar) ,
+								'order'    => 'DESC',
+						);
+						
+						$queryA = new WP_Query( $loopargs );
+				
+				
+
+						//print_r($queryA);
 						
 						while ( $queryA->have_posts() ) : $queryA->the_post();
 																
 								the_title();echo "<br/>";
 							
-						endwhile;					
+						endwhile;
+								
+						wp_reset_postdata();
+ /*?>
+				<h2>Loop n°1</h2>
+				<?php
+				$ids = array();
+				$queryA = new WP_Query(array(
+						'posts_per_page' => 5,
+						'showposts' => 1,
+						'cat' => $cat_test[0],
+						'post__not_in' => array($id_ultimo_post)
+				));				
+				while ($queryA->have_posts()) : $queryA->the_post();
+				//the_title();
+				?>
+				<br />
+				
+				<?php $ids[]= $post->ID;
+				endwhile; ?>
 						
 						
-
-						
-							
-		
-										
+				<h2>Loop n°2</h2>
+				<?php
+				print_r($ids);
+				$queryB = new WP_Query(array(
+						'posts_per_page' => 5,
+						'showposts' => 1,
+						'cat' => $cat_test[1],
+						'post__not_in' => array($id_ultimo_post)
+				));				
+				
+				while ($queryB->have_posts()) : $queryB->the_post();
+				if (in_array($post->ID, $ids)) {
+				  the_title();?>
+				  <br />
+				<?php }
+				endwhile;  */?>
 					
 					
 					
-					
-					
-					
-					
-					
-					
+	<?php 				
 					
 					
 					
