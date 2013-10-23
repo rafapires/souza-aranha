@@ -93,7 +93,7 @@
 		
 				<?php // Mostra os Whitepapers relacionados dos Produtos
 				$terms_wps = get_the_terms( $post->ID, 'sa_whitepaper_taxonomy' );
-				
+
 				if(count($terms_wps) >1) {
 				
 					foreach($terms_wps as $term_wps){
