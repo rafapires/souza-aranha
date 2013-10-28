@@ -137,26 +137,9 @@ get_header(); ?>
     <div class="span4">
         <h1 class="sa_title_links">Nosso diferencial</h1>
         <ul>
-            <li>
-                <h1>Mercado de Consumo</h1>
-                <p>Desenvolvemos cases de sucesso em relacionamento para empresas nas mais diversas áreas do mercado de consumo</p>
-                <hr>
-            </li>
-            <li>
-                <h1>Mercado B to B</h1>
-                <p>Programas de alto desempenho para aumentar a competitividade e produtividade da sua força de vendas.</p>
-                <hr>
-            </li>
-            <li>
-                <h1>Agências</h1>
-                <p>Por ser uma consultoria indenpendente, a Souza Aranha é uma aliada das agências no desenvolvimento de soluções de relacionamento.</p>
-                <hr>
-            </li>
-            <li>
-                <h1>Informação</h1>
-                <p>Para a área de informação de Marketing, a Souza Aranha auxilia a conhecer seus clientes e facilitar a atualização e integração de dados.</p>
-                <hr>
-            </li>
+
+        <?php echo do_shortcode('[nosso_diferencial]'); ?>
+        
         </ul>
     </div>
 </div>

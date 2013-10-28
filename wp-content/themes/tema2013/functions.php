@@ -565,4 +565,28 @@ function delete_taxonomy_as_same_title_of_post ($id){
 	add_action('post_edit_form_tag', 'update_edit_form'); 
 
 
+	
+	// Adiciona shortcode para gerar nosso diferencial em páginas com subpáginas
+	// Apenas adicione [nosso_diferencial] na página em que deve aparecer o 'nosso diferencial'
+	add_shortcode('nosso_diferencial', 'gera_nosso_diferencial');
+	function gera_nosso_diferencial() {
+		global $post;
+		
+		
+		$query = new WP_Query( array( 'post_type' => 'page', 'order' => 'DESC', 'post_parent__in' => array( 38) ) );
+		
+		while ( $query->have_posts() ) : $query->the_post();
+		?>
+		             <li>
+                        <h1><?php the_title(); ?></h1>
+                        <p><?php the_content(); ?></p>
+                        <hr>
+                    </li>
+  <?php 		
+	    
+			endwhile;	
+			
+		
+	}	
+	
 ?>

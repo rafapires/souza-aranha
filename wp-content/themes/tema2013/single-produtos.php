@@ -19,8 +19,11 @@
 				<ul class="thumbnails">
 					<?php // Mostra as categorias dos Clientes Setados
 					$terms = get_the_terms( $post->ID, 'sa_clientes_taxonomy' );
-					foreach($terms as $term){
-						$slug[] = $term->slug;
+					
+					if(count($terms) >1) {
+						foreach($terms as $term){
+							$slug[] = $term->slug;
+						}
 					}
 					$qtd = count($slug);
 					if ($qtd > 0):
@@ -51,14 +54,22 @@
 		</div>
 		<div id="sa_lista_whitepapers">
 			<h3>Whitepapers relacionados</h3>
-			<ul>
 				<?php // Mostra os Whitepapers relacionados dos Produtos
 				$terms_wps = get_the_terms( $post->ID, 'sa_whitepaper_taxonomy' );
-				foreach($terms_wps as $term_wps){
-					$slug_wps[] = $term_wps->slug;
+				
+				if($terms_wps) {
+					foreach($terms_wps as $term_wps){
+						$slug_wps[] = $term_wps->slug;
+					}
 				}
+				
 				$qtd_wps = count($slug_wps);
-				if ($qtd_wps > 0):
+				
+				?>
+
+				<ul>
+				
+				<?php
 					for($a=0;$a<$qtd_wps; $a++){
 						$the_slug_wps = $slug_wps[$a];
 						$args=array(
@@ -68,9 +79,10 @@
 							'posts_per_page'	=>	4
 						);
 						$my_posts_wps = get_posts( $args );
+						//print_r($my_posts_wps);
 						if( $my_posts_wps ) {
 							$permalink_wps = get_permalink($my_posts_wps[0]->ID);
-							echo '<li>
+							echo '<li style="width:100%">
 									<a href="'.$permalink_wps.'">
 									  	<h4>'
 									  		.$my_posts_wps[0]->post_title.
@@ -79,10 +91,17 @@
 									'</a>
 								</li>';
 						}
-					} else: ?>
-						<ul><p>Não há Whitepapers Relacionados</p></ul>
-					<?php endif;?>
-			</ul>
+						?>
+						</ul>
+						<?php 
+					} 
+					
+					if (empty($qtd_wps)){
+
+						echo '<ul><p>Não há Whitepapers Relacionados</p></ul>';
+					}
+					
+					?>
 		</div>
 		<div id="sa_lista_posts_relacionados">
 			<h3>Posts relacionados</h3>
