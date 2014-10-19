@@ -1,0 +1,67 @@
+/*
+Theme Name: Souza-Aranha 2015
+Theme URI: http://souza-aranha.com.br
+Description: Tema desenvolvido especialmente para Souza Aranha.
+Author: Rafael D´Alessandro Pires
+Author URI: 
+Version: 1.0.0
+
+*/
+@import url('css/bootstrap.css'); 
+
+body {
+	background-color: #ccc;
+}
+
+
+/* #########################
+   ###       header      ###
+   #########################*/
+
+#header {
+	background-color: #fff;
+	padding-top: 15px;
+}
+
+.navbar {
+	margin-bottom: 0px;
+	border: none;
+}
+.navbar-default {
+	background-color: transparent;
+	border-color: transparent;
+}
+
+.navbar-nav > li > a {
+	padding: 0px 10px;
+}
+
+.navbar-nav > li {
+	border-left: 2px solid blue;
+}
+
+.navbar-nav > li.nodivider {
+	border-left: none;
+}
+
+#header .navbar > .container-fluid {
+	margin-top: 30px;
+	padding: 0px;
+}
+
+#header div#bs-example-navbar-collapse-1 {
+	padding: 0px;
+}
+
+#header input {
+	height: 23px;
+	width: 163px;
+}
+
+#header button.btn.btn-link {
+	padding: 0px;
+}
+
+div#links-header {
+	margin-top: 20px;
+}
