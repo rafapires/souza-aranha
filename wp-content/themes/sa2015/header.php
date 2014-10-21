@@ -79,7 +79,7 @@
 
         </div>
         <div id="login-form" class="col-sm-4">
-          <div class="row-fluid">
+          <div id="login-area" class="row-fluid">
             <form class="form-inline" role="form">
               <div class="form-group">
                 <label class="sr-only" for="user-email">Email</label>
@@ -95,7 +95,7 @@
           <div id="links-header" class="row-fluid">
             <a href="#"><img src="<?php bloginfo('template_url'); ?>/img/linkedin.png"></a>
             <a href="#"><img src="<?php bloginfo('template_url'); ?>/img/slideshare.png"></a>
-            <a href="#" class="pull-right"><img src="<?php bloginfo('template_url'); ?>/img/fone.png">Fale Conosco</a>
+            <a href="#" class="pull-right"><img class="fone" src="<?php bloginfo('template_url'); ?>/img/fone.png"><span class="fale-conosco">Fale Conosco</span></a>
 
           </div>
 
