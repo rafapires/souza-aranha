@@ -3,7 +3,6 @@
 /*Template Name: Home */
  
 get_header(); ?>
-<div class="clearfix">...</div>
 <div class="row-fluid">
 <div id="myCarousel" class="carousel slide col-sm-12">
     <ol class="carousel-indicators">
@@ -24,11 +23,15 @@ get_header(); ?>
         <div class="item <?php if ($active){echo 'active';}?>">
         
           <?php the_post_thumbnail( full, array('class' => 'sa_img_carrousel')) ?>
+            <div class="container">
+            <div class="row">
             <div class="carousel-caption">
                 <a href="<?php the_permalink(); ?>">
 	                <h4><?php the_title();?></h4>
 	                <?php the_excerpt(); ?>
 	            </a>
+            </div>
+            </div>
             </div>
         </div>
         			

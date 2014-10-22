@@ -30,9 +30,11 @@
   <?php wp_enqueue_script("jquery"); ?>
   <?php wp_head(); ?>
   </head>
+  <!-- HEADER SEMPRE A MOSTRA
+      ================================================ -->
     <body cz-shortcut-listen="true">
 
-    <div id="<?php echo $post->post_name; ?>" <?php post_class('container-fluid'); ?>>
+    <div id="<?php echo $post->post_name; ?>" <?php post_class('header-fixo'); ?>>
 
     <section id="header">
       <div class="container">
@@ -104,4 +106,5 @@
       </div>
 
     </section>
+    </div>
 

@@ -2,10 +2,17 @@
    ###       header      ###
    #########################*/
 
+.header-fixo {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	left: 0px;
+	z-index: 200;
+}
+
 #header div.container {
 	background-color: #fff;
 	padding-top: 15px;
-	z-index: 1;
 }
 
 .navbar {
