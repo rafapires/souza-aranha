@@ -49,6 +49,46 @@ text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 .carousel-caption {
-background: #19ADAD;
-opacity: 0.75;
+background: rgba(26, 178, 184, 0.68);
+left: 90px;
+top: 150px;
+width: 500px;
+height: 120px;
+text-align: left;
+padding: 10px 20px;
+}
+
+.carousel-caption a {
+	color: #fff;
+}
+
+.carousel-caption h4 {
+	font-size: 30px;
+}
+
+.carousel-caption p {
+height: 42px;
+overflow: hidden;
+}
+
+p.conheca {
+background: rgba(20, 195, 175, 0.27);
+width: 93px;
+padding: 3px 5px;
+margin: 0px;
+position: absolute;
+right: 0;
+height: 27px;
+bottom: -27px;
+}
+
+span.seta {
+background: black;
+position: absolute;
+width: 27px;
+height: 33px;
+padding: 0px 7px;
+top: -2px;
+right: 0px;
+font-size: 23px;
 }

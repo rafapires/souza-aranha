@@ -23,15 +23,12 @@ get_header(); ?>
         <div class="item <?php if ($active){echo 'active';}?>">
         
           <?php the_post_thumbnail( full, array('class' => 'sa_img_carrousel')) ?>
-            <div class="container">
-            <div class="row">
             <div class="carousel-caption">
                 <a href="<?php the_permalink(); ?>">
 	                <h4><?php the_title();?></h4>
 	                <?php the_excerpt(); ?>
+                    <p class="conheca">Conheça<span class="seta">></span></p>
 	            </a>
-            </div>
-            </div>
             </div>
         </div>
         			
