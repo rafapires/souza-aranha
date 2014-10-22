@@ -2,9 +2,10 @@
    ###       header      ###
    #########################*/
 
-#header {
+#header div.container {
 	background-color: #fff;
 	padding-top: 15px;
+	z-index: 1;
 }
 
 .navbar {

@@ -1,7 +1,7 @@
 <?php 
 remove_filter( 'the_content', 'wpautop' );
 add_theme_support( 'post-thumbnails' );
-set_post_thumbnail_size( 150, 150, true ); 
+//set_post_thumbnail_size( 150, 150, true ); 
 //add_filter('show_admin_bar', '__return_false');
 
 register_nav_menus( array (

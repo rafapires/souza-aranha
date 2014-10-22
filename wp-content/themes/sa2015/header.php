@@ -32,10 +32,10 @@
   </head>
     <body cz-shortcut-listen="true">
 
-    <div id="<?php echo $post->post_name; ?>" <?php post_class('container'); ?>>
+    <div id="<?php echo $post->post_name; ?>" <?php post_class('container-fluid'); ?>>
 
     <section id="header">
-      <div class="container-fluid">
+      <div class="container">
       <div class="row">
         <div class="col-sm-8">
           <div class="row">
@@ -104,3 +104,4 @@
       </div>
 
     </section>
+
