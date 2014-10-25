@@ -40,10 +40,61 @@ get_header(); ?>
     <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 </div>
 </div>
-
+<div class="container">
 <div id="sa_call_actions" class="row">
-    <div class="span4">
-        <h1 class="sa_title_links">Ultimos Blogs</h1>
+    <div class="col-sm-4 sa-col-1">
+        <h1 class="sa_title_links">SOLUÇÕES S.A.</h1>
+        <?php the_content(); ?>
+        <?php the_post_thumbnail( full, array('class' => 'sa-thumbnail-col-1 img-responsive')) ?>
+    </div>
+    <div class="col-sm-4 sa-col-2">
+        <?php  // ###### cria título da coluna com imagem pela pagina obrigatória Webinars.
+            $page_webinar_root = array(
+                'post_type' => 'page',
+                'name'      => 'webinars'
+                );
+            $query = new WP_Query($page_webinar_root);
+            if ($query->have_posts()){
+                $query->the_post();
+                echo '<h1>'.get_the_title().'</h1>';
+                the_post_thumbnail( full, array('class'=>'sa-thumbnail-col-2 img-responsive'));
+            }
+            wp_reset_postdata();
+        // ###### fim título ?>  
+        <ul>
+            <?php //######## imprime ultimos dois webinars realizados
+            $webinars_anteriores = array(
+                    'post_type'=> 'webinars',
+                    'post_per_page'=>2,
+                    'showposts'=>-1,
+                    'post__not_in' => array($post_webinar) ,
+                    'order'    => 'ASC',
+            );
+            $query_webinars = new WP_Query($webinars_anteriores);
+            if ($query_webinars->have_posts()){
+                while ( $query_webinars->have_posts()) {
+                    $query_webinars->the_post();
+                    ?>
+                    <li class="sa-webinar">
+                        <a href="<?php the_permalink(); ?>">
+                            <h2><?php the_title(); ?></h2>
+                            <?php the_excerpt(); ?>
+                            <span class='sa-seta'>></span>
+                        </a>
+                    </li>
+                    <?php
+                }
+            } else {
+                // não há webinars
+            }
+            wp_reset_postdata();
+
+            ?>
+
+        </ul>
+    </div>
+    <div class="col-sm-4">
+        <h1 class="sa_title_links">Blog S.A.</h1>
         <ul>
         
         
@@ -64,80 +115,7 @@ get_header(); ?>
      
          </ul>
     </div>
-    <div id="sa_middle_action" class="span4">
-        <h1 class="sa_title_links">Próximo Webinar</h1>
-        <ul>
-            <li>
-            <?php 
-            
-            $webinars = array(
-				'post_type'=> 'webinars',
-				'post_per_page'=>1,
-				'showposts'=>1,
-				'order'    => 'DESC'
-		);
-
-			// The Query
-			query_posts( $webinars );
-			
-			// The Loop
-			while ( have_posts() ) : the_post();
-			$post_webinar =  $post->ID;
-            ?>
-                <h1><?php the_title(); ?></h1>
-                <?php the_excerpt(); ?>
-                <div class="well well-small well-warning">
-                    <h2>Inscrições Gratuítas</h2>
-                    <a href="<?php the_permalink(); ?>" class="btn btn-primary btn-block">Reserve já sua vaga</a>
-                </div>
-                
-                <?php endwhile;?>
-        		<?php wp_reset_query();?>
-                
-            </li>
-        </ul>
-        <?php         
-        		$webinars_anteriores = array(
-						'post_type'=> 'webinars',
-						'post_per_page'=>5,
-						'showposts'=>-1,
-        				'post__not_in' => array($post_webinar) ,
-						'order'    => 'DESC',
-				);
-
-			// The Query
-			query_posts( $webinars_anteriores );
-            if (have_posts()) { ?>
-                <h1 class="sa_title_links">Webinars anteriores</h1>
-                <ul>
-        			<?php
-        			// The Loop
-        			while ( have_posts() ) : the_post();
-        			
-        			?>
-                
-                    <li>
-                        <h1><?php the_title(); ?></h1>
-                        <?php the_excerpt(); ?>
-                        <a href="<?php the_permalink(); ?>" class="btn btn-small pull-right">Assista</a>
-                        <hr>
-                    </li>
-                        <?php endwhile;?>
-                		<?php wp_reset_query();?>
-          
-          
-          
-                   <a href="#" class="btn btn-small btn-info btn-block">Lista completa</a>
-                </ul>
-            <?php } ?>
-    </div>
-    <div class="span4">
-        <h1 class="sa_title_links">Nosso diferencial</h1>
-        <ul>
-
-        <?php echo do_shortcode('[nosso_diferencial]'); ?>
-        
-        </ul>
-    </div>
+    
+</div>
 </div>
 <?php get_footer(); ?>
