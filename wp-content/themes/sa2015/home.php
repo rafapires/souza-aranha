@@ -63,14 +63,19 @@ get_header(); ?>
         // ###### fim título ?>  
         <ul>
             <?php //######## imprime ultimos dois webinars realizados
+            function limit_webinar(){
+                return 'LIMIT 3';
+            }
+            add_filter('post_limits', 'limit_webinar');
             $webinars_anteriores = array(
                     'post_type'=> 'webinars',
-                    'post_per_page'=>2,
+                    'posts_per_page'=>1,
                     'showposts'=>-1,
                     'post__not_in' => array($post_webinar) ,
                     'order'    => 'ASC',
             );
             $query_webinars = new WP_Query($webinars_anteriores);
+            remove_filter('post_limits', 'limit_webinar');
             if ($query_webinars->have_posts()){
                 while ( $query_webinars->have_posts()) {
                     $query_webinars->the_post();
@@ -87,30 +92,83 @@ get_header(); ?>
             } else {
                 // não há webinars
             }
-            wp_reset_postdata();
+            wp_reset_query();
 
-            ?>
+            $page_webinar_root = array(
+                'post_type' => 'page',
+                'name'      => 'whitepapers'
+                );
+            $query = new WP_Query($page_webinar_root);
+            if ($query->have_posts()){
+                $query->the_post();
+                echo '<h1>'.get_the_title().'</h1>';
+                the_content();
+            }
+            wp_reset_postdata();
+        ?>  
 
         </ul>
     </div>
     <div class="col-sm-4">
-        <h1 class="sa_title_links">Blog S.A.</h1>
+         <?php  // ###### cria título da coluna com imagem pela pagina obrigatória Webinars.
+            $page_webinar_root = array(
+                'post_type' => 'page',
+                'name'      => 'blog-s-a'
+                );
+            $query = new WP_Query($page_webinar_root);
+            if ($query->have_posts()){
+                $query->the_post();
+                echo '<h1>'.get_the_title().'</h1>';
+                the_post_thumbnail( full, array('class'=>'sa-thumbnail-col-3 img-responsive'));
+            }
+            wp_reset_postdata();
+        // ###### fim título ?>  
         <ul>
         
         
 		<?php
-		$aRecentPosts = new WP_Query("&post_por_page=3&showposts=3&order=desc&orderby=date");
-		while($aRecentPosts->have_posts()) : $aRecentPosts->the_post();?>
-		
-		           <li>
-		                <h1><?php the_title(); ?></h1>
-		                	<?php the_excerpt();?>
-		                <a href="<?php the_permalink(); ?>" class="btn btn-small pull-right">leia mais</a>
-		                <hr>
-		            </li>
-		
-		<?php endwhile; ?>
-        <?php wp_reset_query();?>
+        $posts_args = array(
+            'numberposts'   => 4,
+            'post_type'     => 'post',
+            'post_status'   => 'publish'
+            );
+        $ultimos_posts = wp_get_recent_posts($posts_args, ARRAY_A);
+        foreach ($ultimos_posts as $ultimos_post) {
+//            echo '<pre>';
+  //          print_r($ultimos_post);
+    //        echo '</pre>';
+      //      die();
+            ?>
+            <li>
+                <a href="<?php echo get_permalink($ultimos_post['ID']); ?>">
+                    <div class="sa-date">
+                        <?php $sa_date = explode(" ", get_the_date('j M',$ultimos_post["ID"])); ?>
+                        <span class='sa-day'><?php echo $sa_date[0]; ?></span>
+                        <span class='sa-month'><?php echo $sa_date[1]; ?></span>
+                    </div>
+                    <div class="sa-post-resume">
+                        <h2 class='sa-title-post'><?php echo $ultimos_post['post_title']; ?></h2>
+                        <span class='sa-author'><?php echo the_author_meta('display_name',$ultimos_post['post_author']); ?></span>
+                        <p><?php
+                            if (!empty($ultimos_post['post_excerpt'])){
+                                echo substr($ultimos_post['post_excerpt'],0,140);
+                            }else{
+                                echo substr($ultimos_post['post_content'],0,140);
+                            }
+
+                        ?></p>
+
+                    </div>
+                </a>
+            </li>
+        <?php
+
+
+        }
+
+
+
+        ?>
 		<a href="#" class="btn btn-block btn-small">Lista completa</a>
      
          </ul>
