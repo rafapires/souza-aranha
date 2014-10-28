@@ -46,22 +46,25 @@ get_header(); ?>
         <h1 class="sa_title_links">SOLUÇÕES S.A.</h1>
         <?php the_content(); ?>
         <?php the_post_thumbnail( full, array('class' => 'sa-thumbnail-col-1 img-responsive')) ?>
+        <span class="sa-mais pull-right">+ SAIBA MAIS</span>
     </div>
     <div class="col-sm-4 sa-col-2">
-        <?php  // ###### cria título da coluna com imagem pela pagina obrigatória Webinars.
-            $page_webinar_root = array(
-                'post_type' => 'page',
-                'name'      => 'webinars'
-                );
-            $query = new WP_Query($page_webinar_root);
-            if ($query->have_posts()){
-                $query->the_post();
-                echo '<h1>'.get_the_title().'</h1>';
-                the_post_thumbnail( full, array('class'=>'sa-thumbnail-col-2 img-responsive'));
-            }
-            wp_reset_postdata();
-        // ###### fim título ?>  
-        <ul>
+        <div class="sa-titulo">
+            <?php  // ###### cria título da coluna com imagem pela pagina obrigatória Webinars.
+                $page_webinar_root = array(
+                    'post_type' => 'page',
+                    'name'      => 'webinars'
+                    );
+                $query = new WP_Query($page_webinar_root);
+                if ($query->have_posts()){
+                    $query->the_post();
+                    echo '<h1>'.get_the_title().'</h1>';
+                    the_post_thumbnail( full, array('class'=>'sa-thumbnail-col-2 img-responsive'));
+                }
+                wp_reset_postdata();
+            // ###### fim título ?>
+        </div>
+        <div class="row-fluid">
             <?php //######## imprime ultimos dois webinars realizados
             function limit_webinar(){
                 return 'LIMIT 3';
@@ -80,13 +83,21 @@ get_header(); ?>
                 while ( $query_webinars->have_posts()) {
                     $query_webinars->the_post();
                     ?>
-                    <li class="sa-webinar">
+                    <div class="thumbnail clearfix sa-webinar">
                         <a href="<?php the_permalink(); ?>">
-                            <h2><?php the_title(); ?></h2>
-                            <?php the_excerpt(); ?>
-                            <span class='sa-seta'>></span>
+                            <div class="row-fluid vertical-align">
+                                <div class="col-sm-9">
+                                    <div class="caption pull-right">
+                                        <h2><?php the_title(); ?></h2>
+                                        <p><?php echo substr(get_the_excerpt(),0,90); ?></p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <img src="<?php bloginfo('template_url'); ?>/img/seta-dir-circulo-branco.png" class='center-block'>
+                                </div>
+                            </div>
                         </a>
-                    </li>
+                    </div>
                     <?php
                 }
             } else {
@@ -107,22 +118,24 @@ get_header(); ?>
             wp_reset_postdata();
         ?>  
 
-        </ul>
+        </div>
     </div>
-    <div class="col-sm-4">
-         <?php  // ###### cria título da coluna com imagem pela pagina obrigatória Webinars.
-            $page_webinar_root = array(
-                'post_type' => 'page',
-                'name'      => 'blog-s-a'
-                );
-            $query = new WP_Query($page_webinar_root);
-            if ($query->have_posts()){
-                $query->the_post();
-                echo '<h1>'.get_the_title().'</h1>';
-                the_post_thumbnail( full, array('class'=>'sa-thumbnail-col-3 img-responsive'));
-            }
-            wp_reset_postdata();
-        // ###### fim título ?>  
+    <div class="col-sm-4 sa-col-3">
+        <div class="sa-titulo">
+             <?php  // ###### cria título da coluna com imagem pela pagina obrigatória Webinars.
+                $page_blog_root = array(
+                    'post_type' => 'page',
+                    'name'      => 'blog-s-a'
+                    );
+                $query = new WP_Query($page_blog_root);
+                if ($query->have_posts()){
+                    $query->the_post();
+                    echo '<h1>'.get_the_title().'</h1>';
+                    the_post_thumbnail( full, array('class'=>'sa-thumbnail-col-3 img-responsive'));
+                }
+                wp_reset_postdata();
+            // ###### fim título ?>  
+        </div>
         <ul>
         
         

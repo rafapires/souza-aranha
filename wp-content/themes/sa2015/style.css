@@ -20,6 +20,16 @@ body {
 	padding: 0px;
 }
 
+li {
+	list-style: none;
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+
+
 /* ##################
    ###    HOME    ###
    ##################*/
@@ -91,4 +101,89 @@ padding: 0px 7px;
 top: -2px;
 right: 0px;
 font-size: 23px;
+}
+
+.col-sm-4.sa-col-1 {
+background: #ececec;
+}
+
+#sa_call_actions h1 {
+font-weight: bolder;
+color: #fff;
+text-shadow: 2px 3px 10px #888;
+text-transform: uppercase;
+}
+
+.sa-col-1 h1 {
+	padding: 0px;
+}
+
+.sa-col-1 p {
+text-align: justify;
+letter-spacing: 3px;
+}
+
+.sa-col-1 img {
+margin-bottom: 16px;
+}
+
+.sa-mais {
+margin: 15px 0px;
+color: #4393a9;
+font-size: 12px;
+font-weight: bold;
+}
+
+.sa-col-2 img, .sa-col-3 img {
+top: -70px;
+position: relative;
+z-index: -1;
+}
+
+.sa-titulo {
+height: 200px;
+overflow: hidden;
+padding: 16px 0px;
+}
+
+.sa-titulo h1{
+	margin: 0px;
+	padding: 0px 16px;
+}
+
+#sa_call_actions a{
+	color: inherit;
+}
+
+#sa_call_actions .row-fluid img {
+	position: relative;
+	top: 0px;
+	z-index: 0;
+}
+
+#sa_call_actions .thumbnail {
+background: #ddd;
+margin-top: 16px;
+padding: 0px;
+border-radius: 0px;
+}
+
+#sa_call_actions .col-sm-9 {
+	padding: 0px;
+}
+
+#sa_call_actions h2 {
+margin: 0px;
+font-size: 16px;
+text-transform: uppercase;
+color: #559aad;
+font-weight: 100;
+}
+
+#sa_call_actions p {
+margin: 0px;
+}
+
+#sa_call_actions .caption {
+padding-right: 0px;
 }
