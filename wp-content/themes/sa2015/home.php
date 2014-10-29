@@ -44,10 +44,12 @@ get_header(); ?>
 <div id="sa_call_actions" class="row">
     <div class="col-sm-4">
     <div class="sa-col-1">
+        <a href="<?php echo get_permalink(); ?>">
         <h1 class="sa_title_links">SOLUÇÕES S.A.</h1>
         <?php the_content(); ?>
         <?php the_post_thumbnail( full, array('class' => 'sa-thumbnail-col-1 img-responsive')) ?>
         <span class="sa-mais pull-right">+ SAIBA MAIS</span>
+        </a>
     </div>
     </div>
     <div class="col-sm-4 sa-col-2">
@@ -68,56 +70,71 @@ get_header(); ?>
         </div>
         <div class="row-fluid">
             <?php //######## imprime ultimos dois webinars realizados
-            function limit_webinar(){
-                return 'LIMIT 3';
-            }
-            add_filter('post_limits', 'limit_webinar');
+            
             $webinars_anteriores = array(
-                    'post_type'=> 'webinars',
-                    'posts_per_page'=>1,
-                    'showposts'=>-1,
-                    'post__not_in' => array($post_webinar) ,
-                    'order'    => 'ASC',
+                    'post_type'     => 'webinars',
+                    'posts_per_page'=> 3,
+                    'order'         => 'DESC',
+                    'order_by'      => 'date',
+                    'post_status'   => 'publish'
             );
-            $query_webinars = new WP_Query($webinars_anteriores);
-            remove_filter('post_limits', 'limit_webinar');
-            if ($query_webinars->have_posts()){
-                while ( $query_webinars->have_posts()) {
-                    $query_webinars->the_post();
-                    ?>
-                    <div class="thumbnail clearfix sa-webinar">
-                        <a href="<?php the_permalink(); ?>">
-                            <div class="row-fluid vertical-align">
-                                <div class="col-sm-9">
-                                    <div class="caption pull-right">
-                                        <h2><?php the_title(); ?></h2>
-                                        <p><?php echo substr(get_the_excerpt(),0,90); ?></p>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <img src="<?php bloginfo('template_url'); ?>/img/seta-dir-circulo-branco.png" class='center-block'>
+            $ultimos_webinars = wp_get_recent_posts($webinars_anteriores, ARRAY_A);
+            $sa_webinar_count = 0;
+            foreach (array_reverse($ultimos_webinars) as $ultimos_webinar) {
+                $sa_webinar_count++;
+                ?>
+                <div class="thumbnail clearfix sa-webinar <?php if ($sa_webinar_count==3) { echo 'sa-proximo-webinar';} ?>">
+                    <a href="<?php echo get_permalink($ultimos_webinar['ID']); ?>">
+                        <div class="row-fluid vertical-align">
+                            <div class="col-sm-9">
+                                <div class="caption pull-right">
+                                    <h2><?php echo $ultimos_webinar['post_title']; ?></h2>
+                                    <p><?php
+                                        if (!empty($ultimos_webinar['post_excerpt'])){
+                                            echo substr(strip_tags($ultimos_webinar['post_excerpt']),0,90);
+                                        }else{
+                                            echo substr(strip_tags($ultimos_webinar['post_content']),0,90);
+                                        }
+                                    ?></p>
                                 </div>
                             </div>
-                        </a>
-                    </div>
+                            <div class="col-sm-3">
+                                <img src="<?php bloginfo('template_url'); ?>/img/seta-dir-circulo-branco.png" class='center-block'>
+                            </div>
+                        </div>
+                    </a>
+                </div>
                     <?php
                 }
-            } else {
-                // não há webinars
-            }
-            wp_reset_query();
+                wp_reset_postdata();
+                // ###### cria título da coluna com imagem pela pagina obrigatória Webinars.
+                
+                $whitepaper_title = get_page_by_title('whitepapers');
+                ?>
+                <div class="thumbnail clearfix sa-whitepaper">
+                    <a href="<?php echo get_permalink($whitepaper_title->ID); ?>">
+                        <div class="row-fluid vertical-align">
+                            <div class="col-sm-9">
+                                <div class="caption pull-right">
+                                    <h2><?php echo $whitepaper_title->post_title; ?></h2>
+                                    <p><?php
+                                        if (!empty($whitepaper_title->post_excerpt)){
+                                            echo substr($whitepaper_title->post_excerpt,0,90);
+                                        }else{
+                                            echo substr($whitepaper_title->post_content,0,90);
+                                        }
+                                    ?></p>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <img src="<?php bloginfo('template_url'); ?>/img/seta-dir-circulo-branco.png" class='center-block'>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <?php
 
-            $page_webinar_root = array(
-                'post_type' => 'page',
-                'name'      => 'whitepapers'
-                );
-            $query = new WP_Query($page_webinar_root);
-            if ($query->have_posts()){
-                $query->the_post();
-                echo '<h1>'.get_the_title().'</h1>';
-                the_content();
-            }
-            wp_reset_postdata();
+
         ?>  
 
         </div>
@@ -138,30 +155,28 @@ get_header(); ?>
                 wp_reset_postdata();
             // ###### fim título ?>  
         </div>
-        <ul>
-        
-        
-		<?php
-        $posts_args = array(
-            'numberposts'   => 4,
-            'post_type'     => 'post',
-            'post_status'   => 'publish'
-            );
-        $ultimos_posts = wp_get_recent_posts($posts_args, ARRAY_A);
-        foreach ($ultimos_posts as $ultimos_post) {
-//            echo '<pre>';
-  //          print_r($ultimos_post);
-    //        echo '</pre>';
-      //      die();
-            ?>
-            <li>
+        <div class="row-fluid sa-list-post">
+    		<?php
+            $posts_args = array(
+                'numberposts'   => 4,
+                'post_type'     => 'post',
+                'post_status'   => 'publish'
+                );
+            $ultimos_posts = wp_get_recent_posts($posts_args);
+            foreach ($ultimos_posts as $ultimos_post) {
+    //            echo '<pre>';
+      //          print_r($ultimos_post);
+        //        echo '</pre>';
+          //      die();
+                ?>
+            <div class="thumbnail clearfix">
                 <a href="<?php echo get_permalink($ultimos_post['ID']); ?>">
-                    <div class="sa-date">
-                        <?php $sa_date = explode(" ", get_the_date('j M',$ultimos_post["ID"])); ?>
-                        <span class='sa-day'><?php echo $sa_date[0]; ?></span>
-                        <span class='sa-month'><?php echo $sa_date[1]; ?></span>
+                    <div class="col-sm-2 center-block clearfix">
+                            <?php $sa_date = explode(" ", get_the_date('d M',$ultimos_post["ID"])); ?>
+                            <h3 class='sa-day center-block'><?php echo $sa_date[0]; ?></h3>
+                            <h3 class='sa-month'><?php echo $sa_date[1]; ?></h3>
                     </div>
-                    <div class="sa-post-resume">
+                    <div class="col-sm-10">
                         <h2 class='sa-title-post'><?php echo $ultimos_post['post_title']; ?></h2>
                         <span class='sa-author'><?php echo the_author_meta('display_name',$ultimos_post['post_author']); ?></span>
                         <p><?php
@@ -175,7 +190,7 @@ get_header(); ?>
 
                     </div>
                 </a>
-            </li>
+            </div>
         <?php
 
 
