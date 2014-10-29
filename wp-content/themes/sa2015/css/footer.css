@@ -1,0 +1,49 @@
+/* ##################
+   ###   footer   ###
+   ##################*/
+
+section#footer {
+background: #fff;
+}
+
+hr.top-footer {
+margin: 0px;
+color: #029ab1;
+border-top: 1px solid;
+margin-bottom: 12px;
+}
+
+p.fone-footer.text-center {
+color: #029ab1;
+font-size: 24px;
+margin-top: 10px;
+margin-bottom: 0px;
+}
+
+p.email-footer.text-center {
+margin-top: 0px;
+font-size: 19px;
+color: #6b6b6b;
+}
+
+hr.divide-footer {
+color: #029ab1;
+border-top: 6px solid;
+margin-bottom: 10px;
+}
+
+#footer h3 {
+color: #029ab1;
+font-size: 18px;
+height: 33px;
+}
+
+#footer .menu-footer p {
+font-size: 13px;
+color: #6b6b6b;
+}
+
+p.text-center.ultima-linha {
+font-size: 10px;
+color: #6b6b6b;
+}
