@@ -42,11 +42,13 @@ get_header(); ?>
 </div>
 <div class="container">
 <div id="sa_call_actions" class="row">
-    <div class="col-sm-4 sa-col-1">
+    <div class="col-sm-4">
+    <div class="sa-col-1">
         <h1 class="sa_title_links">SOLUÇÕES S.A.</h1>
         <?php the_content(); ?>
         <?php the_post_thumbnail( full, array('class' => 'sa-thumbnail-col-1 img-responsive')) ?>
         <span class="sa-mais pull-right">+ SAIBA MAIS</span>
+    </div>
     </div>
     <div class="col-sm-4 sa-col-2">
         <div class="sa-titulo">

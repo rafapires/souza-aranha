@@ -103,8 +103,9 @@ right: 0px;
 font-size: 23px;
 }
 
-.col-sm-4.sa-col-1 {
+.sa-col-1 {
 background: #ececec;
+padding: 16px;
 }
 
 #sa_call_actions h1 {
@@ -116,11 +117,14 @@ text-transform: uppercase;
 
 .sa-col-1 h1 {
 	padding: 0px;
+	margin: 0px 0px 16px 0px;
+
 }
 
-.sa-col-1 p {
+#sa_call_actions .sa-col-1 p {
 text-align: justify;
 letter-spacing: 3px;
+margin-bottom: 16px;
 }
 
 .sa-col-1 img {
