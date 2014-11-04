@@ -24,8 +24,6 @@ Version: 1.0.0
 	font-stretch: condensed;
 }
 
-
-
 body {
 	background-color: #fff;
 	color: #666;
@@ -48,4 +46,15 @@ li {
     align-items: center;
 }
 
+/* ########################
+   ###   METODOLOGIAS   ###
+   ######################## */
 
+div#sa_metodologias {
+margin-top: 120px;
+padding: 0px;
+}
+
+#sa_metodologias ul{
+	padding: 0px;
+}
