@@ -163,13 +163,20 @@ get_header(); ?>
                 'post_status'   => 'publish'
                 );
             $ultimos_posts = wp_get_recent_posts($posts_args);
+            $sa_css_post_count=0;
             foreach ($ultimos_posts as $ultimos_post) {
     //            echo '<pre>';
       //          print_r($ultimos_post);
         //        echo '</pre>';
           //      die();
+                if ($sa_css_post_count<3){
+                    $sa_css_post_count++;
+                }else{
+                    $sa_thumb_class=' post-final';
+                }
+
                 ?>
-            <div class="thumbnail clearfix">
+            <div class="thumbnail clearfix<?php echo $sa_thumb_class; ?>">
                 <a href="<?php echo get_permalink($ultimos_post['ID']); ?>">
                     <div class="col-sm-2 center-block clearfix">
                             <?php $sa_date = explode(" ", get_the_date('d M',$ultimos_post["ID"])); ?>
@@ -181,12 +188,15 @@ get_header(); ?>
                         <span class='sa-author'><?php echo the_author_meta('display_name',$ultimos_post['post_author']); ?></span>
                         <p><?php
                             if (!empty($ultimos_post['post_excerpt'])){
-                                echo substr($ultimos_post['post_excerpt'],0,140);
+                                echo substr($ultimos_post['post_excerpt'],0,180);
                             }else{
-                                echo substr($ultimos_post['post_content'],0,140);
+                                echo substr($ultimos_post['post_content'],0,180);
                             }
 
-                        ?></p>
+                        ?>
+                        <span class='seta-list-blog'>
+                            <img src="<?php bloginfo('template_url'); ?>/img/seta-list-blog.png">
+                        </span></p>
 
                     </div>
                 </a>
@@ -199,7 +209,7 @@ get_header(); ?>
 
 
         ?>
-		<a href="#" class="btn btn-block btn-small">Lista completa</a>
+		<a href="#" class="btn btn-block btn-small btn-primary">Lista completa</a>
      
          </ul>
     </div>

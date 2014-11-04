@@ -10,7 +10,7 @@
  */
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 html {
-  font-family: sans-serif;
+  font-family: MyriadPro;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -891,7 +891,8 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: MyriadPro;
+  font-stretch: normal;
   font-size: 14px;
   line-height: 1.42857143;
   color: #333333;
@@ -2805,8 +2806,8 @@ fieldset[disabled] .btn-default.active {
 }
 .btn-primary {
   color: #ffffff;
-  background-color: #428bca;
-  border-color: #357ebd;
+  background-color: #8cc4db;
+  border-color: #8cc4db;
 }
 .btn-primary:hover,
 .btn-primary:focus,
@@ -2814,8 +2815,8 @@ fieldset[disabled] .btn-default.active {
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   color: #ffffff;
-  background-color: #3071a9;
-  border-color: #285e8e;
+  background-color: #56a2aa;
+  border-color: #56a2aa;
 }
 .btn-primary:active,
 .btn-primary.active,
