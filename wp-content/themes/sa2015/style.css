@@ -51,7 +51,7 @@ li {
    ######################## */
 
 div#sa_metodologias {
-margin-top: 120px;
+margin-top: 140px;
 padding: 0px;
 }
 
@@ -93,4 +93,20 @@ margin-bottom: 8px;
 
 .seta-saibamais img {
 margin-left: 8px;
+}
+
+#metodologia-salesforce {
+margin-top: 32px;
+margin-bottom: 32px;
+}
+
+.thumb-salesforce {
+	height: 216px;
+	overflow: hidden;
+	margin-top: 8px;
+}
+
+.thumb-salesforce img {
+width: auto;
+height: 216px;
 }

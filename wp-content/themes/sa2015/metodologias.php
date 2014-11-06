@@ -40,10 +40,12 @@ get_header(); ?>
 			$query2->the_post();
 			?>
 			<div class="col-sm-6">
-				<?php the_post_thumbnail( full, array('class'=>'thumb-salesforce img-responsive')); ?>
+			<div class='thumb-salesforce'>
+				<?php the_post_thumbnail( full, array('class'=>'center-block')); ?>
+			</div>
 			</div>
 			<div class="col-sm-6">
-				<h1><?php echo get_the_title(); ?></h1>
+				<h1 class="sa_title_links"><?php echo get_the_title(); ?></h1>
 				<p><?php echo get_the_excerpt(); ?></p>
 				<a href="<?php the_permalink(); ?>" >
 					<span class='seta-saibamais pull-right'>
