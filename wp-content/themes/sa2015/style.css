@@ -11,6 +11,7 @@ Version: 1.0.0
 @import url('css/header.css'); 
 @import url('css/footer.css'); 
 @import url('css/home.css'); 
+@import url('css/metodologias.css'); 
 
 @font-face {
 	font-family: MyriadPro;
@@ -19,12 +20,10 @@ Version: 1.0.0
 }
 
 @font-face {
-	font-family: MyriadPro-cond;
-	src: url('fonts/MYRIADPRO-COND.OTF');
-	font-stretch: condensed;
+	font-family: MyriadPro;
+	src: url('fonts/MYRIADPRO-BOLD.OTF');
+	font-weight: bold;
 }
-
-
 
 body {
 	background-color: #fff;
@@ -47,5 +46,4 @@ li {
     display: flex;
     align-items: center;
 }
-
 
