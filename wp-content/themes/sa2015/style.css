@@ -11,6 +11,7 @@ Version: 1.0.0
 @import url('css/header.css'); 
 @import url('css/footer.css'); 
 @import url('css/home.css'); 
+@import url('css/metodologias.css'); 
 
 @font-face {
 	font-family: MyriadPro;
@@ -46,67 +47,3 @@ li {
     align-items: center;
 }
 
-/* ########################
-   ###   METODOLOGIAS   ###
-   ######################## */
-
-div#sa_metodologias {
-margin-top: 140px;
-padding: 0px;
-}
-
-#sa_metodologias ul{
-	padding: 0px;
-}
-
-#sa_metodologias .thumbnail {
-border: none;
-padding: 0px;
-}
-
-#sa_metodologias .caption {
-padding: 0px;
-}
-
-.sa_title_links {
-color: #76b2c3;
-margin-right: 30px;
-margin-top: 8px;
-font-weight: bold;
-}
-
-#sa_metodologias p {
-text-align: justify;
-font-size: 13px;
-line-height: 21px;
-letter-spacing: 1px;
-height: 120px;
-overflow: hidden;
-}
-
-.seta-saibamais {
-font-size: 15px;
-color: #4999af;
-margin-top: 8px;
-margin-bottom: 8px;
-}
-
-.seta-saibamais img {
-margin-left: 8px;
-}
-
-#metodologia-salesforce {
-margin-top: 32px;
-margin-bottom: 32px;
-}
-
-.thumb-salesforce {
-	height: 216px;
-	overflow: hidden;
-	margin-top: 8px;
-}
-
-.thumb-salesforce img {
-width: auto;
-height: 216px;
-}
