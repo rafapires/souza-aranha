@@ -29,6 +29,37 @@ get_header(); ?>
 			<?php endwhile; // end of the loop. ?>
 		</ul>
 	</div>
+	<div id="metodologia-salesforce" class="row">
+		<?php
+		$page_salesforce = array(
+				'post_type'	=>	'page',
+				'name'		=>	'plataformas-salesforce'
+		);
+		$query2 = new WP_Query($page_salesforce);
+		if ($query2->have_posts()){
+			$query2->the_post();
+			?>
+			<div class="col-sm-6">
+				<?php the_post_thumbnail( full, array('class'=>'thumb-salesforce img-responsive')); ?>
+			</div>
+			<div class="col-sm-6">
+				<h1><?php echo get_the_title(); ?></h1>
+				<p><?php echo get_the_excerpt(); ?></p>
+				<a href="<?php the_permalink(); ?>" >
+					<span class='seta-saibamais pull-right'>
+						Saiba mais
+                        <img src="<?php bloginfo('template_url'); ?>/img/seta-link-azul.png">
+                    </span>
+				</a>
+			</div>
+		<?php
+		}
+        wp_reset_postdata();
+		?>
+	</div>
+
+
+
 </div>
 
 <?php wp_reset_query(); ?>
