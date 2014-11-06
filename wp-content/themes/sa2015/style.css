@@ -19,9 +19,9 @@ Version: 1.0.0
 }
 
 @font-face {
-	font-family: MyriadPro-cond;
-	src: url('fonts/MYRIADPRO-COND.OTF');
-	font-stretch: condensed;
+	font-family: MyriadPro;
+	src: url('fonts/MYRIADPRO-BOLD.OTF');
+	font-weight: bold;
 }
 
 body {
@@ -57,4 +57,40 @@ padding: 0px;
 
 #sa_metodologias ul{
 	padding: 0px;
+}
+
+#sa_metodologias .thumbnail {
+border: none;
+padding: 0px;
+}
+
+#sa_metodologias .caption {
+padding: 0px;
+}
+
+.sa_title_links {
+color: #76b2c3;
+margin-right: 30px;
+margin-top: 8px;
+font-weight: bold;
+}
+
+#sa_metodologias p {
+text-align: justify;
+font-size: 13px;
+line-height: 21px;
+letter-spacing: 1px;
+height: 120px;
+overflow: hidden;
+}
+
+.seta-saibamais {
+font-size: 15px;
+color: #4999af;
+margin-top: 8px;
+margin-bottom: 8px;
+}
+
+.seta-saibamais img {
+margin-left: 8px;
 }

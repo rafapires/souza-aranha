@@ -13,12 +13,17 @@ get_header(); ?>
 			while ( $newsLoop->have_posts() ) : $newsLoop->the_post();?>
 				<li class="col-sm-3">
 					<div class="thumbnail">
-						<?php the_post_thumbnail('full'); ?>
+						<?php the_post_thumbnail('metodologia_list'); ?>
 						<div class="caption">
 							<h2 class="sa_title_links"><?php the_title(); ?></h2>
 							<p><?php echo get_post_meta(get_the_ID(),'sa_diferencial_metodologia',true ); ?></p>
 						</div>
-						<a href="<?php the_permalink(); ?>" class="btn btn-large btn-block btn-primary">Mais detalhes</a>				
+						<a href="<?php the_permalink(); ?>" >
+							<span class='seta-saibamais pull-right'>
+								Saiba mais
+	                            <img src="<?php bloginfo('template_url'); ?>/img/seta-link-azul.png">
+	                        </span>
+						</a>				
                     </div>
 				</li>
 			<?php endwhile; // end of the loop. ?>
