@@ -29,7 +29,7 @@ get_header(); ?>
                     <div class="item <?php if ($active){echo 'active';}?>">
                         <?php
                         if ( has_post_thumbnail() ){
-                            the_post_thumbnail( full, array('class' => 'sa_img_carrousel'));
+                            the_post_thumbnail( array(1400,400), array('class' => 'sa_img_carrousel'));
                         }else{
                             if ( $sa_imgdefault > 3) {
                                 $sa_imgdefault = 1;
