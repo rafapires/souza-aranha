@@ -205,11 +205,12 @@ get_header(); ?>
 
 
         }
+        $sa_blogs_page = get_page_by_title('blogs');
 
 
 
         ?>
-		<a href="#" class="btn btn-block btn-small btn-primary">Lista completa</a>
+		<a href="<?php echo get_page_link($sa_blogs_page->ID);?>" class="btn btn-block btn-small btn-primary">Lista completa</a>
      
          </ul>
     </div>

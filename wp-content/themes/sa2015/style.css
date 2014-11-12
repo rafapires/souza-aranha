@@ -12,6 +12,7 @@ Version: 1.0.0
 @import url('css/footer.css'); 
 @import url('css/home.css'); 
 @import url('css/metodologias.css'); 
+@import url('css/blogs.css'); 
 
 @font-face {
 	font-family: MyriadPro;
@@ -46,4 +47,5 @@ li {
     display: flex;
     align-items: center;
 }
+
 

@@ -42,6 +42,8 @@ padding: 10px 20px;
 
 .carousel-caption h4 {
 	font-size: 30px;
+	height: 33px;
+	overflow: hidden;
 }
 
 .carousel-caption p {
@@ -71,7 +73,7 @@ right: 0px;
 font-size: 23px;
 }
 
-.sa-col-1 {
+#sa_call_actions .sa-col-1 {
 background: #ececec;
 padding: 16px 16px 32px 16px;
 }
@@ -83,7 +85,7 @@ text-shadow: 2px 3px 10px #888;
 text-transform: uppercase;
 }
 
-.sa-col-1 h1 {
+#sa_call_actions .sa-col-1 h1 {
 	padding: 0px;
 	margin: 0px 0px 16px 0px;
 
@@ -95,7 +97,7 @@ letter-spacing: 3px;
 margin-bottom: 16px;
 }
 
-.sa-col-1 img {
+#sa_call_actions .sa-col-1 img {
 margin-bottom: 16px;
 }
 
@@ -105,7 +107,8 @@ font-size: 12px;
 font-weight: bold;
 }
 
-.sa-col-2 img, .sa-col-3 img {
+#sa_call_actions .sa-col-2 img,
+#sa_call_actions .sa-col-3 img {
 top: -70px;
 position: relative;
 z-index: -1;
