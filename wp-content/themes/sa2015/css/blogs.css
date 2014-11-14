@@ -1,0 +1,38 @@
+/* #################
+   ###   BLOGS   ###
+   ################# */
+
+h1.sa_title_catblogs {
+background: #ececec;
+font-size: 24px;
+text-transform: uppercase;
+color: #76b2c3;
+padding: 12px 16px;
+margin-top: 0px;
+}
+
+#sa_bloglist .thumbnail {
+border: none;
+padding: 0px;
+}
+
+#sa_bloglist .thumbnail a > img {
+width: 100px;
+margin: 0px;
+margin-right: 8px;
+}
+
+#sa_bloglist .caption {
+padding: 0px;
+overflow: hidden;
+}
+
+#sa_bloglist .caption h2 {
+margin: 0px;
+color: #76b2c3;
+font-size: 20px;
+}
+
+#sa_bloglist a.btn {
+margin-bottom: 16px;
+}
