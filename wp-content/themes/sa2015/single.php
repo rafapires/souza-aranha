@@ -20,12 +20,13 @@
 			<div id="sa_clientes" class="row">
 				<?php
 				// ######### monta título ###########
+				$lista_clientes_do_post = get_the_terms($post->ID,'sa_clientes_taxonomy');
 				$page_clientes_root = array(
 					'post_type'		=> 'page',
 					'name'			=> 'clientes'
 					);
 				$queryTitle = new WP_query ($page_clientes_root);
-				if ( $queryTitle->have_posts() ){
+				if ( $queryTitle->have_posts() AND $lista_clientes_do_post ){
 					$queryTitle->the_post();
 					echo '<div class="sa-titulo-clientes">';
                     echo '<h1 class="col-sm-12">'.get_the_title().'</h1>';
@@ -38,7 +39,6 @@
             <div class="row">
                 <?php
 				// ######### lista clientes ###########
-				$lista_clientes_do_post = get_the_terms($post->ID,'sa_clientes_taxonomy');
 				foreach ($lista_clientes_do_post as $item_cliente_do_post) {
 					$argsClientes = array(
 						'post_type'		=> 'clientes',
@@ -62,20 +62,19 @@
 				}
 				?>
 			</div>
-
-			<div id="sa_whitepaper" class="row">
+			<?php
+			// ######### lista ultimo whitepaper relacionado ###########
+			$lista_whitepapers_do_post = get_the_terms($post->ID,'sa_whitepaper_taxonomy');
+			foreach ($lista_whitepapers_do_post as $item_whitepaper_do_post) {
+				$argsWhitepapers = array(
+					'post_type'		=> 'whitepaper',
+					'post_status'	=> 'publish',
+					'name'			=> $item_whitepaper_do_post->slug,
+					);
+				$whitepapers_posts = get_posts($argsWhitepapers);
+			?>
+				<div id="sa_whitepaper" class="row">
 				<?php
-				
-
-				// ######### lista ultimo whitepaper relacionado ###########
-				$lista_whitepapers_do_post = get_the_terms($post->ID,'sa_whitepaper_taxonomy');
-				foreach ($lista_whitepapers_do_post as $item_whitepaper_do_post) {
-					$argsWhitepapers = array(
-						'post_type'		=> 'whitepaper',
-						'post_status'	=> 'publish',
-						'name'			=> $item_whitepaper_do_post->slug,
-						);
-					$whitepapers_posts = get_posts($argsWhitepapers);
 					foreach ($whitepapers_posts as $whitepaper) {
 						?>
 						<div class="thumbnail clearfix sa-whitepaper">
@@ -102,10 +101,12 @@
 						</div>
 						<?php
 					}
+				?>
+				</div>
+				<?php
                 wp_reset_postdata();
 				}
 				?>
-			</div>
 
 			<div id="sa_blogs" class="row">
 				<?php

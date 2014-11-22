@@ -123,7 +123,6 @@ align-items: center;
 
 .sa-whitepaper {
 background: #ddd;
-margin-top: 16px;
 padding: 0px;
 border-radius: 0px;
 }
@@ -149,7 +148,8 @@ border-left: solid 6px #4999af;
 }
 
 div#sa_whitepaper {
-margin-bottom: 16px;
+margin-bottom: 10px;
+margin-top: 10px;
 }
 
 #sa_blogs ul {
