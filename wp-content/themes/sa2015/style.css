@@ -70,7 +70,8 @@ text-transform: uppercase;
 font-size: 30px;
 }
 
-#sa_clientes h1 {
+#sa_clientes h1,
+#sa_blogs h1 {
 font-weight: bolder;
 color: #fff;
 text-shadow: 2px 3px 10px #888;
@@ -78,7 +79,8 @@ text-transform: uppercase;
 margin-top: 12px;
 }
 
-.sa-titulo-clientes {
+.sa-titulo-clientes,
+.sa-titulo-blogs {
 overflow: hidden;
 height: 70px;
 margin-bottom: 6px;
@@ -144,4 +146,37 @@ font-weight: 100;
 
 .sa-whitepaper .caption.pull-left {
 border-left: solid 6px #4999af;
+}
+
+div#sa_whitepaper {
+margin-bottom: 16px;
+}
+
+#sa_blogs ul {
+padding-left: 26px;
+}
+
+#sa_blogs li {
+list-style-type: square;
+font-size: 30px;
+color: #4999af;
+}
+
+#sa_blogs li h3 {
+font-size: 16px;
+margin: 0px;
+color: #666;
+}
+
+#sa_blogs li p {
+margin: 0px;
+font-size: 15px;
+color: #666;
+}
+
+#sa_blogs li span {
+position: relative;
+left: -10px;
+display: inline-table;
+top: -5px;
 }

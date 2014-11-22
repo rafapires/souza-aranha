@@ -117,8 +117,10 @@
 				$queryTitle = new WP_query ($page_blogs_root);
 				if ( $queryTitle->have_posts() ){
 					$queryTitle->the_post();
+					echo '<div class="sa-titulo-blogs">';
                     echo '<h1 class="col-sm-12">'.get_the_title().'</h1>';
                     the_post_thumbnail( full, array('class'=>'sa-sidebar-titulo img-responsive'));
+                    echo '</div>';
 				}
                 wp_reset_postdata();
 				// ######### lista blogs ###########
@@ -140,16 +142,18 @@
 					<?php
 					foreach ($ultimos_posts as $item_post) {
 					?>
-						<li>
-							<h3><?php echo $item_post['post_title']; ?></h3>
-							<p><?php
-								if (!empty($item_post['post_exceprt'])){
-									echo substr($item_post['post_exceprt'],0,90);
-								}else{
-									echo substr(strip_tags($item_post['post_content']),0,90);
-								}
-							?></p>
-						</li>
+						<li><span>
+							<a href="<?php echo get_permalink($item_post['ID']) ;?>">
+								<h3><?php echo $item_post['post_title']; ?></h3>
+								<p><?php
+									if (!empty($item_post['post_exceprt'])){
+										echo substr($item_post['post_exceprt'],0,90);
+									}else{
+										echo substr(strip_tags($item_post['post_content']),0,90);
+									}
+								?></p>
+							</a>
+						</span></li>
 					<?php
 					}
 					?>
