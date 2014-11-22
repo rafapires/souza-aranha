@@ -2,7 +2,7 @@
 
 <div id="sa_single" class="container">
 	<div id="sa_colunado" class="row">
-		<div class="col-sm-8">
+		<div id="sa_conteudo" class="col-sm-8">
 			<?php
 			if ( have_posts() ) {
 				while ( have_posts() ) {
@@ -16,7 +16,7 @@
 			};
 			?>
 		</div>
-		<div class="col-sm-4">
+		<div id="sa_coluna" class="col-sm-4">
 			<div id="sa_clientes" class="row">
 				<?php
 				// ######### monta título ###########
@@ -27,10 +27,16 @@
 				$queryTitle = new WP_query ($page_clientes_root);
 				if ( $queryTitle->have_posts() ){
 					$queryTitle->the_post();
+					echo '<div class="sa-titulo-clientes">';
                     echo '<h1 class="col-sm-12">'.get_the_title().'</h1>';
                     the_post_thumbnail( full, array('class'=>'sa-sidebar-titulo img-responsive'));
+                    echo '</div>';
 				}
                 wp_reset_postdata();
+                ?>
+            </div>
+            <div class="row">
+                <?php
 				// ######### lista clientes ###########
 				$lista_clientes_do_post = get_the_terms($post->ID,'sa_clientes_taxonomy');
 				foreach ($lista_clientes_do_post as $item_cliente_do_post) {
@@ -43,8 +49,12 @@
 					foreach ($clientes_posts as $cliente) {
 						?>
 						<div class="thumbnail clearfix col-sm-4">
-							<?php echo get_the_post_thumbnail($cliente->ID,array(80,80),array('class' => 'img-responsive')); ?>
+							<div class="sa_mold_logos">
+							<div class="sa_img_logos">
+							<?php echo get_the_post_thumbnail($cliente->ID,full,array('class' => 'img-responsive')); ?>
+							</div>
 							<h2><?php echo get_the_title($cliente->ID); ?></h2>
+							</div>
 						</div>
 						<?php
 					}
