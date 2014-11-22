@@ -65,18 +65,9 @@
 
 			<div id="sa_whitepaper" class="row">
 				<?php
-				// ######### monta título ###########
-				$page_whitepaper_root = array(
-					'post_type'		=> 'page',
-					'name'			=> 'whitepapers'
-					);
-				$queryTitle = new WP_query ($page_whitepaper_root);
-				if ( $queryTitle->have_posts() ){
-					$queryTitle->the_post();
-                    echo '<h1 class="col-sm-12">'.get_the_title().'</h1>';
-				}
-                wp_reset_postdata();
-				// ######### lista whitepapers ###########
+				
+
+				// ######### lista ultimo whitepaper relacionado ###########
 				$lista_whitepapers_do_post = get_the_terms($post->ID,'sa_whitepaper_taxonomy');
 				foreach ($lista_whitepapers_do_post as $item_whitepaper_do_post) {
 					$argsWhitepapers = array(
@@ -87,16 +78,26 @@
 					$whitepapers_posts = get_posts($argsWhitepapers);
 					foreach ($whitepapers_posts as $whitepaper) {
 						?>
-						<div class="thumbnail clearfix col-sm-4 sa-whitepaper">
+						<div class="thumbnail clearfix sa-whitepaper">
 							<a href="<?php echo get_permalink($whitepaper->ID); ?>">
-								<h2><?php echo get_the_title($whitepaper->ID); ?></h2>
-								<p><?php
-									if (!empty($whitepaper->post_exceprt)){
-										echo substr($whitepaper->post_exceprt,0,90);
-									}else{
-										echo substr(strip_tags($whitepaper->post_content),0,90);
-									}
-								?></p>
+								<div class="row-fluid vertical-align">
+									<div class="col-sm-9">
+										<div class="caption pull-left">
+											<h2>Whitepaper:</h2>
+											<em><?php echo get_the_title($whitepaper->ID); ?></em>
+											<p><?php
+												if (!empty($whitepaper->post_exceprt)){
+													echo substr($whitepaper->post_exceprt,0,90);
+												}else{
+													echo substr(strip_tags($whitepaper->post_content),0,90);
+												}
+											?></p>
+										</div>
+									</div>
+		                            <div class="col-sm-3">
+		                                <img src="<?php bloginfo('template_url'); ?>/img/seta-dir-circulo-branco.png" class='center-block'>
+		                            </div>
+								</div>
 							</a>
 						</div>
 						<?php

@@ -141,7 +141,7 @@ get_header(); ?>
     </div>
     <div class="col-sm-4 sa-col-3">
         <div class="sa-titulo">
-             <?php  // ###### cria título da coluna com imagem pela pagina obrigatória Webinars.
+             <?php  // ###### cria título da coluna com imagem pela pagina obrigatória blogs.
                 $page_blog_root = array(
                     'post_type' => 'page',
                     'name'      => 'blog-s-a'

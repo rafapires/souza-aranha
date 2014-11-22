@@ -118,3 +118,30 @@ align-items: center;
 	font-size: 16px;
 	font-weight: inherit;
 }
+
+.sa-whitepaper {
+background: #ddd;
+margin-top: 16px;
+padding: 0px;
+border-radius: 0px;
+}
+
+.sa-whitepaper .col-sm-9 {
+	padding: 0px;
+}
+
+.sa-whitepaper .caption {
+	padding-right: 0px;
+}
+
+.sa-whitepaper h2 {
+margin: 0px;
+font-size: 16px;
+text-transform: uppercase;
+color: #559aad;
+font-weight: 100;
+}
+
+.sa-whitepaper .caption.pull-left {
+border-left: solid 6px #4999af;
+}
