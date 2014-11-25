@@ -27,7 +27,7 @@ margin-top: 8px;
 font-weight: bold;
 }
 
-#sa_metodologias p {
+#sa_metodologias > p {
 text-align: justify;
 font-size: 13px;
 line-height: 21px;
