@@ -1,7 +1,7 @@
 <?php get_header();  ?>
 
 <div id="sa_single" class="container">
-	<div id="sa_colunado" class="row">
+	<div id="sa_colunado" class="row-fluid">
 		<div id="sa_conteudo" class="col-sm-8">
 			<?php
 			if ( have_posts() ) {
@@ -164,7 +164,6 @@
 
 		</div>
 	</div>
-</div>
 
 
 <?php get_footer(); ?>

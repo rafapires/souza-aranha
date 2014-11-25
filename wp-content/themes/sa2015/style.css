@@ -48,11 +48,3 @@ li {
     display: flex;
     align-items: center;
 }
-
-/* ######################
-   ###   full width   ###
-   ###################### */
-
-#sa_fullwidth {
-	margin-top: 140px;
-}
