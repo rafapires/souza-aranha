@@ -2,11 +2,13 @@
    ###   single   ###
    ################## */
 
-#sa_single {
+#sa_single,
+#sa_fullwidth {
 	margin-top: 140px;
 }
 
-div#sa_conteudo {
+div#sa_conteudo,
+div#sa_fullwidth {
 padding-left: 0px;
 }
 
