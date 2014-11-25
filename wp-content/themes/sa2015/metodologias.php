@@ -59,9 +59,6 @@ get_header(); ?>
         wp_reset_postdata();
 		?>
 	</div>
-
-
-
 </div>
 
 <?php wp_reset_query(); ?>

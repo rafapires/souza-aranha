@@ -1,4 +1,4 @@
-	<section id="footer">
+	<section id="footer" class="container">
 		<hr class="top-footer">
 		<div class="row">
 			<div class="col-sm-4">

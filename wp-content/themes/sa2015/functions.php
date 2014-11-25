@@ -117,7 +117,7 @@ add_action ( 'init','sa_create_custom_posts' );
 					'search_items'	=>	'Pesquisar whitepapers',
 					'not_found'		=>	'Nenhum whitepaper encontrado',
 					'not_found_in_trash'	=>	'Nenhum whitepaper encontrado na lixeira',
-					'parent'		=>	'metodologia Pai'
+					'parent'		=>	'whitepaper Pai'
 					),
 				'public'		=>	true,
 				'menu_position' =>	15,
@@ -158,9 +158,9 @@ add_action ( 'init','sa_create_custom_posts' );
 		<p>
 			<label for="status">Status:</label>
 			<br />
-			<input type="radio" name="sa_status_webinar" value="ativo"  <?php if(get_post_meta( $metodologia->ID, 'sa_status_webinar', true ) == 'ativo' ) echo 'checked="checked"'; ?> />Ativo
-			<input type="radio" name="sa_status_webinar" value="suspenso" <?php if(get_post_meta( $metodologia->ID, 'sa_status_webinar', true ) == 'suspenso' ) echo 'checked="checked"'; ?> />Suspenso
-			<input type="radio" name="sa_status_webinar" value="realizado" <?php if(get_post_meta( $metodologia->ID, 'sa_status_webinar', true ) == 'realizado' ) echo 'checked="checked"'; ?> />Realizado
+			<input type="radio" name="sa_status_webinar" value="ativo"  <?php if(get_post_meta( $webinar->ID, 'sa_status_webinar', true ) == 'ativo' ) echo 'checked="checked"'; ?> />Ativo
+			<input type="radio" name="sa_status_webinar" value="suspenso" <?php if(get_post_meta( $webinar->ID, 'sa_status_webinar', true ) == 'suspenso' ) echo 'checked="checked"'; ?> />Suspenso
+			<input type="radio" name="sa_status_webinar" value="realizado" <?php if(get_post_meta( $webinar->ID, 'sa_status_webinar', true ) == 'realizado' ) echo 'checked="checked"'; ?> />Realizado
 		</p>
 	<?php
 	}
