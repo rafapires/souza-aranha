@@ -106,7 +106,7 @@ get_header(); ?>
                 $whitepaper_title = get_page_by_title('whitepapers');
                 ?>
                 <div class="thumbnail clearfix sa-whitepaper">
-                    <a href="<?php echo get_permalink($whitepaper_title->ID); ?>">
+                    <a href="<?php echo get_post_type_archive_link( 'whitepaper' ); ?>">
                         <div class="row-fluid vertical-align">
                             <div class="col-sm-9">
                                 <div class="caption pull-right">
