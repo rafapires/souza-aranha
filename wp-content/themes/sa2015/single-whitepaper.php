@@ -1,5 +1,10 @@
 <?php
 /*Template Name: Whitepaper */
+if ( !is_user_logged_in() ) {
+	wp_redirect( home_url() );
+	exit;
+}
+
 $link_whitepaper = get_post_meta( get_the_ID(), 'wp_custom_attachment');
 $nome_aquivo_whitepaper = get_post_meta ( get_the_ID(),'wp_name_attachment');
 get_header();  ?>
