@@ -199,7 +199,7 @@ add_action ( 'init','sa_create_custom_posts' );
 	        'sa_whitepaper_meta_box',  
 	        'Atributos do Whitepaper',  
 	        'whitepaper_inner_meta_box',  
-	        'whitepaper'
+	        'whitepapers'
 	    );  
 	  
 	}
@@ -348,7 +348,7 @@ add_action( 'init', 'sa_taxonomies', 0 );
 			);
 
 		register_taxonomy(
-			'sa_whitepaper_taxonomy',
+			'sa_whitepapers_taxonomy',
 			array ('post','webinars','metodologias'),
 			array(
 				'label'		=>	'whitepapers',
@@ -371,9 +371,9 @@ add_action( 'init', 'sa_taxonomies', 0 );
 
 add_action('admin_menu','yoursite_admin_menu');
 function yoursite_admin_menu() {
-    remove_submenu_page( 'edit.php', 'edit-tags.php?taxonomy=sa_whitepaper_taxonomy' ); //remove taxonomy 'whitepaper' from sub menu of post
-    remove_submenu_page( 'edit.php?post_type=webinars', 'edit-tags.php?taxonomy=sa_whitepaper_taxonomy&amp;post_type=webinars' ); // remove taxonomy 'whitepaper' from submenu of webinars
-    remove_submenu_page( 'edit.php?post_type=metodologias', 'edit-tags.php?taxonomy=sa_whitepaper_taxonomy&amp;post_type=metodologias' ); // remove taxonomy 'whitepaper' from submenu of metodologias
+    remove_submenu_page( 'edit.php', 'edit-tags.php?taxonomy=sa_whitepapers_taxonomy' ); //remove taxonomy 'whitepaper' from sub menu of post
+    remove_submenu_page( 'edit.php?post_type=webinars', 'edit-tags.php?taxonomy=sa_whitepapers_taxonomy&amp;post_type=webinars' ); // remove taxonomy 'whitepaper' from submenu of webinars
+    remove_submenu_page( 'edit.php?post_type=metodologias', 'edit-tags.php?taxonomy=sa_whitepapers_taxonomy&amp;post_type=metodologias' ); // remove taxonomy 'whitepaper' from submenu of metodologias
     remove_submenu_page( 'edit.php', 'edit-tags.php?taxonomy=sa_metodologias_taxonomy' ); //remove taxonomy 'metodologias' from sub menu of post
     remove_submenu_page( 'edit.php?post_type=webinars', 'edit-tags.php?taxonomy=sa_metodologias_taxonomy&amp;post_type=webinars' ); // remove taxonomy 'metodologias' from submenu of webinars
     remove_submenu_page( 'edit.php', 'edit-tags.php?taxonomy=sa_clientes_taxonomy' ); //remove taxonomy 'clientes' from sub menu of post
@@ -387,8 +387,8 @@ add_action (save_post, save_taxonomy_as_same_title_of_post,5,1);
 add_action (edit_post, save_taxonomy_as_same_title_of_post,5,1);
 function save_taxonomy_as_same_title_of_post ($id){
 	$nome_custom_post=get_post_type(get_the_ID());
-	if ($nome_custom_post=='whitepaper') {
-		$taxonomy_name='sa_whitepaper_taxonomy';
+	if ($nome_custom_post=='whitepapers') {
+		$taxonomy_name='sa_whitepapers_taxonomy';
 	}
 	if ($nome_custom_post=='metodologias') {
 		$taxonomy_name='sa_metodologias_taxonomy';
@@ -405,8 +405,8 @@ add_action (delete_post, delete_taxonomy_as_same_title_of_post);
 function delete_taxonomy_as_same_title_of_post ($id){
 	$name_term = get_the_title(get_the_ID($id));
 	$nome_custom_post=get_post_type(get_the_ID());
-	if ($nome_custom_post=='whitepaper') {
-		$taxonomy_name='sa_whitepaper_taxonomy';
+	if ($nome_custom_post=='whitepapers') {
+		$taxonomy_name='sa_whitepapers_taxonomy';
 	}
 	if ($nome_custom_post=='metodologias') {
 		$taxonomy_name='sa_metodologias_taxonomy';
