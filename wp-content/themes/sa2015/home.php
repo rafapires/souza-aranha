@@ -188,7 +188,7 @@ get_header(); ?>
                 </div>
                 <?php
                 }
-                $sa_blogs_page = get_page_by_title('blogs');
+                $sa_blogs_page = get_page_by_title('blog s.a.');
                 ?>
     	       	<a href="<?php echo get_page_link($sa_blogs_page->ID);?>" class="btn btn-block btn-small btn-primary">Lista completa</a>
             </div>
