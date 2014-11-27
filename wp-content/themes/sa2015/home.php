@@ -103,10 +103,10 @@ get_header(); ?>
                 }
                 wp_reset_postdata();
                 // ###### cria título da coluna com imagem pela pagina obrigatória Webinars.
-                $whitepaper_title = get_page_by_title('whitepapers');
+                $whitepaper_title = get_page_by_title('Whitepapers');
                 ?>
                 <div class="thumbnail clearfix sa-whitepaper">
-                    <a href="<?php echo get_post_type_archive_link( 'whitepaper' ); ?>">
+                    <a href="<?php echo get_post_type_archive_link( 'whitepapers' ); ?>">
                         <div class="row-fluid vertical-align">
                             <div class="col-sm-9">
                                 <div class="caption pull-right">

@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Whitepapers
+Template Name: kWhitepapers
 */
 get_header(); ?>
 

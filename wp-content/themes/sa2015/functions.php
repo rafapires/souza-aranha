@@ -102,7 +102,7 @@ add_action ( 'init','sa_create_custom_posts' );
 				)
 			);
 
-		register_post_type ( 'whitepaper' ,
+		register_post_type ( 'whitepapers' ,
 			array (
 				'labels' => array(
 					'name'			=>	'Whitepapers',
