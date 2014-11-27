@@ -192,9 +192,9 @@ add_action ( 'init','sa_create_custom_posts' );
 	<?php
 	}
 
+	add_action('add_meta_boxes', 'sa_whitepaper_add_meta_box');  
+
 	function sa_whitepaper_add_meta_box() {  
-	  
-	    // Define the custom attachment for pages  
 	    add_meta_box(  
 	        'sa_whitepaper_meta_box',  
 	        'Atributos do Whitepaper',  
@@ -204,10 +204,7 @@ add_action ( 'init','sa_create_custom_posts' );
 	  
 	}
 
-	add_action('add_meta_boxes', 'sa_whitepaper_add_meta_box');  
-
-
-	function whitepaper_inner_meta_box($whitepaper) {  
+	function whitepaper_inner_meta_box( $whitepaper ) {  
 	  
 	    wp_nonce_field(plugin_basename(__FILE__), 'wp_custom_attachment_nonce');  
 	     ?>
@@ -379,6 +376,8 @@ function yoursite_admin_menu() {
     remove_submenu_page( 'edit.php', 'edit-tags.php?taxonomy=sa_clientes_taxonomy' ); //remove taxonomy 'clientes' from sub menu of post
     remove_submenu_page( 'edit.php?post_type=webinars', 'edit-tags.php?taxonomy=sa_clientes_taxonomy&amp;post_type=webinars' ); // remove taxonomy 'clientes' from submenu of webinars
     remove_submenu_page( 'edit.php?post_type=metodologias', 'edit-tags.php?taxonomy=sa_clientes_taxonomy&amp;post_type=metodologias' ); // remove taxonomy 'clientes' from submenu of metodologias
+    remove_submenu_page( 'edit.php?post_type=whitepapers', 'edit-tags.php?taxonomy=sa_metodologias_taxonomy&amp;post_type=whitepapers' ); // remove taxonomy 'clientes' from submenu of metodologias
+    remove_submenu_page( 'edit.php?post_type=whitepapers', 'edit-tags.php?taxonomy=sa_clientes_taxonomy&amp;post_type=whitepapers' ); // remove taxonomy 'clientes' from submenu of metodologias
 }
 
 /* cria taxonomia com mesmo nome do custom post automáticamente */
