@@ -1,7 +1,6 @@
 <?php 
 
 /*Template Name: Home */
- 
 get_header(); ?>
 <div class="row-fluid">
     <div id="myCarousel" class="carousel slide col-sm-12">

@@ -1,5 +1,6 @@
 <?php
-/*Template Name: Whitepaper */
+echo 'aqui';
+exit;
 if ( !is_user_logged_in() ) {
 	wp_redirect( home_url() );
 	exit;
@@ -80,7 +81,7 @@ get_header();  ?>
 			$lista_whitepapers_do_post = get_the_terms($post->ID,'sa_whitepaper_taxonomy');
 			foreach ($lista_whitepapers_do_post as $item_whitepaper_do_post) {
 				$argsWhitepapers = array(
-					'post_type'		=> 'whitepaper',
+					'post_type'		=> 'whitepapers',
 					'post_status'	=> 'publish',
 					'name'			=> $item_whitepaper_do_post->slug,
 					);
