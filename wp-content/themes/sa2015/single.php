@@ -1,4 +1,6 @@
-<?php get_header();  ?>
+<?php
+get_header();
+?>
 
 <div id="sa_single" class="container">
 	<div id="sa_colunado" class="row-fluid">

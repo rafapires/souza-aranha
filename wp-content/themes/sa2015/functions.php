@@ -126,7 +126,6 @@ add_action ( 'init','sa_create_custom_posts' );
 				'has_archive'	=>	true
 				)
 			);
-		flush_rewrite_rules( false );
 	}
 
 
