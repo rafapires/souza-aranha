@@ -5,6 +5,15 @@ add_image_size( 'metodologia_list', 300 , 300 , true);
 //set_post_thumbnail_size( 150, 150, true ); 
 add_filter('show_admin_bar', '__return_false');
 
+### seta local do MySQL para imprimir data em PT-BR #####
+	function sa_data_em_ptbr() {
+		setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+		date_default_timezone_set('America/Sao_Paulo');
+	}
+	add_action('init','sa_data_em_ptbr');
+### fim ###
+
+
 register_nav_menus( array (
 		'main-menu' => 'Menu Principal',
 		'foot-menu'	=> 'Footer Menu',
@@ -146,14 +155,14 @@ add_action ( 'init','sa_create_custom_posts' );
 	?>
 		<p>
 			<label for="Data">Data:</label>
-			<input type="date" name="sa_data_webinar" value="<?php echo get_post_meta($webinar->ID, 'sa_data_webinar'); ?>">
+			<input type="date" name="sa_data_webinar" value="<?php echo get_post_meta($webinar->ID, 'sa_data_webinar',true); ?>">
 
 			<label for="Hora">Hora:</label>
-			<input type="time" name="sa_hora_webinar" value="<?php echo get_post_meta($webinar->ID, 'sa_hora_webinar'); ?>">
+			<input type="time" name="sa_hora_webinar" value="<?php echo get_post_meta($webinar->ID, 'sa_hora_webinar',true); ?>">
 		</p>
 			<p>
 			<label for="URL" >URL:</label>
-			<input type="url" size="120"name="sa_url_webinar" value="<?php echo get_post_meta($webinar->ID, 'sa_url_webinar'); ?>">
+			<input type="url" size="120"name="sa_url_webinar" value="<?php echo get_post_meta($webinar->ID, 'sa_url_webinar',true); ?>">
 		</p>
 		<p>
 			<label for="status">Status:</label>
