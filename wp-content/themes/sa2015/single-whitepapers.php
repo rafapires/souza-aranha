@@ -35,46 +35,48 @@ get_header();
 				<?php
 				// ######### monta título ###########
 				$lista_clientes_do_post = get_the_terms($post->ID,'sa_clientes_taxonomy');
-				$page_clientes_root = array(
-					'post_type'		=> 'page',
-					'name'			=> 'clientes'
-					);
-				$queryTitle = new WP_query ($page_clientes_root);
-				if ( $queryTitle->have_posts() AND $lista_clientes_do_post ){
-					$queryTitle->the_post();
-					echo '<div class="sa-titulo-clientes">';
-                    echo '<h1 class="col-sm-12">'.get_the_title().'</h1>';
-                    the_post_thumbnail( full, array('class'=>'sa-sidebar-titulo img-responsive'));
-                    echo '</div>';
-				}
-                wp_reset_postdata();
-                ?>
-            </div>
-            <div class="row">
-                <?php
-				// ######### lista clientes ###########
-				foreach ($lista_clientes_do_post as $item_cliente_do_post) {
-					$argsClientes = array(
-						'post_type'		=> 'clientes',
-						'post_status'	=> 'publish',
-						'name'			=> $item_cliente_do_post->slug,
+				if ($lista_clientes_do_post) {
+					$page_clientes_root = array(
+						'post_type'		=> 'page',
+						'name'			=> 'clientes'
 						);
-					$clientes_posts = get_posts($argsClientes);
-					foreach ($clientes_posts as $cliente) {
-						?>
-						<div class="thumbnail clearfix col-sm-4">
-							<div class="sa_mold_logos">
-							<div class="sa_img_logos">
-							<?php echo get_the_post_thumbnail($cliente->ID,full,array('class' => 'img-responsive')); ?>
-							</div>
-							<h2><?php echo get_the_title($cliente->ID); ?></h2>
-							</div>
-						</div>
-						<?php
+					$queryTitle = new WP_query ($page_clientes_root);
+					if ( $queryTitle->have_posts() AND $lista_clientes_do_post ){
+						$queryTitle->the_post();
+						echo '<div class="sa-titulo-clientes">';
+	                    echo '<h1 class="col-sm-12">'.get_the_title().'</h1>';
+	                    the_post_thumbnail( full, array('class'=>'sa-sidebar-titulo img-responsive'));
+	                    echo '</div>';
 					}
-                wp_reset_postdata();
+	                wp_reset_postdata();
+	                ?>
+	            </div>
+	            <div class="row">
+	                <?php
+					// ######### lista clientes ###########
+					foreach ($lista_clientes_do_post as $item_cliente_do_post) {
+						$argsClientes = array(
+							'post_type'		=> 'clientes',
+							'post_status'	=> 'publish',
+							'name'			=> $item_cliente_do_post->slug,
+							);
+						$clientes_posts = get_posts($argsClientes);
+						foreach ($clientes_posts as $cliente) {
+							?>
+							<div class="thumbnail clearfix col-sm-4">
+								<div class="sa_mold_logos">
+								<div class="sa_img_logos">
+								<?php echo get_the_post_thumbnail($cliente->ID,full,array('class' => 'img-responsive')); ?>
+								</div>
+								<h2><?php echo get_the_title($cliente->ID); ?></h2>
+								</div>
+							</div>
+							<?php
+						}
+	                wp_reset_postdata();
+					}
 				}
-				?>
+					?>
 			</div>
 			<?php
 			// ######### lista ultimo whitepaper relacionado ###########
