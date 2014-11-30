@@ -5,6 +5,15 @@ add_image_size( 'metodologia_list', 300 , 300 , true);
 //set_post_thumbnail_size( 150, 150, true ); 
 add_filter('show_admin_bar', '__return_false');
 
+### seta local do MySQL para imprimir data em PT-BR #####
+	function sa_data_em_ptbr() {
+		setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+		date_default_timezone_set('America/Sao_Paulo');
+	}
+	add_action('init','sa_data_em_ptbr');
+### fim ###
+
+
 register_nav_menus( array (
 		'main-menu' => 'Menu Principal',
 		'foot-menu'	=> 'Footer Menu',
@@ -102,7 +111,7 @@ add_action ( 'init','sa_create_custom_posts' );
 				)
 			);
 
-		register_post_type ( 'whitepaper' ,
+		register_post_type ( 'whitepapers' ,
 			array (
 				'labels' => array(
 					'name'			=>	'Whitepapers',
@@ -146,14 +155,14 @@ add_action ( 'init','sa_create_custom_posts' );
 	?>
 		<p>
 			<label for="Data">Data:</label>
-			<input type="date" name="sa_data_webinar" value="<?php echo get_post_meta($webinar->ID, 'sa_data_webinar'); ?>">
+			<input type="date" name="sa_data_webinar" value="<?php echo get_post_meta($webinar->ID, 'sa_data_webinar',true); ?>">
 
 			<label for="Hora">Hora:</label>
-			<input type="time" name="sa_hora_webinar" value="<?php echo get_post_meta($webinar->ID, 'sa_hora_webinar'); ?>">
+			<input type="time" name="sa_hora_webinar" value="<?php echo get_post_meta($webinar->ID, 'sa_hora_webinar',true); ?>">
 		</p>
 			<p>
 			<label for="URL" >URL:</label>
-			<input type="url" size="120"name="sa_url_webinar" value="<?php echo get_post_meta($webinar->ID, 'sa_url_webinar'); ?>">
+			<input type="url" size="120"name="sa_url_webinar" value="<?php echo get_post_meta($webinar->ID, 'sa_url_webinar',true); ?>">
 		</p>
 		<p>
 			<label for="status">Status:</label>
@@ -192,22 +201,19 @@ add_action ( 'init','sa_create_custom_posts' );
 	<?php
 	}
 
+	add_action('add_meta_boxes', 'sa_whitepaper_add_meta_box');  
+
 	function sa_whitepaper_add_meta_box() {  
-	  
-	    // Define the custom attachment for pages  
 	    add_meta_box(  
 	        'sa_whitepaper_meta_box',  
 	        'Atributos do Whitepaper',  
 	        'whitepaper_inner_meta_box',  
-	        'whitepaper'
+	        'whitepapers'
 	    );  
 	  
 	}
 
-	add_action('add_meta_boxes', 'sa_whitepaper_add_meta_box');  
-
-
-	function whitepaper_inner_meta_box($whitepaper) {  
+	function whitepaper_inner_meta_box( $whitepaper ) {  
 	  
 	    wp_nonce_field(plugin_basename(__FILE__), 'wp_custom_attachment_nonce');  
 	     ?>
@@ -348,7 +354,7 @@ add_action( 'init', 'sa_taxonomies', 0 );
 			);
 
 		register_taxonomy(
-			'sa_whitepaper_taxonomy',
+			'sa_whitepapers_taxonomy',
 			array ('post','webinars','metodologias'),
 			array(
 				'label'		=>	'whitepapers',
@@ -371,14 +377,16 @@ add_action( 'init', 'sa_taxonomies', 0 );
 
 add_action('admin_menu','yoursite_admin_menu');
 function yoursite_admin_menu() {
-    remove_submenu_page( 'edit.php', 'edit-tags.php?taxonomy=sa_whitepaper_taxonomy' ); //remove taxonomy 'whitepaper' from sub menu of post
-    remove_submenu_page( 'edit.php?post_type=webinars', 'edit-tags.php?taxonomy=sa_whitepaper_taxonomy&amp;post_type=webinars' ); // remove taxonomy 'whitepaper' from submenu of webinars
-    remove_submenu_page( 'edit.php?post_type=metodologias', 'edit-tags.php?taxonomy=sa_whitepaper_taxonomy&amp;post_type=metodologias' ); // remove taxonomy 'whitepaper' from submenu of metodologias
+    remove_submenu_page( 'edit.php', 'edit-tags.php?taxonomy=sa_whitepapers_taxonomy' ); //remove taxonomy 'whitepaper' from sub menu of post
+    remove_submenu_page( 'edit.php?post_type=webinars', 'edit-tags.php?taxonomy=sa_whitepapers_taxonomy&amp;post_type=webinars' ); // remove taxonomy 'whitepaper' from submenu of webinars
+    remove_submenu_page( 'edit.php?post_type=metodologias', 'edit-tags.php?taxonomy=sa_whitepapers_taxonomy&amp;post_type=metodologias' ); // remove taxonomy 'whitepaper' from submenu of metodologias
     remove_submenu_page( 'edit.php', 'edit-tags.php?taxonomy=sa_metodologias_taxonomy' ); //remove taxonomy 'metodologias' from sub menu of post
     remove_submenu_page( 'edit.php?post_type=webinars', 'edit-tags.php?taxonomy=sa_metodologias_taxonomy&amp;post_type=webinars' ); // remove taxonomy 'metodologias' from submenu of webinars
     remove_submenu_page( 'edit.php', 'edit-tags.php?taxonomy=sa_clientes_taxonomy' ); //remove taxonomy 'clientes' from sub menu of post
     remove_submenu_page( 'edit.php?post_type=webinars', 'edit-tags.php?taxonomy=sa_clientes_taxonomy&amp;post_type=webinars' ); // remove taxonomy 'clientes' from submenu of webinars
     remove_submenu_page( 'edit.php?post_type=metodologias', 'edit-tags.php?taxonomy=sa_clientes_taxonomy&amp;post_type=metodologias' ); // remove taxonomy 'clientes' from submenu of metodologias
+    remove_submenu_page( 'edit.php?post_type=whitepapers', 'edit-tags.php?taxonomy=sa_metodologias_taxonomy&amp;post_type=whitepapers' ); // remove taxonomy 'clientes' from submenu of metodologias
+    remove_submenu_page( 'edit.php?post_type=whitepapers', 'edit-tags.php?taxonomy=sa_clientes_taxonomy&amp;post_type=whitepapers' ); // remove taxonomy 'clientes' from submenu of metodologias
 }
 
 /* cria taxonomia com mesmo nome do custom post automáticamente */
@@ -387,8 +395,8 @@ add_action (save_post, save_taxonomy_as_same_title_of_post,5,1);
 add_action (edit_post, save_taxonomy_as_same_title_of_post,5,1);
 function save_taxonomy_as_same_title_of_post ($id){
 	$nome_custom_post=get_post_type(get_the_ID());
-	if ($nome_custom_post=='whitepaper') {
-		$taxonomy_name='sa_whitepaper_taxonomy';
+	if ($nome_custom_post=='whitepapers') {
+		$taxonomy_name='sa_whitepapers_taxonomy';
 	}
 	if ($nome_custom_post=='metodologias') {
 		$taxonomy_name='sa_metodologias_taxonomy';
@@ -405,8 +413,8 @@ add_action (delete_post, delete_taxonomy_as_same_title_of_post);
 function delete_taxonomy_as_same_title_of_post ($id){
 	$name_term = get_the_title(get_the_ID($id));
 	$nome_custom_post=get_post_type(get_the_ID());
-	if ($nome_custom_post=='whitepaper') {
-		$taxonomy_name='sa_whitepaper_taxonomy';
+	if ($nome_custom_post=='whitepapers') {
+		$taxonomy_name='sa_whitepapers_taxonomy';
 	}
 	if ($nome_custom_post=='metodologias') {
 		$taxonomy_name='sa_metodologias_taxonomy';

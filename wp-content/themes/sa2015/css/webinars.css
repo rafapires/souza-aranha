@@ -1,0 +1,95 @@
+/* ###################
+   ###   webinar   ###
+   ################### */
+
+span.sa_data_webinar {
+font-size: 20px;
+letter-spacing: 2px;
+}
+
+#sa_conteudo.sa_webinar h1 {
+background: #fff;
+font-size: 32px;
+text-transform: none;
+padding: 0px;
+}
+
+.sa_webinar p {
+line-height: 2;
+letter-spacing: 1.2px;
+text-align: justify;
+}
+
+.sa_webinar h3 {
+margin-top: 0px;
+color: #76b2c3;
+font-weight: inherit;
+letter-spacing: 1.5px;
+text-align: justify;
+}
+
+.sa_destaque_link {
+background-color: #ececec;
+margin-top: 18px;
+font-size: 20px;
+}
+
+.sa_destaque_link p {
+line-height: 1.3;
+margin-top: 12px;
+margin-bottom: 16px;
+}
+
+.sa_btn_inscricao {
+background-color: #76b2c3;
+margin: 8px;
+}
+
+.sa_btn_inscricao p {
+color: #fff;
+margin: 0px;
+padding: 6px 0px;
+font-size: 13px;
+}
+
+.sa_btn_inscricao .seta {
+background: black;
+position: absolute;
+width: 28px;
+height: 27px;
+padding: 0px 9px;
+top: 0px;
+right: 0px;
+font-size: 19px;
+}
+
+.sa_webinars_anteriores h3 {
+background-color: #ececec;
+margin-top: 18px;
+text-transform: uppercase;
+font-weight: bold;
+padding: 18px;
+font-size: 34px;
+}
+
+.sa_webinars_anteriores .thumbnail {
+border: none;
+margin-bottom: 0px;
+}
+
+.sa_webinars_anteriores .caption {
+margin-left: 150px;
+padding-top: 0px;
+min-height: 194px;
+}
+
+.sa_webinars_anteriores h2 {
+margin: 0px;
+color: #239999;
+font-size: 24px;
+}
+
+.sa_webinars_anteriores p {
+line-height: 1.6;
+margin: 0px;
+}

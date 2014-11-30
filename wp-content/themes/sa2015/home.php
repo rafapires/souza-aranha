@@ -1,7 +1,6 @@
 <?php 
 
 /*Template Name: Home */
- 
 get_header(); ?>
 <div class="row-fluid">
     <div id="myCarousel" class="carousel slide col-sm-12">
@@ -70,7 +69,7 @@ get_header(); ?>
                         'post_type'     => 'webinars',
                         'posts_per_page'=> 3,
                         'order'         => 'DESC',
-                        'order_by'      => 'date',
+                        'orderby'       => 'date',
                         'post_status'   => 'publish'
                 );
                 $ultimos_webinars = wp_get_recent_posts($webinars_anteriores, ARRAY_A);
@@ -103,10 +102,10 @@ get_header(); ?>
                 }
                 wp_reset_postdata();
                 // ###### cria título da coluna com imagem pela pagina obrigatória Webinars.
-                $whitepaper_title = get_page_by_title('whitepapers');
+                $whitepaper_title = get_page_by_title('Whitepapers');
                 ?>
                 <div class="thumbnail clearfix sa-whitepaper">
-                    <a href="<?php echo get_permalink($whitepaper_title->ID); ?>">
+                    <a href="<?php echo get_post_type_archive_link( 'whitepapers' ); ?>">
                         <div class="row-fluid vertical-align">
                             <div class="col-sm-9">
                                 <div class="caption pull-right">
@@ -188,7 +187,7 @@ get_header(); ?>
                 </div>
                 <?php
                 }
-                $sa_blogs_page = get_page_by_title('blogs');
+                $sa_blogs_page = get_page_by_title('blog s.a.');
                 ?>
     	       	<a href="<?php echo get_page_link($sa_blogs_page->ID);?>" class="btn btn-block btn-small btn-primary">Lista completa</a>
             </div>
