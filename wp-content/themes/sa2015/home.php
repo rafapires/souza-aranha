@@ -69,7 +69,7 @@ get_header(); ?>
                         'post_type'     => 'webinars',
                         'posts_per_page'=> 3,
                         'order'         => 'DESC',
-                        'order_by'      => 'date',
+                        'orderby'       => 'date',
                         'post_status'   => 'publish'
                 );
                 $ultimos_webinars = wp_get_recent_posts($webinars_anteriores, ARRAY_A);
