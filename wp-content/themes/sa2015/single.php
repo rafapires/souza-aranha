@@ -68,11 +68,11 @@ get_header();
 			</div>
 				<?php
 				// ######### lista ultimo whitepaper relacionado ###########
-				$lista_whitepapers_do_post = get_the_terms($post->ID,'sa_whitepaper_taxonomy');
+				$lista_whitepapers_do_post = get_the_terms($post->ID,'sa_whitepapers_taxonomy');
 				if ($lista_whitepapers_do_post) {
 					foreach ($lista_whitepapers_do_post as $item_whitepaper_do_post) {
 						$argsWhitepapers = array(
-							'post_type'		=> 'whitepaper',
+							'post_type'		=> 'whitepapers',
 							'post_status'	=> 'publish',
 							'name'			=> $item_whitepaper_do_post->slug,
 							);

@@ -78,51 +78,6 @@ get_header();
 				}
 					?>
 			</div>
-			<?php
-			// ######### lista ultimo whitepaper relacionado ###########
-			$lista_whitepapers_do_post = get_the_terms($post->ID,'sa_whitepaper_taxonomy');
-			foreach ($lista_whitepapers_do_post as $item_whitepaper_do_post) {
-				$argsWhitepapers = array(
-					'post_type'		=> 'whitepapers',
-					'post_status'	=> 'publish',
-					'name'			=> $item_whitepaper_do_post->slug,
-					);
-				$whitepapers_posts = get_posts($argsWhitepapers);
-			?>
-				<div id="sa_whitepaper" class="row">
-				<?php
-					foreach ($whitepapers_posts as $whitepaper) {
-						?>
-						<div class="thumbnail clearfix sa-whitepaper">
-							<a href="<?php echo get_permalink($whitepaper->ID); ?>">
-								<div class="row-fluid vertical-align">
-									<div class="col-sm-9">
-										<div class="caption pull-left">
-											<h2>Whitepaper:</h2>
-											<em><?php echo get_the_title($whitepaper->ID); ?></em>
-											<p><?php
-												if (!empty($whitepaper->post_exceprt)){
-													echo substr($whitepaper->post_exceprt,0,90);
-												}else{
-													echo substr(strip_tags($whitepaper->post_content),0,90);
-												}
-											?></p>
-										</div>
-									</div>
-		                            <div class="col-sm-3">
-		                                <img src="<?php bloginfo('template_url'); ?>/img/seta-dir-circulo-branco.png" class='center-block'>
-		                            </div>
-								</div>
-							</a>
-						</div>
-						<?php
-					}
-				?>
-				</div>
-				<?php
-                wp_reset_postdata();
-				}
-				?>
 
 			<div id="sa_blogs" class="row">
 				<?php
