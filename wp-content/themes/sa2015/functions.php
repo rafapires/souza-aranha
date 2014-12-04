@@ -1,4 +1,5 @@
 <?php 
+
 //remove_filter( 'the_content', 'wpautop' );
 add_theme_support( 'post-thumbnails' );
 add_image_size( 'metodologia_list', 300 , 300 , true);
@@ -431,5 +432,7 @@ function delete_taxonomy_as_same_title_of_post ($id){
 	    echo ' enctype="multipart/form-data"';  
 	} 
 	add_action('post_edit_form_tag', 'update_edit_form'); 
+
+
 
 ?>

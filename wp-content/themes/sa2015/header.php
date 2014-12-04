@@ -82,17 +82,39 @@
         </div>
         <div id="login-form" class="col-sm-4">
           <div id="login-area" class="row-fluid">
-            <form class="form-inline" role="form">
-              <div class="form-group">
-                <label class="sr-only" for="user-email">Email</label>
-                <input type="email" class="form-control input-sm" id="user-email" placeholder="email">
-              </div>
-              <div class="form-group">
-                <label class="sr-only" for="user-pass">Senha</label>
-                <input type="password" class="form-control input-sm" id="user-pass" placeholder="senha">
-              </div>
-              <button type="submit" class="btn btn-link"><span class="glyphicon glyphicon-arrow-right"></span></button>
-            </form>
+            <?php
+               $seta = '<img src="'.get_template_directory_uri().'/img/seta-list-blog.png">';
+              if (is_user_logged_in()) {
+                global $current_user;
+                get_currentuserinfo();
+                echo $current_user->display_name;
+                ?>
+                <p><?php wp_loginout(); ?></p>
+
+                <?php
+              }else{
+                $args = array(
+                        'echo'           => true,
+                        'redirect'       => site_url( $_SERVER['REQUEST_URI'] ), 
+                        'form_id'        => 'sa_loginform',
+                        'label_username' => __( 'Username' ),
+                        'label_password' => __( 'Password' ),
+                        'label_remember' => __( 'Remember Me' ),
+                        'label_log_in'   => $seta,
+                        'id_username'    => 'sa_user_login',
+                        'id_password'    => 'sa_user_pass',
+                        'id_remember'    => 'sa_rememberme',
+                        'id_submit'      => 'sa_wp-submit',
+                        'remember'       => false,
+                        'value_username' => NULL,
+                        'value_remember' => true
+                );
+
+                wp_login_form($args);
+              }
+              exit;
+
+            ?>
           </div>
           <div id="links-header" class="row-fluid">
             <a href="#"><img src="<?php bloginfo('template_url'); ?>/img/linkedin.png"></a>
