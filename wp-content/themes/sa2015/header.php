@@ -38,7 +38,7 @@
 
     <section id="header">
       <div class="container">
-      <div class="row">
+      <div class="row-fluid">
         <div class="col-sm-8">
           <div class="row">
             <a href="<?php echo site_url(); ?>">
@@ -81,15 +81,17 @@
 
         </div>
         <div id="login-form" class="col-sm-4">
-          <div id="login-area" class="row-fluid">
+          <div id="login-area" class="row">
             <?php
-               $seta = '<img src="'.get_template_directory_uri().'/img/seta-list-blog.png">';
+               $seta = '>';
               if (is_user_logged_in()) {
                 global $current_user;
-                get_currentuserinfo();
-                echo $current_user->display_name;
                 ?>
-                <p><?php wp_loginout(); ?></p>
+                <div class='sa_logado text-right'>
+                  <?php get_currentuserinfo(); ?>
+                  <span><?php echo $current_user->display_name; ?></span>
+                  <span class='sa_logaout pull-rigth'><?php wp_loginout(); ?></span>
+                </div>
 
                 <?php
               }else{
@@ -97,8 +99,8 @@
                         'echo'           => true,
                         'redirect'       => site_url( $_SERVER['REQUEST_URI'] ), 
                         'form_id'        => 'sa_loginform',
-                        'label_username' => __( 'Username' ),
-                        'label_password' => __( 'Password' ),
+                        'label_username' => 'Login',
+                        'label_password' => 'Senha',
                         'label_remember' => __( 'Remember Me' ),
                         'label_log_in'   => $seta,
                         'id_username'    => 'sa_user_login',
@@ -112,11 +114,9 @@
 
                 wp_login_form($args);
               }
-              exit;
-
             ?>
           </div>
-          <div id="links-header" class="row-fluid">
+          <div id="links-header" class="row">
             <a href="#"><img src="<?php bloginfo('template_url'); ?>/img/linkedin.png"></a>
             <a href="#"><img src="<?php bloginfo('template_url'); ?>/img/slideshare.png"></a>
             <a href="#" class="pull-right"><img class="fone" src="<?php bloginfo('template_url'); ?>/img/fone.png"><span class="fale-conosco">Fale Conosco</span></a>
