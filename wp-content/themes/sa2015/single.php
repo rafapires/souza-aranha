@@ -135,6 +135,9 @@ get_header();
 				foreach ($categorias_do_post as $categoria) {
 					$lista_cats[] = $categoria->term_id;
 				}
+				if (!$lista_cats){
+					$lista_cats = array('cases','sem-categoria');
+				}				
 				$args_last_blogs_cat = array(
 					'post_type'			=> 'post',
 	                'orderby'           => 'post_date',
