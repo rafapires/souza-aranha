@@ -6,6 +6,8 @@
 div#myCarousel {
 padding: 0px;
 margin-bottom: 40px;
+height: 400px;
+overflow: hidden;
 }
 
 a.carousel-control {

@@ -1,6 +1,5 @@
 <?php 
 
-/*Template Name: Metodologias */
  
 get_header(); ?>
 
@@ -16,7 +15,13 @@ get_header(); ?>
 						<?php the_post_thumbnail('metodologia_list'); ?>
 						<div class="caption">
 							<h2 class="sa_title_links"><?php the_title(); ?></h2>
-							<p><?php echo get_post_meta(get_the_ID(),'sa_diferencial_metodologia',true ); ?></p>
+							<p><?php
+							 	if (get_post_meta(get_the_ID(),'sa_diferencial_metodologia',true)){
+									echo get_post_meta(get_the_ID(),'sa_diferencial_metodologia',true );
+							 	}else{
+							 		the_excerpt();
+							 	}
+							 ?></p>
 						</div>
 						<a href="<?php the_permalink(); ?>" >
 							<span class='seta-saibamais pull-right'>

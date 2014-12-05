@@ -17,7 +17,7 @@ get_header(); ?>
 			$newsLoop = new WP_Query( $newsArgs );
 			while ( $newsLoop->have_posts() ) : $newsLoop->the_post();?>
                 <div class="item <?php if ($active){echo 'active';}?>">
-                    <?php the_post_thumbnail( full, array('class' => 'sa_img_carrousel')) ?>
+                    <?php the_post_thumbnail( full, array('class' => 'sa_img_carrousel img-responsive')) ?>
                     <div class="carousel-caption">
                         <a href="<?php the_permalink(); ?>">
         	                <h4><?php the_title();?></h4>
