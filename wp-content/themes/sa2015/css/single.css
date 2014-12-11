@@ -112,32 +112,3 @@ div#sa_whitepaper {
 margin-bottom: 10px;
 margin-top: 10px;
 }
-
-#sa_blogs ul {
-padding-left: 26px;
-}
-
-#sa_blogs li {
-list-style-type: square;
-font-size: 30px;
-color: #4999af;
-}
-
-#sa_blogs li h3 {
-font-size: 16px;
-margin: 0px;
-color: #666;
-}
-
-#sa_blogs li p {
-margin: 0px;
-font-size: 15px;
-color: #666;
-}
-
-#sa_blogs li span {
-position: relative;
-left: -10px;
-display: inline-table;
-top: -5px;
-}
