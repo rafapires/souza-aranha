@@ -98,3 +98,14 @@ font-size: 17px;
 position: relative;
 top: -2px;
 }
+
+.sa_btn {
+background: #a1c4da;
+color: #fff;
+padding: 2px 5px;
+font-style: italic;
+padding-right: 24px;
+background-image: url('../sa2015/img/sa-btn-seta.gif');
+background-repeat: no-repeat;
+background-position: right;
+}

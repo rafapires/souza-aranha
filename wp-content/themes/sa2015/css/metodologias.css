@@ -27,6 +27,18 @@ margin-top: 8px;
 font-weight: bold;
 }
 
+#sa_metodologias ul {
+list-style: none;
+}
+
+#sa_metodologias h2 {
+color: #76b2c3;
+background: inherit;
+font-size: 27px;
+padding: 0px;
+}
+
+
 #sa_metodologias > p {
 text-align: justify;
 font-size: 13px;

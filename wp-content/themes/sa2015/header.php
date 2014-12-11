@@ -46,7 +46,7 @@
                 <img src="<?php bloginfo('template_url'); ?>/img/logo-souza-aranha.jpg">
               </div>
               <div class="col-sm-6">
-                <img src="<?php bloginfo('template_url'); ?>/img/slogan-souza-aranha.jpg" class="img-responsive">
+                <h1><?php bloginfo('description'); ?></h1>
               </div>
             </a>
           </div>
