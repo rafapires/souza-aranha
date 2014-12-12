@@ -22,7 +22,7 @@ get_header(); ?>
                         <a href="<?php the_permalink(); ?>">
         	                <h4><?php the_title();?></h4>
         	                <?php the_excerpt(); ?>
-                            <p class="conheca">Conheça<span class="seta">></span></p>
+                            <p class="conheca">Saiba como<span class="seta">></span></p>
         	            </a>
                     </div>
                 </div>
@@ -38,8 +38,8 @@ get_header(); ?>
     <div id="sa_call_actions" class="row">
         <div class="col-sm-4">
             <div class="sa-col-1">
-                <a href="<?php echo get_permalink(); ?>">
-                    <h1 class="sa_title_links">SOLUÇÕES S.A.</h1>
+                <a href="<?php echo home_url('/a-empresa'); ?>">
+                    <h1 class="sa_title_links"><?php the_title(); ?></h1>
                     <?php the_content(); ?>
                     <?php the_post_thumbnail( full, array('class' => 'sa-thumbnail-col-1 img-responsive')) ?>
                     <span class="sa-mais pull-right">+ SAIBA MAIS</span>

@@ -80,6 +80,8 @@ align-items: center;
 	text-align: center;
 	font-size: 16px;
 	font-weight: inherit;
+	background-color: inherit;
+	color: #666;
 }
 
 .sa-whitepaper {
@@ -102,6 +104,8 @@ font-size: 16px;
 text-transform: uppercase;
 color: #559aad;
 font-weight: 100;
+background-color: inherit;
+padding: 0px;
 }
 
 .sa-whitepaper .caption.pull-left {

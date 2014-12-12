@@ -57,7 +57,7 @@ color: #fff;
 
 p.conheca {
 background: rgba(138,181,209,0.8);
-width: 93px;
+width: 110px;
 padding: 3px 5px;
 margin: 0px;
 position: absolute;
@@ -96,7 +96,6 @@ text-transform: uppercase;
 }
 
 #sa_call_actions .sa-col-1 p {
-text-align: justify;
 letter-spacing: 3px;
 margin-bottom: 16px;
 }
