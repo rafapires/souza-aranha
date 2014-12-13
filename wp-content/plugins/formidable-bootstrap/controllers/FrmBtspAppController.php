@@ -120,7 +120,7 @@ class FrmBtspAppController{
             return;
         }
         
-        wp_register_style('bootstrap', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css', array(), '3.3.0');
+        wp_register_style('bootstrap', get_template_directory_uri().'/css/bootstrap-theme.css', array());
         
         if ( 'all' == $frm_settings->btsp_css ) {
             // load on all pages
