@@ -16,6 +16,7 @@ Version: 1.0.0
 @import url('css/single.css'); 
 @import url('css/archives.css'); 
 @import url('css/webinars.css'); 
+@import url('css/cadastro.css'); 
 
 @font-face {
 	font-family: MyriadPro;
@@ -110,40 +111,3 @@ background-repeat: no-repeat;
 background-position: right;
 }
 
-/* ####################
-   ###   cadastro   ###
-   #################### */
-
-h2.sa_ou {  
-border-radius: 100px;
-color: #4999AF;
-font-weight: bold;
-font-size: 20px;
-text-transform: uppercase;
-border-color: #4999AF;
-border-style: solid;
-background-color: #fff;
-text-align: center;
-padding: 9px;
-}
-
-#loginform p {
-text-align: right;
-}
-
-.sa_cadastro h1 {
-background-color: #4999AF;
-color: #fff;
-padding: 8px 18px;
-}
-
-.sa_cadastro span {
-display: inline-block;
-font-size: 17px;
-font-weight: normal;
-margin-left: 20px;
-}
-
-.sa_cadastro p {
-color: #fff;
-}

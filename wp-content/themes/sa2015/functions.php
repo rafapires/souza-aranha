@@ -433,6 +433,34 @@ function delete_taxonomy_as_same_title_of_post ($id){
 	} 
 	add_action('post_edit_form_tag', 'update_edit_form'); 
 
+/* formidable functions */
 
+add_filter('frm_validate_field_entry', 'email_validation', 20, 3);
+ function email_validation($errors, $field, $value){
+   if ($field->id == 122){ //change 31 to the ID of the confirmation field (second field)
+    $first_value = $_POST['item_meta'][98]; //change 30 to the ID of the first field
+   
+    if ( $first_value != $value && !empty($value) ) {
+      $errors['field'. $field->id] = 'Os e-mails não conferem.';//Customize your error message
+    }else{
+      $_POST['item_meta'][$field->id] = ''; //if it matches, this clears the second field so it won't be saved
+    }
+ }
+ return $errors;
+ }
+
+ add_filter('frm_validate_field_entry', 'pass_validation', 20, 3);
+ function pass_validation($errors, $field, $value){
+   if ($field->id == 101){ //change 31 to the ID of the confirmation field (second field)
+    $first_value = $_POST['item_meta'][100]; //change 30 to the ID of the first field
+   
+    if ( $first_value != $value && !empty($value) ) {
+      $errors['field'. $field->id] = 'As senhas não conferem.';//Customize your error message
+    }else{
+      $_POST['item_meta'][$field->id] = ''; //if it matches, this clears the second field so it won't be saved
+    }
+ }
+ return $errors;
+ }
 
 ?>

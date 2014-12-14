@@ -90,7 +90,7 @@
                 <div class='sa_logado text-right'>
                   <?php get_currentuserinfo(); ?>
                   <span><?php echo $current_user->display_name; ?></span>
-                  <span class='sa_logaout pull-rigth'><?php wp_loginout(); ?></span>
+                  <span class='sa_logaout pull-rigth'><a href="<?php echo wp_logout_url( home_url() ); ?>" title="Logout">Logout</a></span>
                 </div>
 
                 <?php
