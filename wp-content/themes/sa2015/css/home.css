@@ -163,8 +163,18 @@ background: inherit;
 padding: 0px;
 }
 
+#sa_call_actions .sa-whitepaper h2 {
+font-size: 32px;
+font-weight: 900;
+}
+
 #sa_call_actions p {
 margin: 0px;
+}
+
+#sa_call_actions .sa-whitepaper p {
+font-size: 18px;
+font-weight: 900;
 }
 
 #sa_call_actions .caption {

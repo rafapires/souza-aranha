@@ -108,7 +108,7 @@ get_header(); ?>
                     <a href="<?php echo get_post_type_archive_link( 'whitepapers' ); ?>">
                         <div class="row-fluid vertical-align">
                             <div class="col-sm-9">
-                                <div class="caption pull-right">
+                                <div class="caption pull-right sa-whitepaper">
                                     <h2><?php echo $whitepaper_title->post_title; ?></h2>
                                     <p><?php
                                         if (!empty($whitepaper_title->post_excerpt)){
@@ -120,7 +120,7 @@ get_header(); ?>
                                 </div>
                             </div>
                             <div class="col-sm-3">
-                                <img src="<?php bloginfo('template_url'); ?>/img/seta-dir-circulo-branco.png" class='center-block'>
+                                <img src="<?php bloginfo('template_url'); ?>/img/seta-dir-circulo-azul.png" class='center-block'>
                             </div>
                         </div>
                     </a>
