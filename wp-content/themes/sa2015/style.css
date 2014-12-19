@@ -111,3 +111,20 @@ background-repeat: no-repeat;
 background-position: right;
 }
 
+thead {
+background-color: #76B2C3;
+color: #fff;
+font-size: 21px;
+}
+
+tbody th {
+	font-weight: normal;
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {
+background-color: #C7E4ED;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #AFD4E0;
+}
