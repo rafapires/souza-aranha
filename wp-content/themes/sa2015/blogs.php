@@ -15,7 +15,7 @@ get_header(); ?>
               <?php 
     			$active = true;
     			$newsArgs = array(  'post_type'     => 'post',
-                                    'posts_per_page'   => 6,
+                                    'posts_per_page'   => 4,
                                     'offset'        => 0,
                                     'orderby'       => 'post_date',
                                     'order'         => 'DESC',
@@ -31,7 +31,7 @@ get_header(); ?>
                         if ( has_post_thumbnail() ){
                             the_post_thumbnail( array(1400,400), array('class' => 'sa_img_carrousel'));
                         }else{
-                            if ( $sa_imgdefault > 3) {
+                            if ( $sa_imgdefault > 5) {
                                 $sa_imgdefault = 1;
                             }
                         ?>
@@ -76,7 +76,7 @@ get_header(); ?>
                 $sa_css_post_count=0;
                 $sa_list_thumb_count=1;
                 foreach ($ultimos_posts_col1->posts as $item_post_col1) {
-                    if ($sa_list_thumb_count>3){
+                    if ($sa_list_thumb_count>5){
                         $sa_list_thumb_count =1;
                     }
                     ?>

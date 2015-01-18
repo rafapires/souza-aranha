@@ -73,26 +73,28 @@ $custom_fields = get_post_custom();
 				$args_webinars_antigos = array (
 					'post_type'			=> 'webinars',
 					'post_status'		=> 'publish',
+					'exclude'			=> array($post->ID),
 					'meta_key'			=> 'sa_status_webinar',
 					'meta_value'		=> 'realizado'
 					);
-				$webinars_antigos = new WP_query($args_webinars_antigos);
-				if ( $webinars_antigos->have_posts() ) {
+				$webinars_antigos = get_posts($args_webinars_antigos,OBJECT);
+				
+				if ( $webinars_antigos) {
 					?>
 						<h3>Webinars anteriores</h3>
 					<?php
-					while ($webinars_antigos->have_posts()){
-						$webinars_antigos->the_post();
+					foreach ($webinars_antigos as $webinar_item) {
 						?>
 						<div class="thumbnail clearfix col-sm-4">
-							<?php echo get_the_post_thumbnail( $webinars_antigos->ID, thumbnail, array('class'=>'img-responsive pull-left') ); ?>
+							<?php echo get_the_post_thumbnail( $webinar_item->ID, thumbnail, array('class'=>'img-responsive pull-left') ); ?>
 							<div class="caption">
-								<h2><?php echo get_the_title(); ?></h2>
+								<h2><?php echo $webinar_item->post_title; ?></h2>
 								<p><?php
-                                    if (!empty(get_the_excerpt($webinars_antigos->ID))){
-                                        echo substr(strip_tags(get_the_excerpt($webinars_antigos->ID)),0,180);
+                                    $webinar_excerpt=$webinar_item->post_excerpt;
+								    if ($webinar_excerpt){
+                                        echo substr(strip_tags($webinar_excerpt),0,180);
                                     }else{
-                                        echo substr(strip_tags(get_the_content($webinars_antigos->ID)),0,180);
+                                        echo substr(strip_tags(get_the_content($webinar_item->ID)),0,180);
                                     }
                                     ?>
                                 </p>
@@ -104,6 +106,7 @@ $custom_fields = get_post_custom();
 						</div>
 
 					<?php
+					;
 					}
 				}
 				wp_reset_postdata();

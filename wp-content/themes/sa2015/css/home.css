@@ -6,6 +6,8 @@
 div#myCarousel {
 padding: 0px;
 margin-bottom: 40px;
+height: 400px;
+overflow: hidden;
 }
 
 a.carousel-control {
@@ -44,16 +46,18 @@ padding: 10px 20px;
 	font-size: 30px;
 	height: 33px;
 	overflow: hidden;
+	color: #fff;
 }
 
 .carousel-caption p {
 height: 42px;
 overflow: hidden;
+color: #fff;
 }
 
 p.conheca {
 background: rgba(138,181,209,0.8);
-width: 93px;
+width: 110px;
 padding: 3px 5px;
 margin: 0px;
 position: absolute;
@@ -67,10 +71,10 @@ background: black;
 position: absolute;
 width: 27px;
 height: 33px;
-padding: 0px 7px;
+padding: 0px 8px;
 top: -2px;
 right: 0px;
-font-size: 23px;
+font-size: 19px;
 }
 
 #sa_call_actions .sa-col-1 {
@@ -92,7 +96,6 @@ text-transform: uppercase;
 }
 
 #sa_call_actions .sa-col-1 p {
-text-align: justify;
 letter-spacing: 3px;
 margin-bottom: 16px;
 }
@@ -156,10 +159,22 @@ font-size: 16px;
 text-transform: uppercase;
 color: #559aad;
 font-weight: 100;
+background: inherit;
+padding: 0px;
+}
+
+#sa_call_actions .sa-whitepaper h2 {
+font-size: 32px;
+font-weight: 900;
 }
 
 #sa_call_actions p {
 margin: 0px;
+}
+
+#sa_call_actions .sa-whitepaper p {
+font-size: 18px;
+font-weight: 900;
 }
 
 #sa_call_actions .caption {
@@ -241,3 +256,4 @@ overflow: hidden;
 width: 10px;
 margin-left: 8px;
 }
+

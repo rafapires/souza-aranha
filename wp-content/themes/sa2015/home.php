@@ -17,12 +17,12 @@ get_header(); ?>
 			$newsLoop = new WP_Query( $newsArgs );
 			while ( $newsLoop->have_posts() ) : $newsLoop->the_post();?>
                 <div class="item <?php if ($active){echo 'active';}?>">
-                    <?php the_post_thumbnail( full, array('class' => 'sa_img_carrousel')) ?>
+                    <?php the_post_thumbnail( full, array('class' => 'sa_img_carrousel img-responsive')) ?>
                     <div class="carousel-caption">
                         <a href="<?php the_permalink(); ?>">
         	                <h4><?php the_title();?></h4>
         	                <?php the_excerpt(); ?>
-                            <p class="conheca">Conheça<span class="seta">></span></p>
+                            <p class="conheca">Saiba como<span class="seta">></span></p>
         	            </a>
                     </div>
                 </div>
@@ -38,8 +38,8 @@ get_header(); ?>
     <div id="sa_call_actions" class="row">
         <div class="col-sm-4">
             <div class="sa-col-1">
-                <a href="<?php echo get_permalink(); ?>">
-                    <h1 class="sa_title_links">SOLUÇÕES S.A.</h1>
+                <a href="<?php echo home_url('/a-empresa'); ?>">
+                    <h1 class="sa_title_links"><?php the_title(); ?></h1>
                     <?php the_content(); ?>
                     <?php the_post_thumbnail( full, array('class' => 'sa-thumbnail-col-1 img-responsive')) ?>
                     <span class="sa-mais pull-right">+ SAIBA MAIS</span>
@@ -108,7 +108,7 @@ get_header(); ?>
                     <a href="<?php echo get_post_type_archive_link( 'whitepapers' ); ?>">
                         <div class="row-fluid vertical-align">
                             <div class="col-sm-9">
-                                <div class="caption pull-right">
+                                <div class="caption pull-right sa-whitepaper">
                                     <h2><?php echo $whitepaper_title->post_title; ?></h2>
                                     <p><?php
                                         if (!empty($whitepaper_title->post_excerpt)){
@@ -120,7 +120,7 @@ get_header(); ?>
                                 </div>
                             </div>
                             <div class="col-sm-3">
-                                <img src="<?php bloginfo('template_url'); ?>/img/seta-dir-circulo-branco.png" class='center-block'>
+                                <img src="<?php bloginfo('template_url'); ?>/img/seta-dir-circulo-azul.png" class='center-block'>
                             </div>
                         </div>
                     </a>

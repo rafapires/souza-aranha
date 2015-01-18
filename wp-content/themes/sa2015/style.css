@@ -16,6 +16,7 @@ Version: 1.0.0
 @import url('css/single.css'); 
 @import url('css/archives.css'); 
 @import url('css/webinars.css'); 
+@import url('css/cadastro.css'); 
 
 @font-face {
 	font-family: MyriadPro;
@@ -60,3 +61,70 @@ a {
 	color: #666;
 }
 
+h2 {
+background: #4999af;
+color: #fff;
+font-weight: normal;
+font-size: 24px;
+letter-spacing: 0.5px;
+padding: 10px 18px;
+}
+
+p {
+margin: 0px 0px 5px;
+color: #666;
+letter-spacing: 0.5px;
+padding: 0px;
+line-height: 1.5;
+}
+
+h4 {
+color: #4999af;
+}
+
+ul {
+margin-top: 0;
+margin-bottom: 10px;
+list-style: square;
+list-style-image: url('../sa2015/img/li.gif');
+padding: 0px 0px 0px 15px;
+}
+
+li {
+	list-style: inherit;
+}
+
+li h3 {
+font-size: 17px;
+position: relative;
+top: -2px;
+}
+
+.sa_btn {
+background: #a1c4da;
+color: #fff;
+padding: 2px 5px;
+font-style: italic;
+padding-right: 24px;
+background-image: url('../sa2015/img/sa-btn-seta.gif');
+background-repeat: no-repeat;
+background-position: right;
+}
+
+thead {
+background-color: #76B2C3;
+color: #fff;
+font-size: 21px;
+}
+
+tbody th {
+	font-weight: normal;
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {
+background-color: #C7E4ED;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #AFD4E0;
+}

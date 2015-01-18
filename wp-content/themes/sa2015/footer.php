@@ -12,7 +12,7 @@
 				<img src="<?php bloginfo('template_url'); ?>/img/sales-force-footer.png" class="pull-right">
 			</div>
 		</div>
-		<hr class="divide-footer">
+		<!-- <hr class="divide-footer">
 		<div class="row menu-footer">
 			<div class="col-sm-2">
 				<h3>Home</h3>
@@ -38,7 +38,7 @@
 				<h3>A Empresa</h3>
 				<p>Nullam venenatis mauris vitae faucibus dignissim. Sed aliquam tellus nec risus pretium, at porta lorem sollicitudin. Nunc at rhoncus nullam.</p>
 			</div>
-		</div>
+		</div> -->
 		<hr class="top-footer">
 		<p class="text-center ultima-linha">A Souza Aranha é parceira da Salesforce desde 2006, 88% dos clientes stisfeitos. Fonte: Auditoria Salesforce.com</p>
 

@@ -31,4 +31,6 @@ overflow: hidden;
 margin: 0px;
 color: #76b2c3;
 font-size: 20px;
+background-color: inherit;
+padding: 0px;
 }

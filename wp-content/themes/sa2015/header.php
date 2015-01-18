@@ -38,7 +38,7 @@
 
     <section id="header">
       <div class="container">
-      <div class="row">
+      <div class="row-fluid">
         <div class="col-sm-8">
           <div class="row">
             <a href="<?php echo site_url(); ?>">
@@ -46,7 +46,7 @@
                 <img src="<?php bloginfo('template_url'); ?>/img/logo-souza-aranha.jpg">
               </div>
               <div class="col-sm-6">
-                <img src="<?php bloginfo('template_url'); ?>/img/slogan-souza-aranha.jpg" class="img-responsive">
+                <h1><?php bloginfo('description'); ?></h1>
               </div>
             </a>
           </div>
@@ -81,20 +81,46 @@
 
         </div>
         <div id="login-form" class="col-sm-4">
-          <div id="login-area" class="row-fluid">
-            <form class="form-inline" role="form">
-              <div class="form-group">
-                <label class="sr-only" for="user-email">Email</label>
-                <input type="email" class="form-control input-sm" id="user-email" placeholder="email">
-              </div>
-              <div class="form-group">
-                <label class="sr-only" for="user-pass">Senha</label>
-                <input type="password" class="form-control input-sm" id="user-pass" placeholder="senha">
-              </div>
-              <button type="submit" class="btn btn-link"><span class="glyphicon glyphicon-arrow-right"></span></button>
-            </form>
+          <div id="login-area" class="row">
+            <?php
+              $sa_site_url = site_url().'/';
+              if ( $sa_site_url != get_permalink() ) {
+                $sa_site_url = site_url( $_SERVER['REQUEST_URI'] );
+              }
+              $seta = '>';
+              if (is_user_logged_in()) {
+                global $current_user;
+                ?>
+                <div class='sa_logado text-right'>
+                  <?php get_currentuserinfo(); ?>
+                  <span><?php echo $current_user->display_name; ?></span>
+                  <span class='sa_logaout pull-rigth'><a href="<?php echo wp_logout_url( home_url() ); ?>" title="Logout">Logout</a></span>
+                </div>
+
+                <?php
+              }else{
+                $args = array(
+                        'echo'           => true,
+                        'redirect'       => $sa_site_url, 
+                        'form_id'        => 'sa_loginform',
+                        'label_username' => 'Login',
+                        'label_password' => 'Senha',
+                        'label_remember' => __( 'Remember Me' ),
+                        'label_log_in'   => $seta,
+                        'id_username'    => 'sa_user_login',
+                        'id_password'    => 'sa_user_pass',
+                        'id_remember'    => 'sa_rememberme',
+                        'id_submit'      => 'sa_wp-submit',
+                        'remember'       => false,
+                        'value_username' => NULL,
+                        'value_remember' => true
+                );
+
+                wp_login_form($args);
+              }
+            ?>
           </div>
-          <div id="links-header" class="row-fluid">
+          <div id="links-header" class="row">
             <a href="#"><img src="<?php bloginfo('template_url'); ?>/img/linkedin.png"></a>
             <a href="#"><img src="<?php bloginfo('template_url'); ?>/img/slideshare.png"></a>
             <a href="#" class="pull-right"><img class="fone" src="<?php bloginfo('template_url'); ?>/img/fone.png"><span class="fale-conosco">Fale Conosco</span></a>
