@@ -5,7 +5,7 @@ get_header(); ?>
 	<div id="sa_colunado" class="row-fluid">
 		<div id="sa_conteudo" class="col-sm-8">
 			<?php
-			$argsWhitepapers = array(
+			$argsWebinars = array(
 					'post_type'		=> 'webinars',
 					'post_status'	=> 'publish',
 					'orderby'		=> 'date',
@@ -13,22 +13,25 @@ get_header(); ?>
 					'meta_key'			=> 'sa_status_webinar',
 					'meta_value'		=> 'realizado'
 					);
-			$whitepapers_posts = get_posts($argsWhitepapers,OBJECT);
+			$webinars_posts = get_posts($argsWebinars,OBJECT);
 
-			foreach ($whitepapers_posts as $whitepaperItem) {
+			foreach ($webinars_posts as $webinarItem) {
 				?>
-				<a href="<?php echo get_the_permalink($whitepaperItem->ID); ?>">
+				<a href="<?php echo get_the_permalink($webinarItem->ID); ?>">
 					<blockquote class="clearfix">
 						<div class="row-fluid vbottom-align">
 							<div class="col-sm-10">
-								<h2><?php echo $whitepaperItem->post_title; ?>
-									<span class='label label-default'><?php echo get_the_date('j F, Y',$whitepaperItem->ID); ?></span>
+								<h2><?php echo $webinarItem->post_title; ?>
+									<span class='label label-default'><?php echo get_the_date('j F, Y',$webinarItem->ID); ?></span>
 								</h2>
 								<p><?php
-									if (!empty($whitepaperItem->post_exceprt)){
-										echo substr($whitepaperItem->post_exceprt,0,220);
+									$sa_webinar_excerpt = $webinarItem->post_excerpt;
+
+
+									if ($sa_webinar_excerpt){
+										echo substr($sa_webinar_excerpt,0,220);
 									}else{
-										echo substr(strip_tags($whitepaperItem->post_content),0,220);
+										echo substr(strip_tags($webinarItem->post_content),0,220);
 									}
 								?></p>								
 							</div>

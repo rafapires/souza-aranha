@@ -83,7 +83,11 @@
         <div id="login-form" class="col-sm-4">
           <div id="login-area" class="row">
             <?php
-               $seta = '>';
+              $sa_site_url = site_url().'/';
+              if ( $sa_site_url != get_permalink() ) {
+                $sa_site_url = site_url( $_SERVER['REQUEST_URI'] );
+              }
+              $seta = '>';
               if (is_user_logged_in()) {
                 global $current_user;
                 ?>
@@ -97,7 +101,7 @@
               }else{
                 $args = array(
                         'echo'           => true,
-                        'redirect'       => site_url( $_SERVER['REQUEST_URI'] ), 
+                        'redirect'       => $sa_site_url, 
                         'form_id'        => 'sa_loginform',
                         'label_username' => 'Login',
                         'label_password' => 'Senha',
