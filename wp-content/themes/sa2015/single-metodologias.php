@@ -28,6 +28,7 @@ get_header();
 				?>
 					<h1><?php the_title(); ?></h1>
 					<?php the_content(); ?>
+					<a href="<?php echo site_url();?>/metodologias" class="btn btn-block btn-primary">Outras metodologias</a>
 				<?php
 					}
 				};
