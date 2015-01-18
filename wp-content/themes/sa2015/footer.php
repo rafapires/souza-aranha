@@ -5,7 +5,9 @@
 				<img src="<?php bloginfo('template_url'); ?>/img/logo-aranha-footer.png" class="pull-left">
 			</div>
 			<div class="col-sm-4">
+				<a href="<?php echo site_url();?>/contato">
 				<p class="fone-footer text-center">TEL.:11 3263 0933</p>
+				</a>
 				<p class="email-footer text-center">contato@souza-aranha.com.br</p>
 			</div>
 			<div class="col-sm-4">

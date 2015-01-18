@@ -11,9 +11,7 @@ get_header(); ?>
 				the_post();
 		?>
 			<h1>Contato</h1>
-			<div class="col-sm-6 col-sm-offset-3">
 				<?php the_content(); ?>
-			</div>
 		<?php
 			}
 		};
