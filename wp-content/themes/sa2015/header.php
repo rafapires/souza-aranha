@@ -123,7 +123,7 @@
           <div id="links-header" class="row">
             <a href="https://www.linkedin.com/company/108126?trk=tyah&trkInfo=tarId%3A1420750173517%2Ctas%3Asouza%20aranha%2Cidx%3A2-1-6" target="_blank"><img src="<?php bloginfo('template_url'); ?>/img/linkedin.png"></a>
             <a href="http://pt.slideshare.net/esaranha42" target="_blank"><img src="<?php bloginfo('template_url'); ?>/img/slideshare.png"></a>
-            <a href="#" class="pull-right"><img class="fone" src="<?php bloginfo('template_url'); ?>/img/fone.png"><span class="fale-conosco">Fale Conosco</span></a>
+            <a href="<?php echo site_url();?>/contato" class="pull-right"><img class="fone" src="<?php bloginfo('template_url'); ?>/img/fone.png"><span class="fale-conosco">Fale Conosco</span></a>
 
           </div>
 
