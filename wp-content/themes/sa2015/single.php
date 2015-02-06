@@ -10,7 +10,7 @@ get_header();
 				while ( have_posts() ) {
 					the_post();
 			?>
-				<h1><?php the_title(); ?></h1>
+				<h1><?php the_title(); ?><span class='sa_date_post'><?php the_date(); ?></span></h1>
 				<?php the_content(); ?>
 				<?php comments_template('', true);?>
 			<?php

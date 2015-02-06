@@ -117,3 +117,15 @@ div#sa_whitepaper {
 margin-bottom: 10px;
 margin-top: 10px;
 }
+
+span.sa_date_post {
+font-size: 12px;
+text-transform: none;
+margin-left: 20px;
+background-color: rgb(118, 178, 195);
+padding: 3px 10px 5px;
+color: #fff;
+border-radius: 20px;
+position: relative;
+bottom: 6px;
+}
